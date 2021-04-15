@@ -10,5 +10,5 @@ Please pay attention, in file examples/config/map.php described mapping array. K
 All parameters should be divided by ```=```. 
 Example:
 ```php
-run examples/run.php --authtype=$authtype --token=$token --host=http://example.com -- --script=$scriptname
+run examples/run.php --authtype=$authtype --token=$token --host=http://example.com --script=$scriptname
 ```
