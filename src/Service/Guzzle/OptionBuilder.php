@@ -14,6 +14,11 @@ use SignNow\Api\Service\OAuth\TokenInterface;
  */
 class OptionBuilder
 {
+    private const USER_AGENT = 'SignNow PHP API Client';
+    private const VERSION = 'v1.1.0';
+    private const CONTENT_TYPE = 'application/json';
+    private const RUNTIME_AGENT = 'php';
+    
     /**
      * @var string
      */
@@ -98,7 +103,7 @@ class OptionBuilder
         $options = [
             'headers'         => $this->prepareHeaders(),
             'connect_timeout' => 30,
-            'request_timeout' => 30,
+            'timeout'         => 30,
             'handler'         => $stack,
         ];
         
@@ -114,7 +119,23 @@ class OptionBuilder
      */
     private function prepareHeaders(): array
     {
-        return array_merge(['Content-Type' => 'application/json'], $this->customHeaders);
+        $userAgentHeaderInfo = $this->getUserAgentInfo();
+        $defaultHeaders = [
+            'Content-Type' => self::CONTENT_TYPE,
+            'User-Agent' => sprintf(
+                "%s/%s (%s %s; %s; %s) %s/%s",
+                $userAgentHeaderInfo['clientName'],
+                $userAgentHeaderInfo['clientVersion'],
+                $userAgentHeaderInfo['osType'],
+                $userAgentHeaderInfo['osRelease'],
+                $userAgentHeaderInfo['platform'],
+                $userAgentHeaderInfo['architecture'],
+                $userAgentHeaderInfo['runtime'],
+                $userAgentHeaderInfo['version']
+            )
+        ];
+    
+        return array_merge($defaultHeaders, $this->customHeaders);
     }
     
     /**
@@ -139,5 +160,44 @@ class OptionBuilder
         return [
             new ResponseCheckerMiddleware(),
         ];
+    }
+    
+    /**
+     * @return array
+     */
+    private function getUserAgentInfo(): array
+    {
+        $systemName = php_uname('s');
+        
+        return [
+            'clientName' => self::USER_AGENT,
+            'clientVersion' => self::VERSION,
+            'osType' => $systemName,
+            'osRelease' => php_uname('r'),
+            'platform' => $this->getUserAgentPlatform($systemName),
+            'architecture' => php_uname('m'),
+            'runtime' => self::RUNTIME_AGENT,
+            'version' => sprintf('%d.%d.%d', PHP_MAJOR_VERSION, PHP_MINOR_VERSION, PHP_RELEASE_VERSION)
+        ];
+    }
+    
+    /**
+     * @param string $systemName
+     *
+     * @return string
+     */
+    private function getUserAgentPlatform(string $systemName): string
+    {
+        switch (strtolower($systemName)) {
+            case 'windows':
+                return 'win32';
+            case 'darwin':
+                return 'mac';
+            case 'linux':
+            case 'freebsd':
+                return 'unix';
+            default:
+                return 'unknown';
+        }
     }
 }
