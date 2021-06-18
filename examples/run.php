@@ -6,6 +6,8 @@ use SignNow\Api\Service\Guzzle\OptionBuilder;
 use SignNow\Api\Service\OAuth\BasicToken;
 use SignNow\Api\Service\OAuth\BearerToken;
 use SignNow\Api\Service\Factories\TokenFactory;
+use SignNow\Rest\EntityManagerFactory;
+use SignNow\Rest\Http\Request;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $config = require_once __DIR__ . '/config/config.php';
@@ -40,7 +42,8 @@ $options = (new OptionBuilder())
     ->useAuthorization($token)
     ->getOptions();
 
-$entityManager = (new \SignNow\Rest\EntityManagerFactory())->createEntityManager($options);
+$entityManager = (new EntityManagerFactory())->createEntityManager($options);
+$entityManager->setUpdateHttpMethod(Request::METHOD_PUT);
 
 try {
     /** @var BaseExample $example */
