@@ -15,7 +15,7 @@ use SignNow\Api\Service\OAuth\TokenInterface;
 class OptionBuilder
 {
     private const USER_AGENT = 'SignNow PHP API Client';
-    private const VERSION = 'v1.3.0';
+    private const VERSION = 'v2.0.0';
     private const CONTENT_TYPE = 'application/json';
     private const RUNTIME_AGENT = 'php';
     
