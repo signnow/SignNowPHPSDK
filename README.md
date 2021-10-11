@@ -35,6 +35,12 @@ Simple API Client to integrate SignNow with your application or website. Sign do
       * [Get User Event Subscriptions](#get-event-subscriptions)
       * [Create User Event Subscription](#create-event-subscription)
       * [Delete User Event Subscription](#delete-event-subscription)
+    * [Embedded invites] (#embedded-invites)
+      * [Create embedded invites](#create-embedded-invites)
+      * [Create signing link](#create-signing-link)
+      * [Prolong signing link](#prolong-signing-link)
+      * [Delete embedded invites](#delete-embedded-invites)
+      * [Reassign signers](#reassign-signers)
       
 ## <a name="requirements"></a>Requirements 
 
@@ -46,38 +52,48 @@ PHP 7.1 or newer
 composer require signnow/api-php-sdk
 ```
 ### <a name="setting-up"></a>Setting up
-Register an annotation loader:
+Register an annotation loader if only there is `doctrine/annotations` less v2.0 in use.
+This method is deprecated and will be removed in `doctrine/annotations 2.0` so
+annotations will be autoloaded in 2.0.
 ```php
 AnnotationRegistry::registerLoader('class_exists');
 ```
-Prepare options for the Guzzle client. We recommend the following configuration: 
-```php
-$stack = HandlerStack::create();
-$stack->setHandler(new CurlMultiHandler());
-$stack->push(new AuthorizationMiddleware(new BasicToken($token))));
-$stack->push(new ResponseCheckerMiddleware());
-$options = [
-    'base_uri'        => $host,
-    'headers'         => ['Content-Type' => 'application/json'],
-    'connect_timeout' => 30,
-    'request_timeout' => 30,
-    'handler'         => $stack,
-];
-```
-Or you can use builder for configuring the default options:
-```php
-$options = (new OptionBuilder())
-    ->setUri($uri)
-    ->useAuthorization($token)
-    ->getOptions();
-```
 Create the instance of Entity Manager:
 ```php
-$entityManager = (new EntityManagerFactory())->createEntityManager($options);
+use SignNow\Api\Service\Factory\EntityManagerFactory;
+use SignNow\Api\Service\Factory\TokenFactory;
+
+// configuring entity manager with the basic token 
+$entityManager = 
+    (new EntityManagerFactory())->create(
+         'https://api.signnow.com',
+         (new TokenFactory())->basicToken('YOUR_BASIC_TOKEN_STRING')
+     );
+```
+```php
+use SignNow\Api\Service\Factory\EntityManagerFactory;
+use SignNow\Api\Service\Factory\TokenFactory;
+
+// configuring entity manager with the bearer token
+$entityManager = 
+    (new EntityManagerFactory())->create(
+         'https://api.signnow.com',
+         (new TokenFactory())->bearerToken('BEARER_TOKEN_STRING')
+     );
 ```
 Setup update http method for Entity Manager:
 ```php
+use SignNow\Rest\Http\Request;
+
 $entityManager->setUpdateHttpMethod(Request::METHOD_PUT);
+```
+Also, it is possible to use the wrapper using OAuth authorization
+```php
+use SignNow\Api\Action\OAuth as SignNowOAuth;
+
+$auth = new SignNowOAuth('https://api.signnow.com');
+
+$entityManager = $auth->bearerByPassword('YOUR_BASIC_TOKEN_STRING', 'username', 'password');
 ```
 ### <a name="entity-manager"></a>Entity manager
 
@@ -91,87 +107,139 @@ Each entity is described by:
 ### <a name="examples"></a>Examples & use cases
 Upload Document to SignNow
 ```php
-$uploadFile = (new Document\Upload(new \SplFileInfo('realFilePath')));
+use SignNow\Api\Entity\Document\Upload as DocumentUpload;
+
+$uploadFile = (new DocumentUpload(new \SplFileInfo('realFilePath')));
 $document = $entityManager->create($uploadFile);
 ```
 Download Document from SignNow
 ```php
-$document = $entityManager->get(Document\Download::class, ['id' => $document_id], ['type' => 'collapsed']);
+use SignNow\Api\Entity\Document\Download as DocumentDownload;
+
+$documentUniqueId = 'e896ec9311a74a8a8ee9faff7049446fe452e461';
+
+$document = $entityManager->get(
+    new DocumentDownload(),
+     [
+        'id' => $documentUniqueId,
+     ],
+     [
+        'type' => 'collapsed',
+     ]);
 ```
 ### <a name="oauth2"></a>OAuth 2.0
 
 #### <a name="get-token"></a>Request Access Token
 ```php
+use SignNow\Api\Entity\Auth\TokenRequestPassword;
+
 $entityManager->create(new TokenRequestPassword($username, $password));
 ```
 #### <a name="verify-token"></a>Verify Access Token
 ```php
+use  SignNow\Api\Entity\Auth\Token;
+
 $entityManager->get(Token::class);
 ```
 #### <a name="refresh-token"></a>Refresh Access Token
 ```php
-$entityManager->create(new TokenRequestRefresh($refresh_token));
+use SignNow\Api\Entity\Auth\TokenRequestRefresh;
+
+$entityManager->create(new TokenRequestRefresh($refreshToken));
 ```
 ### <a name="document"></a>Document
 #### <a name="upload-document"></a>Upload document
 ```php
-$entityManager->create(new Document\Upload(new \SplFileInfo($filePath)));
+use SignNow\Api\Entity\Document\Upload as DocumentUpload;
+
+$entityManager->create(new DocumentUpload(new \SplFileInfo($filePath)));
 ```
 #### <a name="fieldextract-document"></a>Upload document with text tags & convert them to fillable fields
 ```php
-$entityManager->create(new Document\FieldExtract(new \SplFileInfo($filePath)));
+use SignNow\Api\Entity\Document\FieldExtract;
+
+$entityManager->create(new FieldExtract(new \SplFileInfo($filePath)));
 ```
 #### <a name="retrieve-document"></a>Retrieve document
 ```php
-$entityManager->get(Document\Document::class, ['id' => $document_id]);
+use SignNow\Api\Entity\Document\Document;
+
+$documentUniqueId = 'e896ec9311a74a8a8ee9faff7049446fe452e461';
+
+$entityManager->get(new Document(), ['id' => $documentUniqueId]);
 ```
 #### <a name="delete-document"></a>Delete document
 ```php
-$entityManager->delete(Document\Document::class, ['id' => $document_id]);
+use SignNow\Api\Entity\Document\Document;
+
+$documentUniqueId = 'e896ec9311a74a8a8ee9faff7049446fe452e461';
+
+$entityManager->delete(new Document(), ['id' => $documentUniqueId]);
 ```
 #### <a name="download-document"></a>Download document
 ```php
-$entityManager->get(Document\Download::class, ['id' => $document_id], ['type' => 'collapsed']);
+use SignNow\Api\Entity\Document\Download as DocumentDownload;
+
+$documentUniqueId = 'e896ec9311a74a8a8ee9faff7049446fe452e461';
+
+$entityManager->get(new DocumentDownload(), ['id' => $documentUniqueId], ['type' => 'collapsed']);
 // type can be 'collapsed' or 'zip' 
 
 // if need table containing the document's history set with_history=1
-$entityManager->get(Document\Download::class, ['id' => $document_id], ['type' => 'collapsed', 'with_history' => 1]);
+$entityManager->get(new DocumentDownload(), ['id' => $documentUniqueId], ['type' => 'collapsed', 'with_history' => 1]);
 ```
 #### <a name="document-download-link"></a>Create a single-use link for document downloading
  ```php
-$entityManager->create(new Document\DownloadLink(), ['id' => $document_id])
+use SignNow\Api\Entity\Document\DownloadLink;
+
+$documentUniqueId = 'e896ec9311a74a8a8ee9faff7049446fe452e461';
+$entityManager->create(new DownloadLink(), ['id' => $documentUniqueId])
 ```
 #### <a name="role-invite-document"></a>Create a role-based invite to sign a document
 ```php
-$to[] = new Recipient($recipient_email, $role, $roleId, $order);
+use SignNow\Api\Entity\Invite\Recipient;
+use SignNow\Api\Entity\Invite\Invite;
+
+$to[] = new Recipient($recipientEmail, $role, $roleId, $order);
 $invite = new Invite($email, $to, $cc);
-$entityManager->create($invite, ['documentId' => $document_id]);
+$entityManager->create($invite, ['documentId' => $documentUniqueId]);
 ```
 #### <a name="free-form-invite-document"></a>Create a simple free form invite to sign a document
 ```php
+use SignNow\Api\Entity\Invite\Invite;
+
 $invite = (new Invite())
-            ->setDocumentId($document_id)
+            ->setDocumentId($documentUniqueId)
             ->setTo($to)
             ->setFrom($from)
             ->setCc([])
             ->setSubject($subject)
             ->setMessage($message);
               
-$entityManager->create($invite, ["documentId" => $document_id]);
+$entityManager->create($invite, ["documentId" => $documentUniqueId]);
 ```
 #### <a name="cancel-document-invite"></a>Cancel an invite to sign a document
 ```php
+use SignNow\Api\Entity\Invite\CancelInvite;
+use SignNow\Rest\Http\Request;
+
 $entityManager
     ->setUpdateHttpMethod(Request::METHOD_PUT)
-    ->update(new CancelInvite(), ['documentId' => $document_id]);
+    ->update(new CancelInvite(), ['documentId' => $documentUniqueId]);
 ```
 #### <a name="create-signing-link"></a>Create a signing link
 ```php
-$entityManager->create(new SigningLink($document_id));
+use SignNow\Api\Entity\Invite\SigningLink;
+
+$entityManager->create(new SigningLink($documentUniqueId));
 ```
 #### <a name="add-field-document"></a>Add fillable fields to a document
 ```php
-$signature = (new SignatureField())
+use SignNow\Api\Entity\Document\Document;
+use SignNow\Api\Entity\Document\Field\SignatureField;
+use SignNow\Api\Entity\Document\Field\TextField;
+
+$signatureField = (new SignatureField())
     ->setName('My Signature')
     ->setPageNumber(0)
     ->setRole('role 1')
@@ -181,7 +249,7 @@ $signature = (new SignatureField())
     ->setX(5)
     ->setY(10);
 
-$text = (new TextField())
+$textField = (new TextField())
     ->setName('My text')
     ->setLabel('Some label')
     ->setPrefilledText('prefilled text')
@@ -193,65 +261,166 @@ $text = (new TextField())
     ->setX(100)
     ->setY(150);
 
-$document = (new Document\Document())
-    ->setId($document_id)
-    ->setFields([$signature, $text]);
+$document = (new Document())
+    ->setId($documentUniqueId)
+    ->setFields([$signatureField, $textField]);
                
 $entityManager->update($document);
 ```
 ### <a name="template"></a>Template
 #### <a name="create-template"></a>Create a template
 ```php
-$template = (new Template\Template())
-    ->setDocumentId($document_id)
-    ->setDocumentName($document_name);
+use SignNow\Api\Entity\Template\Template;
+
+$template = (new Template())
+    ->setDocumentId($documentUniqueId)
+    ->setDocumentName('My document name');
  
 $entityManager->create($template);
 ```
 #### <a name="copy-template"></a>Generate a document from template (Copy template)
 ```php
-$templateCopy = (new Template\Copy())
-        ->setTemplateId($template_id)
-        ->setDocumentName($document_name);
+use SignNow\Api\Entity\Template\Copy as TemplateCopy;
+
+$templateCopy = (new TemplateCopy())
+        ->setTemplateId($templateId)
+        ->setDocumentName('My document');
 
 $entityManager->create($templateCopy);
 ```
 ### <a name="document-group"></a>Document group
 #### <a name="retrieve-document-group"></a>Retrieve document group
 ```php
-$entityManager->get(DocumentGroup\DocumentGroup::class, ['id' => $document_group_id])
+use SignNow\Api\Entity\DocumentGroup\DocumentGroup;
+
+$entityManager->get(
+    (new DocumentGroup())
+        ->setGroupName('my group')
+        ->setId($documentGroupId)
+        ->setDocuments($documentsArray)
+);
 ```
 #### <a name="delete-document-group"></a>Delete document group
 ```php
-$entityManager->delete(DocumentGroup\DocumentGroup::class, ['id' => $document_group_id])
+use SignNow\Api\Entity\DocumentGroup\DocumentGroup;
+
+$entityManager->delete(new DocumentGroup(), ['id' => $documentGroupId]);
 ```
 #### <a name="document-group-inivite-cancel"></a>Cancel document group invite
 ```php
+use SignNow\Api\Entity\DocumentGroup\GroupInvite\Cancel as DocumentGroupInviteCancel;
+
 $entityManager->create(
-    new DocumentGroup\GroupInvite\Cancel(),
+    new DocumentGroupInviteCancel(),
     [
         'documentGroupId' => $documentGroupId,
-        'groupInviteId' => $groupInviteId
+        'groupInviteId' => $groupInviteId,
     ]
 );
 ```
 ### <a name="event-subscription"></a>Event subscriptions
 #### <a name="get-event-subscriptions"></a>Get User Event Subscriptions
 ```php
-$entityManager->get(new EventSubscription\GetEventSubscriptions());
+use SignNow\Api\Entity\EventSubscription\GetEventSubscriptions;
+
+$entityManager->get(new GetEventSubscriptions());
 ```
 #### <a name="create-event-subscription"></a>Create User Event Subscription
 ```php
+use SignNow\Api\Entity\EventSubscription\CreateEventSubscription;
+
 $entityManager->create(
-    (new EventSubscription\CreateEventSubscription())
+    (new CreateEventSubscription())
     ->setEvent('document.update')
     ->setCallbackUrl('https://google.com.ua')
 );
 ```
 #### <a name="delete-event-subscription"></a>Delete User Event Subscription
 ```php
+use SignNow\Api\Entity\EventSubscription\DeleteEventSubscription;
+
 $entityManager->delete(
-    new EventSubscription\DeleteEventSubscription(),
+    new DeleteEventSubscription(),
     ['uniqueId' => $uniqueId]
 );
 ```
+### <a name="embedded-invites"></a>Embedded Invites
+#### <a name="create-embedded-invites"></a>Create embedded invites
+```php
+use SignNow\Api\Action\OAuth as SignNowOAuth;
+use SignNow\Api\Action\EmbeddedInvite;
+use SignNow\Api\Entity\Embedded\Invite\InviteRequest;
+use SignNow\Api\Service\OAuth\AuthMethod\Method\None;
+
+$auth = new SignNowOAuth('https://api.signnow.com');
+
+$embedInvite = new EmbeddedInvite(
+  $auth->bearerByPassword('YOUR_BASIC_TOKEN', 'user', 'password')
+);
+
+$invites[] = (new InviteRequest())
+     ->setEmail('name.surname@domain.com')
+     ->setRoleId('4d4122e8574b4462a67505c0a89c6015780518f1')
+     ->setOrder(1)
+     ->setAuthMethod(new None())
+     ->setFirstName('Name')
+     ->setLastName('Surname');
+
+$embeddedInvites = $embedInvite->create(DOCUMENT_UID, $invites);
+
+foreach ($embeddedInvites->getInvites() as $invite) {
+  echo $invite->getId() , PHP_EOL,
+     $invite->getEmail() , PHP_EOL,
+     $invite->getRoleId(), PHP_EOL,
+     $invite->getOrder(), PHP_EOL,
+     $invite->getStatus(), PHP_EOL,
+     PHP_EOL;
+}
+```
+#### <a name="create-signing-link"></a>Create signing link
+```php
+use SignNow\Api\Action\OAuth as SignNowOAuth;
+use SignNow\Api\Action\EmbeddedInvite;
+
+$auth = new SignNowOAuth('https://api.signnow.com');
+
+$embedInvite = new EmbeddedInvite(
+  $auth->bearerByPassword('YOUR_BASIC_TOKEN', 'user', 'password')
+);
+
+$documentUniqueId = '0d3122a857514462a67515c0a39c6015780518f2';
+$inviteUniqueId = '3313c8fb12594004babb98a5f7418c11ad572b05';
+echo $embedInvite->createSigningLink($documentUniqueId, $inviteUniqueId)->getLink();
+
+```
+#### <a name="prolong-signing-link"></a>Prolong signing link
+```php
+use SignNow\Api\Action\OAuth as SignNowOAuth;
+use SignNow\Api\Action\EmbeddedInvite;
+
+$auth = new SignNowOAuth('https://api.signnow.com');
+
+$embedInvite = new EmbeddedInvite(
+  $auth->bearerByPassword('YOUR_BASIC_TOKEN', 'user', 'password')
+);
+
+$expiration = 45;
+$documentUniqueId = '0d3122a857514462a67515c0a39c6015780518f2';
+$inviteUniqueId = '3313c8fb12594004babb98a5f7418c11ad572b05';
+echo $embedInvite->setSigningLinkExpiration($documentUniqueId, $inviteUniqueId, $expiration)->getLink();
+```
+#### <a name="delete-embedded-invites"></a>Delete embedded invites
+```php
+use SignNow\Api\Action\OAuth as SignNowOAuth;
+use SignNow\Api\Action\EmbeddedInvite;
+
+$auth = new SignNowOAuth('https://api.signnow.com');
+
+$embedInvite = new EmbeddedInvite(
+  $auth->bearerByPassword('YOUR_BASIC_TOKEN', 'user', 'password')
+);
+
+$documentUniqueId = '0d3122a857514462a67515c0a39c6015780518f2';
+$embedInvite->delete($documentUniqueId);
+```
+#### <a name="reassign-signers"></a>Reassign signers
