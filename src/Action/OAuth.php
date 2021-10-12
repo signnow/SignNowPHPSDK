@@ -7,7 +7,7 @@ use ReflectionException;
 use SignNow\Api\Entity\Auth\Token;
 use SignNow\Api\Entity\Auth\TokenRequestPassword;
 use SignNow\Api\Service\Factory\EntityManagerFactory;
-use SignNow\Api\Service\Factory\TokenFactory;
+use SignNow\Api\Service\Factories\TokenFactory;
 use SignNow\Rest\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 

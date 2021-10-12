@@ -61,7 +61,7 @@ AnnotationRegistry::registerLoader('class_exists');
 Create the instance of Entity Manager:
 ```php
 use SignNow\Api\Service\Factory\EntityManagerFactory;
-use SignNow\Api\Service\Factory\TokenFactory;
+use SignNow\Api\Service\Factories\TokenFactory;
 
 // configuring entity manager with the basic token 
 $entityManager = 
@@ -72,7 +72,7 @@ $entityManager =
 ```
 ```php
 use SignNow\Api\Service\Factory\EntityManagerFactory;
-use SignNow\Api\Service\Factory\TokenFactory;
+use SignNow\Api\Service\Factories\TokenFactory;
 
 // configuring entity manager with the bearer token
 $entityManager = 

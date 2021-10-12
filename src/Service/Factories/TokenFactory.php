@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace SignNow\Api\Service\Factory;
+namespace SignNow\Api\Service\Factories;
 
 use InvalidArgumentException;
 use SignNow\Api\Service\OAuth\BasicToken;
@@ -11,7 +11,7 @@ use SignNow\Api\Service\OAuth\TokenInterface;
 /**
  * Class TokenFactory
  *
- * @package SignNow\Api\Service\Factory
+ * @package SignNow\Api\Service\Factories
  */
 class TokenFactory
 {
