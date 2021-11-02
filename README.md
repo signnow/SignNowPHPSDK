@@ -6,8 +6,11 @@ Simple API Client to integrate SignNow with your application or website. Sign do
 1. [Requirements](#requirements)
 2. [Install](#install)
 3. [Setting up](#setting-up)
-4. [Entity manager](#entity-manager)
-5. [Examples & use cases](#examples)
+4. [Tests](#tests)
+5. [Sandbox](#sandbox)   
+6. [Entity manager](#entity-manager)
+7. [Actions](#actions)
+8. [Examples & use cases](#examples)
     * [OAuth 2.0](#oauth2)
       * [Request Access Token](#get-token)
       * [Verify Access Token](#verify-token)
@@ -95,6 +98,22 @@ $auth = new SignNowOAuth('https://api.signnow.com');
 
 $entityManager = $auth->bearerByPassword('YOUR_BASIC_TOKEN_STRING', 'username', 'password');
 ```
+### <a name="tests"></a>Tests
+SignNow PHP SDK is covered with functional tests using Codeception and Phiremock.
+Phiremock allows us to mock calls to SignNow API. All the calls pass at 127.0.0.1 port 8008. Ensure that this port is not in use in the local machine before running test.
+
+Test execution in console:
+```bash
+vendor/bin/codecept run functional
+```
+Also, tests might be useful as examples of using SignNow PHP SDK.
+### <a name="sandbox"></a>Sandbox
+Directory [sandbox](sandbox) contains php script to taste some SDK feature.
+Please, provide this scripts with your personal credentials, write some code or use existing code.
+Execute sandbox script in console:
+```bash
+php sandbox/execute.php
+```
 ### <a name="entity-manager"></a>Entity manager
 
 Entity manager is the main class which controls communication with 3rd party REST API where JSON is used as main data type.
@@ -127,6 +146,10 @@ $document = $entityManager->get(
         'type' => 'collapsed',
      ]);
 ```
+### <a name="actions"></a>Actions
+Actions - this is just a new abstraction layer above Entity Manager and implemented as services.
+So that, both Entity Manager and Actions are equivalent options to use SignNow API. 
+See actions in directory [src/Action](src/Action).
 ### <a name="oauth2"></a>OAuth 2.0
 
 #### <a name="get-token"></a>Request Access Token
