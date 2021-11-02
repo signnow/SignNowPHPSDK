@@ -9,7 +9,7 @@ use SignNow\Rest\EntityManager\Annotation\ResponseType;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * Class CancelInvite
+ * Class SigningLink
  *
  * @HttpEntity("link", idProperty="")
  * @ResponseType("SignNow\Api\Entity\Invite\SigningLinkResponse")

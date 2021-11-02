@@ -37,7 +37,7 @@ class Invite extends Entity
     protected $cc;
     
     /**
-     * FieldInvite constructor.
+     * Invite constructor.
      *
      * @param string $from
      * @param array  $to
