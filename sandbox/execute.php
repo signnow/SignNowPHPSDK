@@ -24,7 +24,7 @@ require dirname(__DIR__) . '/vendor/autoload.php';
  *    php sandbox/execute.php
  */
 
-const HOST = 'https://YOUR_SANDBOX_HOST.com';
+const HOST = 'https://api-eval.signnow.com';
 const BASIC_TOKEN = 'YOUR_BASIC_TOKEN';
 const USER = 'YOUR_USER';
 const PASSWORD = 'YOUR_PASSWORD';
