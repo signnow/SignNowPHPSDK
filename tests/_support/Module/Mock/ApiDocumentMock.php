@@ -21,7 +21,7 @@ use Psr\Http\Client\ClientExceptionInterface;
  */
 class ApiDocumentMock extends Module implements DependsOnModule
 {
-    private const UPLOAD_DOCUMENT_URL_PATTERN = '/document';
+    private const UPLOAD_DOCUMENT_URL = '/document';
     private const FIELD_EXTRACT_UPLOAD_DOCUMENT_URL_PATTERN = '/document/fieldextract';
     private const DOCUMENT_URL_PATTERN = '/document/{documentUniqueId}';
     private const DOWNLOAD_DOCUMENT_URL_PATTERN = '/document/{documentUniqueId}/download';
@@ -331,7 +331,7 @@ class ApiDocumentMock extends Module implements DependsOnModule
      */
     private function uploadDocumentUrl(): string
     {
-        return self::UPLOAD_DOCUMENT_URL_PATTERN;
+        return self::UPLOAD_DOCUMENT_URL;
     }
 
     /**
