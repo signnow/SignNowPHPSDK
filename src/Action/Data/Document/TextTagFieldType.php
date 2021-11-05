@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace SignNow\Api\Action\Data\Document;
 
 /**
- * Class FieldType
+ * Class TextTagFieldType
  *
  * @package SignNow\Api\Action\Data\Document
  */
