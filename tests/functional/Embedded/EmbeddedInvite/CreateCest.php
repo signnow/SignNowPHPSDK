@@ -82,6 +82,6 @@ class CreateCest extends BaseCest
 
         $response = $embeddedInvite->createSigningLink($documentUniqueId, $inviteUniqueId);
 
-        $I->assertStringStartsWith('https://',$response->getLink());
+        $I->assertStringStartsWith('https://', $response->getLink());
     }
 }

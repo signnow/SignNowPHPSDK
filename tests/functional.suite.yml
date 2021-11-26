@@ -34,6 +34,8 @@ modules:
               depends: Phiremock
         - \Module\Mock\ApiEventSubscriptionMock:
               depends: Phiremock
+        - Module\Mock\ApiEmbeddedDocumentGroupInviteMock:
+              depends: Phiremock
         - \Module\Mock\Debug:
               depends: Phiremock
     step_decorators: ~
