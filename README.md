@@ -27,6 +27,7 @@ Simple API Client to integrate SignNow with your application or website. Sign do
       * [Cancel an invite to sign a document](#cancel-document-invite)
       * [Create a signing link](#create-signing-link)
       * [Add fillable fields to a document](#add-field-document)
+      * [Prefill fillable text fields in a document](#prefill-text-fields)
     * [Template](#template)
       * [Create a template](#create-template)
       * [Generate a document from template (Copy template)](#copy-template)
@@ -289,6 +290,20 @@ $document = (new Document())
     ->setFields([$signatureField, $textField]);
                
 $entityManager->update($document);
+```
+#### <a name="prefill-text-fields"></a>Prefill text fields
+```php
+use SignNow\Api\Action\PrefillTextFields;
+use SignNow\Api\Entity\Document\PrefillText\FieldRequest;
+
+$prefill = new PrefillTextFields($bearer);
+    
+$fields = [];
+$fields[] = (new FieldRequest())
+   ->setFieldName('Document')
+   ->setPrefilledText('Agreement #12-820/01');
+
+$prefill->prefill($documentUniqueId, $fields);
 ```
 ### <a name="template"></a>Template
 #### <a name="create-template"></a>Create a template

@@ -13,7 +13,7 @@ use JMS\Serializer\Annotation as Serializer;
 class Meta
 {
     /**
-     * Pagination
+     * @var Pagination
      * @Serializer\Type("SignNow\Api\Entity\V2\Pagination")
      */
     protected $pagination;

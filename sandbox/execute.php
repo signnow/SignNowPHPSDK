@@ -20,7 +20,7 @@ require dirname(__DIR__) . '/vendor/autoload.php';
  *    as it is shown at
  *    https://docs.signnow.com/sn/account/#dashboard
  *
- * 4. Execute the script from project root in console:
+ * 4. Execute the script from project root directory in console:
  *    php sandbox/execute.php
  */
 
