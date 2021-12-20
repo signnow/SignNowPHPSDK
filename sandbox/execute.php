@@ -20,7 +20,7 @@ require dirname(__DIR__) . '/vendor/autoload.php';
  *    as it is shown at
  *    https://docs.signnow.com/sn/account/#dashboard
  *
- * 4. Execute the script from project root in console:
+ * 4. Execute the script from project root directory in console:
  *    php sandbox/execute.php
  */
 
@@ -69,7 +69,7 @@ try {
     sleep(2);
     
     // 3. Create download link
-    $link = $document->createDownloadLink('32e014b1404849aea0aad1498031ddd1e5f6218e');
+    $link = $document->createDownloadLink($documentEntity->getId());
     echo 'Download link: ', $link->getLink(), PHP_EOL, PHP_EOL;
 
     sleep(2);
@@ -89,7 +89,7 @@ try {
     sleep(2);
     
     // 5. Delete the doc
-    $document->delete('32e014b1404849aea0aad1498031ddd1e5f6218e');
+    $document->delete($documentEntity->getId());
     echo 'Deleted the document ', $documentEntity->getId(), PHP_EOL, PHP_EOL;
 } catch (Throwable $exception) {
     echo 'ERROR [SignNow API]: ' . $exception->getMessage(), PHP_EOL;

@@ -26,6 +26,7 @@ class ApiDocumentMock extends Module implements DependsOnModule
     private const DOCUMENT_URL_PATTERN = '/document/{documentUniqueId}';
     private const DOWNLOAD_DOCUMENT_URL_PATTERN = '/document/{documentUniqueId}/download';
     private const DOWNLOAD_DOCUMENT_LINK_URL_PATTERN = '/document/{documentUniqueId}/download/link';
+    private const PREFILL_TEXT_FIELDS_URL_PATTERN = '/v2/documents/{documentUniqueId}/prefill-texts';
 
     /**
      * @var PhiremockModule
@@ -317,6 +318,25 @@ class ApiDocumentMock extends Module implements DependsOnModule
             )
         );
     }
+
+    /**
+     * @param string $documentUniqueId
+     *
+     * @throws ClientExceptionInterface
+     * @throws Exception
+     */
+    public function mockPrefillDocumentTextFieldsRequest(string $documentUniqueId): void
+    {
+        $this->phiremock->expectARequestToRemoteServiceWithAResponse(
+            Phiremock::on(
+                A::putRequest()
+                 ->andHeader('Content-Type', Is::equalTo('application/json'))
+                 ->andUrl(Is::equalTo($this->prefillTextFieldsUrl($documentUniqueId)))
+            )->then(
+                Respond::withStatusCode(204)
+            )
+        );
+    }
     
     /**
      * @return string
@@ -362,5 +382,15 @@ class ApiDocumentMock extends Module implements DependsOnModule
     private function documentDownloadLinkUrl(string $documentUniqueId): string
     {
         return strtr(self::DOWNLOAD_DOCUMENT_LINK_URL_PATTERN, ['{documentUniqueId}' => $documentUniqueId]);
+    }
+
+    /**
+     * @param string $documentUniqueId
+     *
+     * @return string
+     */
+    private function prefillTextFieldsUrl(string $documentUniqueId): string
+    {
+        return strtr(self::PREFILL_TEXT_FIELDS_URL_PATTERN, ['{documentUniqueId}' => $documentUniqueId]);
     }
 }

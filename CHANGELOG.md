@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Additional entities to make API calls more handy
 - Upload a document using text tags which allow creating fillable fields in the document automatically
 - Support of Webhooks 2.0
+- Embedded signing for document groups
+- Prefill document text fields
 - The PHP script to try SignNow API
 
 ### Deleted
