@@ -1,0 +1,41 @@
+actor: FunctionalTester
+extensions:
+    enabled:
+        - \Codeception\Extension\Phiremock
+    config:
+        \Codeception\Extension\Phiremock:
+            listen: 127.0.0.1:8008 # defaults to 0.0.0.0:8086
+            bin_path: vendor/bin # defaults to codeception_dir/../vendor/bin
+            debug: true # whether to write debug data to log file, defaults to false
+            wait_until_ready: true # default to false
+            expectations_path: tests/_data/phiremock_expectations
+modules:
+    enabled:
+        - Asserts
+        - \Helper\Functional
+        - \Helper\Api
+        - Phiremock:
+            host: 127.0.0.1
+            port: 8008
+            reset_before_each_test: true
+        - \Module\Mock\ApiOAuthMock:
+              depends: Phiremock
+        - \Module\Mock\ApiDocumentMock:
+              depends: Phiremock
+        - \Module\Mock\ApiDocumentGroupMock:
+              depends: Phiremock
+        - \Module\Mock\ApiDocumentGroupInviteMock:
+              depends: Phiremock
+        - \Module\Mock\ApiInviteMock:
+            depends: Phiremock
+        - \Module\Mock\ApiEmbeddedInviteMock:
+            depends: Phiremock
+        - \Module\Mock\ApiTemplateMock:
+              depends: Phiremock
+        - \Module\Mock\ApiEventSubscriptionMock:
+              depends: Phiremock
+        - Module\Mock\ApiEmbeddedDocumentGroupInviteMock:
+              depends: Phiremock
+        - \Module\Mock\Debug:
+              depends: Phiremock
+    step_decorators: ~
