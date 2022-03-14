@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\DocumentGroup\GroupInvite;
 
@@ -18,19 +19,19 @@ class InviteStep extends Entity
      * @Serializer\Type("int")
      */
     private $order;
-    
+
     /**
      * @var InviteAction[]
      * @Serializer\Type("array<SignNow\Api\Entity\DocumentGroup\GroupInvite\InviteAction>")
      */
     private $inviteActions = [];
-    
+
     /**
      * @var InviteEmail[]
      * @Serializer\Type("array<SignNow\Api\Entity\DocumentGroup\GroupInvite\InviteEmail>")
      */
     private $inviteEmails = [];
-    
+
     /**
      * @return null|int
      */
@@ -38,7 +39,7 @@ class InviteStep extends Entity
     {
         return $this->order;
     }
-    
+
     /**
      * @param int $order
      *
@@ -47,10 +48,10 @@ class InviteStep extends Entity
     public function setOrder(int $order): self
     {
         $this->order = $order;
-        
+
         return $this;
     }
-    
+
     /**
      * @return InviteAction[]
      */
@@ -58,7 +59,7 @@ class InviteStep extends Entity
     {
         return $this->inviteActions;
     }
-    
+
     /**
      * @param InviteAction[] $inviteActions
      *
@@ -67,10 +68,10 @@ class InviteStep extends Entity
     public function setInviteActions(array $inviteActions): self
     {
         $this->inviteActions = $inviteActions;
-    
+
         return $this;
     }
-    
+
     /**
      * @return InviteEmail[]
      */
@@ -78,7 +79,7 @@ class InviteStep extends Entity
     {
         return $this->inviteEmails;
     }
-    
+
     /**
      * @param InviteEmail[] $inviteEmails
      *
@@ -87,7 +88,7 @@ class InviteStep extends Entity
     public function setInviteEmails(array $inviteEmails): self
     {
         $this->inviteEmails = $inviteEmails;
-    
+
         return $this;
     }
 }

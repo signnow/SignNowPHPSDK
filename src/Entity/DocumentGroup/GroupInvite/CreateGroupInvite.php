@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\DocumentGroup\GroupInvite;
 
@@ -24,19 +25,19 @@ class CreateGroupInvite extends Entity
      * @Serializer\Type("array<SignNow\Api\Entity\DocumentGroup\GroupInvite\CompletionEmail>")
      */
     private $completionEmails;
-    
+
     /**
      * @var string|bool|null
      * @Serializer\Type("boolean")
      */
     private $signAsMerged;
-    
+
     /**
      * @var InviteStep[]
      * @Serializer\Type("array<SignNow\Api\Entity\DocumentGroup\GroupInvite\InviteStep>")
      */
     private $inviteSteps = [];
-    
+
     /**
      * @return CompletionEmail[]
      */
@@ -44,7 +45,7 @@ class CreateGroupInvite extends Entity
     {
         return $this->completionEmails;
     }
-    
+
     /**
      * @param CompletionEmail[] $completionEmails
      *
@@ -53,10 +54,10 @@ class CreateGroupInvite extends Entity
     public function setCompletionEmails(array $completionEmails): self
     {
         $this->completionEmails = $completionEmails;
-        
+
         return $this;
     }
-    
+
     /**
      * @return bool
      */
@@ -64,7 +65,7 @@ class CreateGroupInvite extends Entity
     {
         return $this->signAsMerged ?? false;
     }
-    
+
     /**
      * @param string|bool $signAsMerged
      *
@@ -73,10 +74,10 @@ class CreateGroupInvite extends Entity
     public function setSignAsMerged($signAsMerged = true): self
     {
         $this->signAsMerged = is_string($signAsMerged) ? strtolower($signAsMerged) === 'true' : (bool) $signAsMerged;
-        
+
         return $this;
     }
-    
+
     /**
      * @return InviteStep[]
      */
@@ -84,7 +85,7 @@ class CreateGroupInvite extends Entity
     {
         return $this->inviteSteps;
     }
-    
+
     /**
      * @param InviteStep[] $inviteSteps
      *
@@ -93,7 +94,7 @@ class CreateGroupInvite extends Entity
     public function setInviteSteps(array $inviteSteps): self
     {
         $this->inviteSteps = $inviteSteps;
-    
+
         return $this;
     }
 }

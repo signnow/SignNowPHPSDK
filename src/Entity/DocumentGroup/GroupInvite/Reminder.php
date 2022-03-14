@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\DocumentGroup\GroupInvite;
 
@@ -18,19 +19,19 @@ class Reminder extends Entity
      * @Serializer\Type("int")
      */
     private $remindBefore;
-    
+
     /**
      * @var int|null
      * @Serializer\Type("int")
      */
     private $remindAfter;
-    
+
     /**
      * @var int|null
      * @Serializer\Type("int")
      */
     private $remindRepeat;
-    
+
     /**
      * @return int|null
      */
@@ -38,7 +39,7 @@ class Reminder extends Entity
     {
         return $this->remindBefore;
     }
-    
+
     /**
      * @param int $remindBefore
      *
@@ -47,10 +48,10 @@ class Reminder extends Entity
     public function setRemindBefore(int $remindBefore): self
     {
         $this->remindBefore = $remindBefore;
-        
+
         return $this;
     }
-    
+
     /**
      * @return int|null
      */
@@ -58,7 +59,7 @@ class Reminder extends Entity
     {
         return $this->remindAfter;
     }
-    
+
     /**
      * @param int $remindAfter
      *
@@ -67,10 +68,10 @@ class Reminder extends Entity
     public function setRemindAfter(int $remindAfter): self
     {
         $this->remindAfter = $remindAfter;
-    
+
         return $this;
     }
-    
+
     /**
      * @return int|null
      */
@@ -78,7 +79,7 @@ class Reminder extends Entity
     {
         return $this->remindRepeat;
     }
-    
+
     /**
      * @param int $remindRepeat
      *
@@ -87,7 +88,7 @@ class Reminder extends Entity
     public function setRemindRepeat(int $remindRepeat): self
     {
         $this->remindRepeat = $remindRepeat;
-    
+
         return $this;
     }
 }

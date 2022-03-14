@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Invite;
 
@@ -17,7 +18,7 @@ class Response
      * @Serializer\Type("string")
      */
     private $status;
-    
+
     /**
      * @return string|null
      */
@@ -25,7 +26,7 @@ class Response
     {
         return $this->status;
     }
-    
+
     /**
      * @param string|null $status
      */

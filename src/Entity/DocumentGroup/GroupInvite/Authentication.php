@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\DocumentGroup\GroupInvite;
 
@@ -18,25 +19,25 @@ class Authentication extends Entity
      * @Serializer\Type("string")
      */
     private $type;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
      */
     private $phone;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
      */
     private $method;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
      */
     private $value;
-    
+
     /**
      * @return null|string
      */
@@ -44,7 +45,7 @@ class Authentication extends Entity
     {
         return $this->type;
     }
-    
+
     /**
      * @param string $type
      *
@@ -53,10 +54,10 @@ class Authentication extends Entity
     public function setType(string $type): self
     {
         $this->type = $type;
-        
+
         return $this;
     }
-    
+
     /**
      * @return null|string
      */
@@ -64,7 +65,7 @@ class Authentication extends Entity
     {
         return $this->phone;
     }
-    
+
     /**
      * @param string $phone
      *
@@ -73,10 +74,10 @@ class Authentication extends Entity
     public function setPhone(string $phone): self
     {
         $this->phone = $phone;
-        
+
         return $this;
     }
-    
+
     /**
      * @return null|string
      */
@@ -84,7 +85,7 @@ class Authentication extends Entity
     {
         return $this->method;
     }
-    
+
     /**
      * @param string $method
      *
@@ -93,10 +94,10 @@ class Authentication extends Entity
     public function setMethod(string $method): self
     {
         $this->method = $method;
-        
+
         return $this;
     }
-    
+
     /**
      * @return null|string
      */
@@ -104,7 +105,7 @@ class Authentication extends Entity
     {
         return $this->value;
     }
-    
+
     /**
      * @param string $value
      *
@@ -113,7 +114,7 @@ class Authentication extends Entity
     public function setValue(string $value): self
     {
         $this->value = $value;
-        
+
         return $this;
     }
 }

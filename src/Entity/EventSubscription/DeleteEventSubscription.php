@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\EventSubscription;
 
@@ -21,13 +22,13 @@ class DeleteEventSubscription extends Entity
      * @Serializer\Type("string")
      */
     private $id;
-    
+
     /**
      * @var string
      * @Serializer\Type("string")
      */
     private $status;
-    
+
     /**
      * @return string
      */
@@ -35,7 +36,7 @@ class DeleteEventSubscription extends Entity
     {
         return $this->id;
     }
-    
+
     /**
      * @return string
      */

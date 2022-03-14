@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\EventSubscription;
 
@@ -23,31 +24,31 @@ class CreateEventSubscription extends Entity
      * @Serializer\Type("string")
      */
     private $event;
-    
+
     /**
      * @var string
      * @Serializer\Type("string")
      */
     private $callbackUrl;
-    
+
     /**
      * @var int|null
      * @Serializer\Type("int")
      */
     private $useTls12;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
      */
     private $integrationId;
-    
+
     /**
      * @var boolean|null
      * @Serializer\Type("boolean")
      */
     private $docidQueryparam;
-    
+
     /**
      * @return string
      */
@@ -55,7 +56,7 @@ class CreateEventSubscription extends Entity
     {
         return $this->event;
     }
-    
+
     /**
      * @param string $event
      *
@@ -64,10 +65,10 @@ class CreateEventSubscription extends Entity
     public function setEvent(string $event): self
     {
         $this->event = $event;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string
      */
@@ -75,7 +76,7 @@ class CreateEventSubscription extends Entity
     {
         return $this->callbackUrl;
     }
-    
+
     /**
      * @param string $callbackUrl
      *
@@ -84,10 +85,10 @@ class CreateEventSubscription extends Entity
     public function setCallbackUrl(string $callbackUrl): self
     {
         $this->callbackUrl = $callbackUrl;
-        
+
         return $this;
     }
-    
+
     /**
      * @return int|null
      */
@@ -95,7 +96,7 @@ class CreateEventSubscription extends Entity
     {
         return $this->useTls12;
     }
-    
+
     /**
      * @param int|null $useTls12
      *
@@ -104,10 +105,10 @@ class CreateEventSubscription extends Entity
     public function setUseTls12(?int $useTls12): self
     {
         $this->useTls12 = $useTls12;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -115,7 +116,7 @@ class CreateEventSubscription extends Entity
     {
         return $this->integrationId;
     }
-    
+
     /**
      * @param string|null $integrationId
      *
@@ -124,10 +125,10 @@ class CreateEventSubscription extends Entity
     public function setIntegrationId(?string $integrationId): self
     {
         $this->integrationId = $integrationId;
-        
+
         return $this;
     }
-    
+
     /**
      * @return bool|null
      */
@@ -135,7 +136,7 @@ class CreateEventSubscription extends Entity
     {
         return $this->docidQueryparam;
     }
-    
+
     /**
      * @param bool|null $docidQueryparam
      *
@@ -144,7 +145,7 @@ class CreateEventSubscription extends Entity
     public function setDocidQueryparam(?bool $docidQueryparam): self
     {
         $this->docidQueryparam = $docidQueryparam;
-        
+
         return $this;
     }
 }

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity;
 
@@ -17,7 +18,7 @@ class Status
      * @Serializer\Type("string")
      */
     private $status;
-    
+
     /**
      * @return string|null
      */

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Action\EventSubscription\V2;
@@ -59,11 +60,11 @@ class EventSubscriptionBearerToken
             ->setUseTls12($useTls12)
             ->setUseDocidQueryParam($useDocidQueryParam)
             ->setCallbackUrl($callbackUrl);
-        
+
         if ($integrationUniqueId !== null) {
             $entity->setIntegrationId($integrationUniqueId);
         }
-        
+
         $this->bearerEntityManager->create($entity);
     }
 

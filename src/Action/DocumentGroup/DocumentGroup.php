@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Action\DocumentGroup;
@@ -45,7 +46,7 @@ class DocumentGroup
         $documentGroupEntity
             ->setGroupName($name)
             ->setDocumentIds($documentUniqueIds);
-        
+
         return $this->entityManager->create($documentGroupEntity);
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Entity\V2;
@@ -17,7 +18,7 @@ class Collection
      * @Serializer\Type("array")
      */
     protected $data = [];
-    
+
     /**
      * @var Meta
      * @Serializer\Type("SignNow\Api\Entity\V2\Meta")

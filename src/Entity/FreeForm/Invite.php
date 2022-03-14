@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\FreeForm;
 
@@ -23,37 +24,37 @@ class Invite extends Entity
      * @Serializer\Type("string")
      */
     protected $documentId;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
      */
     protected $to;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
      */
     protected $from;
-    
+
     /**
      * @var array|null
      * @Serializer\Type("array")
      */
     protected $cc;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
      */
     protected $subject;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
      */
     protected $message;
-    
+
     /**
      * @return string|null
      */
@@ -61,7 +62,7 @@ class Invite extends Entity
     {
         return $this->documentId;
     }
-    
+
     /**
      * @param string $documentId
      *
@@ -70,10 +71,10 @@ class Invite extends Entity
     public function setDocumentId(string $documentId): self
     {
         $this->documentId = $documentId;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -81,7 +82,7 @@ class Invite extends Entity
     {
         return $this->to;
     }
-    
+
     /**
      * @param string $to
      *
@@ -90,10 +91,10 @@ class Invite extends Entity
     public function setTo(string $to): self
     {
         $this->to = $to;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -101,7 +102,7 @@ class Invite extends Entity
     {
         return $this->from;
     }
-    
+
     /**
      * @param string $from
      *
@@ -110,10 +111,10 @@ class Invite extends Entity
     public function setFrom(string $from): self
     {
         $this->from = $from;
-        
+
         return $this;
     }
-    
+
     /**
      * @return array|null
      */
@@ -121,7 +122,7 @@ class Invite extends Entity
     {
         return $this->cc;
     }
-    
+
     /**
      * @param array $cc
      *
@@ -130,10 +131,10 @@ class Invite extends Entity
     public function setCc(array $cc): self
     {
         $this->cc = $cc;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -141,7 +142,7 @@ class Invite extends Entity
     {
         return $this->subject;
     }
-    
+
     /**
      * @param string $subject
      *
@@ -150,10 +151,10 @@ class Invite extends Entity
     public function setSubject(string $subject): self
     {
         $this->subject = $subject;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -161,7 +162,7 @@ class Invite extends Entity
     {
         return $this->message;
     }
-    
+
     /**
      * @param string $message
      *
@@ -170,7 +171,7 @@ class Invite extends Entity
     public function setMessage(string $message): self
     {
         $this->message = $message;
-        
+
         return $this;
     }
 }

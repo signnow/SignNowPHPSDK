@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Invite;
 
@@ -17,13 +18,13 @@ class SigningLinkResponse
      * @Serializer\Type("string")
      */
     private $url;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
      */
     private $urlNoSignup;
-    
+
     /**
      * @return string|null
      */
@@ -31,7 +32,7 @@ class SigningLinkResponse
     {
         return $this->url;
     }
-    
+
     /**
      * @param string|null $url
      *
@@ -40,10 +41,10 @@ class SigningLinkResponse
     public function setUrl(?string $url): SigningLinkResponse
     {
         $this->url = $url;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -51,7 +52,7 @@ class SigningLinkResponse
     {
         return $this->urlNoSignup;
     }
-    
+
     /**
      * @param string|null $urlNoSignup
      *
@@ -60,7 +61,7 @@ class SigningLinkResponse
     public function setUrlNoSignup(?string $urlNoSignup): SigningLinkResponse
     {
         $this->urlNoSignup = $urlNoSignup;
-        
+
         return $this;
     }
 }

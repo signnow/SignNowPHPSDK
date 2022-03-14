@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Auth;
 
@@ -20,19 +21,19 @@ use SignNow\Rest\EntityManager\Annotation\ResponseType;
 class TokenRequestAuthorizationCode extends TokenRequest
 {
     private const GRANT_TYPE = 'authorization_code';
-    
+
     /**
      * @var string
      * @Serializer\Type("string")
      */
     private $code;
-    
+
     /**
      * @var string
      * @Serializer\Type("string")
      */
     private $scope;
-    
+
     /**
      * TokenRequestAuthorizationCode constructor.
      *
@@ -45,7 +46,7 @@ class TokenRequestAuthorizationCode extends TokenRequest
         $this->scope = $scope;
         $this->grantType = self::GRANT_TYPE;
     }
-    
+
     /**
      * @return string
      */
@@ -53,7 +54,7 @@ class TokenRequestAuthorizationCode extends TokenRequest
     {
         return $this->code;
     }
-    
+
     /**
      * @return string
      */

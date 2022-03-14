@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Document;
@@ -53,7 +54,7 @@ class Request
      * @Serializer\Type("string")
      */
     private $canceled;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")

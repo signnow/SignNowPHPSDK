@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Embedded\GroupInvite;
@@ -43,7 +44,7 @@ class Signer
      * @Serializer\Type("string")
      */
     private $lastName;
-    
+
     /**
      * @var Document[]
      * @Serializer\Type("array<SignNow\Api\Entity\Embedded\GroupInvite\Document>")

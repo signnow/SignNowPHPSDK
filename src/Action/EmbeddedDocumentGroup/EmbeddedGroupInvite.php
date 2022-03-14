@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Action\EmbeddedDocumentGroup;
@@ -79,7 +80,7 @@ class EmbeddedGroupInvite
             ]
         );
     }
-    
+
     /**
      * @param string $documentGroupUniqueId
      *
@@ -108,7 +109,7 @@ class EmbeddedGroupInvite
     public function replace(string $documentGroupUniqueId, array $invites, bool $signAsMerged = true): EmbeddedInvites
     {
         $this->delete($documentGroupUniqueId);
-        
+
         return $this->create($documentGroupUniqueId, $invites, $signAsMerged);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Embedded\SigningLink;
@@ -42,7 +43,7 @@ class CreateSigningLink extends Entity
 
     /**
      * @param null|AuthMethodInterface $authMethod
-     * 
+     *
      * @return $this
      */
     public function setAuthMethod(?AuthMethodInterface $authMethod = null): self

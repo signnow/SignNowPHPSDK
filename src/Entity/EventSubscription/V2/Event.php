@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Entity\EventSubscription\V2;
@@ -176,7 +177,7 @@ class Event
     public function setJsonAttributes($jsonAttributes): Event
     {
         $jsonAttributes = $jsonAttributes ?? [];
-        
+
         $this->jsonAttributes = is_string($jsonAttributes) ? json_decode($jsonAttributes, true) : $jsonAttributes;
 
         return $this;

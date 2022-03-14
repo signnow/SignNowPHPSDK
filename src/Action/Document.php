@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Action;
@@ -42,7 +43,7 @@ class Document
 
     /**
      * @param string $filePath
-     * 
+     *
      * @return DocumentEntity|object
      * @throws ReflectionException
      * @throws EntityManagerException
@@ -70,7 +71,7 @@ class Document
         foreach ($textTags as $textTag) {
             $tags[] = $textTag->toArray();
         }
-        
+
         return $this->entityManager->create(new DocumentUploadFieldExtract(new SplFileInfo($filePath), $tags));
     }
 
@@ -106,12 +107,12 @@ class Document
         $document = new DocumentEntity();
         $document->setId($documentUniqueId);
         $document->setFields($fields);
-        
+
         $this->entityManager->setUpdateHttpMethod(Request::METHOD_PUT);
-        
+
         return $this->entityManager->update($document);
     }
-    
+
     /**
      * @param string $documentUniqueId
      *
@@ -128,7 +129,7 @@ class Document
             ]
         );
     }
-    
+
     /**
      * @param string $documentUniqueId
      * @param DocumentDownloadLinkParams|null $queryParams
@@ -150,7 +151,7 @@ class Document
 
     /**
      * Create a single-use link for document downloading
-     * 
+     *
      * @param string $documentUniqueId
      *
      * @return object|DocumentDownloadLink

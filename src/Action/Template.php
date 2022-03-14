@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Action;
@@ -62,7 +63,7 @@ class Template
         $templateCopy = (new TemplateCopyEntity())
             ->setTemplateId($documentUniqueId)
             ->setDocumentName($newDocumentName);
-        
+
         return $this->entityManager->create($templateCopy);
     }
 }

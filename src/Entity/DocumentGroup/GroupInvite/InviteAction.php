@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\DocumentGroup\GroupInvite;
 
@@ -18,38 +19,38 @@ class InviteAction extends Entity
      * @Serializer\Type("string")
      */
     private $email;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
      */
     private $documentId;
-    
+
     /**
      * @var int
      * @Serializer\Type("int")
      */
     private $declineBySignature = 0;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
      */
     private $roleName;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
      */
     private $action;
-    
+
     /**
      * @var Authentication
      * @Serializer\Type("SignNow\Api\Entity\DocumentGroup\GroupInvite\Authentication")
      * @Serializer\SkipWhenEmpty()
      */
     private $authentication;
-    
+
     /**
      * @var bool
      * @Serializer\Type("boolean")
@@ -61,7 +62,7 @@ class InviteAction extends Entity
      * @Serializer\Type("string")
      */
     private $redirectUri;
-    
+
     /**
      * @return null|string
      */
@@ -69,7 +70,7 @@ class InviteAction extends Entity
     {
         return $this->email;
     }
-    
+
     /**
      * @param string $email
      *
@@ -78,10 +79,10 @@ class InviteAction extends Entity
     public function setEmail(string $email): self
     {
         $this->email = $email;
-        
+
         return $this;
     }
-    
+
     /**
      * @return null|string
      */
@@ -89,7 +90,7 @@ class InviteAction extends Entity
     {
         return $this->documentId;
     }
-    
+
     /**
      * @param string $documentId
      *
@@ -98,10 +99,10 @@ class InviteAction extends Entity
     public function setDocumentId(string $documentId): self
     {
         $this->documentId = $documentId;
-        
+
         return $this;
     }
-    
+
     /**
      * @return int
      */
@@ -109,7 +110,7 @@ class InviteAction extends Entity
     {
         return $this->declineBySignature;
     }
-    
+
     /**
      * @param int $declineBySignature
      *
@@ -118,10 +119,10 @@ class InviteAction extends Entity
     public function setDeclineBySignature(int $declineBySignature): self
     {
         $this->declineBySignature = $declineBySignature;
-        
+
         return $this;
     }
-    
+
     /**
      * @return null|string
      */
@@ -129,7 +130,7 @@ class InviteAction extends Entity
     {
         return $this->roleName;
     }
-    
+
     /**
      * @param string $roleName
      *
@@ -138,10 +139,10 @@ class InviteAction extends Entity
     public function setRoleName(string $roleName): self
     {
         $this->roleName = $roleName;
-        
+
         return $this;
     }
-    
+
     /**
      * @return null|string
      */
@@ -149,7 +150,7 @@ class InviteAction extends Entity
     {
         return $this->action;
     }
-    
+
     /**
      * @param string $action
      *
@@ -158,10 +159,10 @@ class InviteAction extends Entity
     public function setAction(string $action): self
     {
         $this->action = $action;
-        
+
         return $this;
     }
-    
+
     /**
      * @return Authentication
      */
@@ -169,7 +170,7 @@ class InviteAction extends Entity
     {
         return $this->authentication;
     }
-    
+
     /**
      * @param Authentication $authentication
      *
@@ -178,10 +179,10 @@ class InviteAction extends Entity
     public function setAuthentication(Authentication $authentication): self
     {
         $this->authentication = $authentication;
-        
+
         return $this;
     }
-    
+
     /**
      * @return bool
      */
@@ -189,7 +190,7 @@ class InviteAction extends Entity
     {
         return $this->allowReassign;
     }
-    
+
     /**
      * @param int|bool|string $allowReassign
      *
@@ -198,7 +199,7 @@ class InviteAction extends Entity
     public function setAllowReassign($allowReassign = true): self
     {
         $this->allowReassign = is_string($allowReassign) ? $allowReassign === true : (bool) $allowReassign;
-        
+
         return $this;
     }
 

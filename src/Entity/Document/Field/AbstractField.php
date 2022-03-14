@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Document\Field;
 
@@ -17,61 +18,61 @@ abstract class AbstractField
      * @Serializer\Type("string")
      */
     protected $id;
-    
+
     /**
      * @var string
      * @Serializer\Type("string")
      */
     protected $type;
-    
+
     /**
      * @var int|null
      * @Serializer\Type("int")
      */
     protected $pageNumber;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
      */
     protected $name;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
      */
     protected $role;
-    
+
     /**
      * @var bool
      * @Serializer\Type("bool")
      */
     protected $required = false;
-    
+
     /**
      * @var int|null
      * @Serializer\Type("int")
      */
     protected $height;
-    
+
     /**
      * @var int|null
      * @Serializer\Type("int")
      */
     protected $width;
-    
+
     /**
      * @var int|null
      * @Serializer\Type("int")
      */
     protected $x;
-    
+
     /**
      * @var int|null
      * @Serializer\Type("int")
      */
     protected $y;
-    
+
     /**
      * @return string|null
      */
@@ -79,7 +80,7 @@ abstract class AbstractField
     {
         return $this->id;
     }
-    
+
     /**
      * @param string|null $id
      *
@@ -88,10 +89,10 @@ abstract class AbstractField
     public function setId(?string $id): self
     {
         $this->id = $id;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -99,7 +100,7 @@ abstract class AbstractField
     {
         return $this->type;
     }
-    
+
     /**
      * @return int|null
      */
@@ -107,7 +108,7 @@ abstract class AbstractField
     {
         return $this->pageNumber;
     }
-    
+
     /**
      * @param int|null $pageNumber
      *
@@ -116,10 +117,10 @@ abstract class AbstractField
     public function setPageNumber(?int $pageNumber): self
     {
         $this->pageNumber = $pageNumber;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -127,7 +128,7 @@ abstract class AbstractField
     {
         return $this->name;
     }
-    
+
     /**
      * @param string|null $name
      *
@@ -136,10 +137,10 @@ abstract class AbstractField
     public function setName(?string $name): self
     {
         $this->name = $name;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -147,7 +148,7 @@ abstract class AbstractField
     {
         return $this->role;
     }
-    
+
     /**
      * @param string|null $role
      *
@@ -156,10 +157,10 @@ abstract class AbstractField
     public function setRole(?string $role): self
     {
         $this->role = $role;
-        
+
         return $this;
     }
-    
+
     /**
      * @return bool
      */
@@ -167,7 +168,7 @@ abstract class AbstractField
     {
         return $this->required;
     }
-    
+
     /**
      * @param bool $required
      *
@@ -176,10 +177,10 @@ abstract class AbstractField
     public function setRequired(bool $required): self
     {
         $this->required = $required;
-        
+
         return $this;
     }
-    
+
     /**
      * @return int|null
      */
@@ -187,7 +188,7 @@ abstract class AbstractField
     {
         return $this->height;
     }
-    
+
     /**
      * @param int|null $height
      *
@@ -196,10 +197,10 @@ abstract class AbstractField
     public function setHeight(?int $height): self
     {
         $this->height = $height;
-        
+
         return $this;
     }
-    
+
     /**
      * @return int|null
      */
@@ -207,7 +208,7 @@ abstract class AbstractField
     {
         return $this->width;
     }
-    
+
     /**
      * @param int|null $width
      *
@@ -216,10 +217,10 @@ abstract class AbstractField
     public function setWidth(?int $width): self
     {
         $this->width = $width;
-        
+
         return $this;
     }
-    
+
     /**
      * @return int|null
      */
@@ -227,7 +228,7 @@ abstract class AbstractField
     {
         return $this->x;
     }
-    
+
     /**
      * @param int|null $x
      *
@@ -236,10 +237,10 @@ abstract class AbstractField
     public function setX(?int $x): self
     {
         $this->x = $x;
-        
+
         return $this;
     }
-    
+
     /**
      * @return int|null
      */
@@ -247,7 +248,7 @@ abstract class AbstractField
     {
         return $this->y;
     }
-    
+
     /**
      * @param int|null $y
      *
@@ -256,7 +257,7 @@ abstract class AbstractField
     public function setY(?int $y): self
     {
         $this->y = $y;
-        
+
         return $this;
     }
 }

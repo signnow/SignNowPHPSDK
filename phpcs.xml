@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<ruleset name="SN_PHP_SDK">
+    <description>Coding Standards</description>
+
+    <arg value="s"/>
+
+    <rule ref="PSR12"/>
+
+    <file>src</file>
+</ruleset>

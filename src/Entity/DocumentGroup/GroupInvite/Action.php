@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\DocumentGroup\GroupInvite;
 
@@ -18,49 +19,49 @@ class Action extends Entity
      * @Serializer\Type("string")
      */
     private $action;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
      */
     private $email;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
      */
     private $documentId;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
      */
     private $documentName;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
      */
     private $status;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
      */
     private $roleName;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
      */
     private $signingInstructions;
-    
+
     /**
      * @var bool
      * @Serializer\Type("bool")
      */
     private $isFullDeclined = false;
-    
+
     /**
      * @return null|string
      */
@@ -68,7 +69,7 @@ class Action extends Entity
     {
         return $this->action;
     }
-    
+
     /**
      * @param string $action
      *
@@ -77,10 +78,10 @@ class Action extends Entity
     public function setAction(string $action): self
     {
         $this->action = $action;
-        
+
         return $this;
     }
-    
+
     /**
      * @return null|string
      */
@@ -88,7 +89,7 @@ class Action extends Entity
     {
         return $this->email;
     }
-    
+
     /**
      * @param string $email
      *
@@ -97,10 +98,10 @@ class Action extends Entity
     public function setEmail(string $email): self
     {
         $this->email = $email;
-    
+
         return $this;
     }
-    
+
     /**
      * @return null|string
      */
@@ -108,7 +109,7 @@ class Action extends Entity
     {
         return $this->documentId;
     }
-    
+
     /**
      * @param string $documentId
      *
@@ -117,10 +118,10 @@ class Action extends Entity
     public function setDocumentId(string $documentId): self
     {
         $this->documentId = $documentId;
-    
+
         return $this;
     }
-    
+
     /**
      * @return null|string
      */
@@ -128,7 +129,7 @@ class Action extends Entity
     {
         return $this->documentName;
     }
-    
+
     /**
      * @param string $documentName
      *
@@ -137,10 +138,10 @@ class Action extends Entity
     public function setDocumentName(string $documentName): self
     {
         $this->documentName = $documentName;
-        
+
         return $this;
     }
-    
+
     /**
      * @return null|string
      */
@@ -148,7 +149,7 @@ class Action extends Entity
     {
         return $this->status;
     }
-    
+
     /**
      * @param string $status
      *
@@ -157,10 +158,10 @@ class Action extends Entity
     public function setStatus(string $status): self
     {
         $this->status = $status;
-    
+
         return $this;
     }
-    
+
     /**
      * @return null|string
      */
@@ -168,7 +169,7 @@ class Action extends Entity
     {
         return $this->roleName;
     }
-    
+
     /**
      * @param string $roleName
      *
@@ -177,10 +178,10 @@ class Action extends Entity
     public function setRoleName(string $roleName): self
     {
         $this->roleName = $roleName;
-    
+
         return $this;
     }
-    
+
     /**
      * @return null|string
      */
@@ -188,7 +189,7 @@ class Action extends Entity
     {
         return $this->signingInstructions;
     }
-    
+
     /**
      * @param string $signingInstructions
      *
@@ -197,10 +198,10 @@ class Action extends Entity
     public function setSigningInstructions(string $signingInstructions): self
     {
         $this->signingInstructions = $signingInstructions;
-    
+
         return $this;
     }
-    
+
     /**
      * @return bool
      */
@@ -208,7 +209,7 @@ class Action extends Entity
     {
         return $this->isFullDeclined;
     }
-    
+
     /**
      * @param bool $isFullDeclined
      *
@@ -217,7 +218,7 @@ class Action extends Entity
     public function setIsFullDeclined(bool $isFullDeclined): self
     {
         $this->isFullDeclined = $isFullDeclined;
-    
+
         return $this;
     }
 }

@@ -22,7 +22,8 @@
         "mcustiel/phiremock-codeception-extension": "^2.0",
         "mcustiel/phiremock-server": "^1.0",
         "mcustiel/phiremock-client": "^1.2",
-        "mcustiel/phiremock-codeception-module": "^1.1"
+        "mcustiel/phiremock-codeception-module": "^1.1",
+        "squizlabs/php_codesniffer": "^3.6"
     },
     "autoload-dev": {
         "psr-4": {
