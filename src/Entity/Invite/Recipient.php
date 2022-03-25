@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Invite;
 
@@ -17,25 +18,25 @@ class Recipient
      * @Serializer\Type("string")
      */
     protected $email;
-    
+
     /**
      * @var string
      * @Serializer\Type("string")
      */
     protected $role;
-    
+
     /**
      * @var int|null
      * @Serializer\Type("int")
      */
     protected $order;
-    
+
     /**
      * @var string
      * @Serializer\Type("string")
      */
     protected $roleId;
-    
+
     /**
      * Recipient constructor.
      *
@@ -51,7 +52,7 @@ class Recipient
         $this->roleId = $roleId;
         $this->order = $order > 0 ? $order : 1;
     }
-    
+
     /**
      * @return string
      */
@@ -59,7 +60,7 @@ class Recipient
     {
         return $this->email;
     }
-    
+
     /**
      * @return string
      */
@@ -67,7 +68,7 @@ class Recipient
     {
         return $this->role;
     }
-    
+
     /**
      * @return int
      */
@@ -75,7 +76,7 @@ class Recipient
     {
         return $this->order;
     }
-    
+
     /**
      * @return string
      */

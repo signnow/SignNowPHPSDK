@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Auth;
 
@@ -21,13 +22,13 @@ class Token extends Entity
      * @Serializer\Type("string")
      */
     protected $accessToken;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
      */
     protected $refreshToken;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
@@ -69,19 +70,19 @@ class Token extends Entity
      * @Serializer\Type("string")
      */
     protected $error;
-    
+
     /**
      * @var int|null
      * @Serializer\Type("integer")
      */
     protected $code;
-    
+
     /**
      * @var bool|null
      * @Serializer\Type("boolean")
      */
     protected $enterprise;
-    
+
     /**
      * @return string|null
      */
@@ -98,7 +99,7 @@ class Token extends Entity
     public function setAccessToken(?string $accessToken): self
     {
         $this->accessToken = $accessToken;
-        
+
         return $this;
     }
 
@@ -109,7 +110,7 @@ class Token extends Entity
     {
         return $this->refreshToken;
     }
-    
+
     /**
      * @param string|null $refreshToken
      *
@@ -118,10 +119,10 @@ class Token extends Entity
     public function setRefreshToken(?string $refreshToken): self
     {
         $this->refreshToken = $refreshToken;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -138,7 +139,7 @@ class Token extends Entity
     public function setScope(?string $scope): self
     {
         $this->scope = $scope;
-        
+
         return $this;
     }
 
@@ -158,7 +159,7 @@ class Token extends Entity
     public function setExpiresIn(?string $expiresIn): self
     {
         $this->expiresIn = $expiresIn;
-        
+
         return $this;
     }
 
@@ -178,7 +179,7 @@ class Token extends Entity
     public function setTokenType(?string $tokenType): self
     {
         $this->tokenType = $tokenType;
-        
+
         return $this;
     }
 
@@ -198,7 +199,7 @@ class Token extends Entity
     public function setApplicationId(?string $applicationId): self
     {
         $this->applicationId = $applicationId;
-        
+
         return $this;
     }
 
@@ -218,7 +219,7 @@ class Token extends Entity
     public function setUserId(string $userId): self
     {
         $this->userId = $userId;
-        
+
         return $this;
     }
 
@@ -238,10 +239,10 @@ class Token extends Entity
     public function setLastLogin(?int $lastLogin): self
     {
         $this->lastLogin = $lastLogin;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -249,7 +250,7 @@ class Token extends Entity
     {
         return $this->error;
     }
-    
+
     /**
      * @param string|null $error
      *
@@ -258,10 +259,10 @@ class Token extends Entity
     public function setError(?string $error): self
     {
         $this->error = $error;
-        
+
         return $this;
     }
-    
+
     /**
      * @return int|null
      */
@@ -269,7 +270,7 @@ class Token extends Entity
     {
         return $this->code;
     }
-    
+
     /**
      * @param int|null $code
      *
@@ -278,10 +279,10 @@ class Token extends Entity
     public function setCode(?int $code): self
     {
         $this->code = $code;
-        
+
         return $this;
     }
-    
+
     /**
      * @return bool|null
      */
@@ -289,7 +290,7 @@ class Token extends Entity
     {
         return $this->enterprise;
     }
-    
+
     /**
      * @param bool|null $enterprise
      *
@@ -298,7 +299,7 @@ class Token extends Entity
     public function setEnterprise(?bool $enterprise): self
     {
         $this->enterprise = $enterprise;
-        
+
         return $this;
     }
 }

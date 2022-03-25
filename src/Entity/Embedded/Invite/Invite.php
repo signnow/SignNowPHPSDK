@@ -1,10 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Embedded\Invite;
 
 use SignNow\Rest\Entity\Entity;
-
 use JMS\Serializer\Annotation as Serializer;
 
 /**

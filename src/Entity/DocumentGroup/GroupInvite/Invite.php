@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\DocumentGroup\GroupInvite;
 
@@ -18,19 +19,19 @@ class Invite extends Entity
      * @Serializer\Type("string")
      */
     private $id;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
      */
     private $status;
-    
+
     /**
      * @var Step[]
      * @Serializer\Type("array<SignNow\Api\Entity\DocumentGroup\GroupInvite\Step>")
      */
     private $steps;
-    
+
     /**
      * @return null|string
      */
@@ -38,7 +39,7 @@ class Invite extends Entity
     {
         return $this->id;
     }
-    
+
     /**
      * @param string $id
      *
@@ -47,10 +48,10 @@ class Invite extends Entity
     public function setId(string $id): self
     {
         $this->id = $id;
-        
+
         return $this;
     }
-    
+
     /**
      * @return null|string
      */
@@ -58,7 +59,7 @@ class Invite extends Entity
     {
         return $this->status;
     }
-    
+
     /**
      * @param string $status
      *
@@ -67,10 +68,10 @@ class Invite extends Entity
     public function setStatus(string $status): self
     {
         $this->status = $status;
-    
+
         return $this;
     }
-    
+
     /**
      * @return Step[]
      */
@@ -78,7 +79,7 @@ class Invite extends Entity
     {
         return $this->steps;
     }
-    
+
     /**
      * @param Step[] $steps
      *
@@ -87,7 +88,7 @@ class Invite extends Entity
     public function setSteps(array $steps): self
     {
         $this->steps = $steps;
-    
+
         return $this;
     }
 }

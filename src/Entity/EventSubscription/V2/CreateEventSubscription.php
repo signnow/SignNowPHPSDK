@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Entity\EventSubscription\V2;
@@ -134,7 +135,7 @@ class CreateEventSubscription extends Entity
     public function setCallbackUrl(string $callbackUrl): CreateEventSubscription
     {
         $this->attributes[self::CALLBACK_ATTRIBUTE] = $callbackUrl;
-        
+
         return $this;
     }
 
@@ -154,10 +155,10 @@ class CreateEventSubscription extends Entity
     public function setUseTls12(bool $useTls12 = true): CreateEventSubscription
     {
         $this->attributes[self::USE_TLS_12_ATTRIBUTE] = $useTls12;
-        
+
         return $this;
     }
-    
+
     /**
      * @return bool
      */
@@ -174,7 +175,7 @@ class CreateEventSubscription extends Entity
     public function setUseDocidQueryParam(bool $useDocidQueryParam = true): CreateEventSubscription
     {
         $this->attributes[self::DOCID_QUERYPARAM_ATTRIBUTE] = $useDocidQueryParam;
-        
+
         return $this;
     }
 
@@ -194,7 +195,7 @@ class CreateEventSubscription extends Entity
     public function setIntegrationId(string $integrationId): CreateEventSubscription
     {
         $this->attributes[self::INTEGRATION_ID_ATTRIBUTE] = $integrationId;
-        
+
         return $this;
     }
 

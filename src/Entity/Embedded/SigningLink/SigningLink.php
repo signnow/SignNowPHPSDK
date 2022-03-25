@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Embedded\SigningLink;
@@ -20,14 +21,14 @@ class SigningLink
 
     /**
      * SigningLink constructor.
-     * 
+     *
      * @param array $data
      */
     public function __construct(array $data)
     {
         $this->data = $data;
     }
-    
+
     /**
      * @return null|string
      */

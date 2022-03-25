@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Service\Guzzle;
 
@@ -18,27 +19,27 @@ class OptionBuilder
     private const VERSION = 'v2.2.0';
     private const CONTENT_TYPE = 'application/json';
     private const RUNTIME_AGENT = 'php';
-    
+
     /**
      * @var string
      */
     private $uri;
-    
+
     /**
      * @var array
      */
     private $customHeaders = [];
-    
+
     /**
      * @var array
      */
     private $customMiddlewares = [];
-    
+
     /**
      * @var TokenInterface
      */
     private $authToken;
-    
+
     /**
      * @param array $headers
      *
@@ -47,10 +48,10 @@ class OptionBuilder
     public function setHeaders(array $headers): self
     {
         $this->customHeaders = $headers;
-        
+
         return $this;
     }
-    
+
     /**
      * @param array $middlewares
      *
@@ -59,10 +60,10 @@ class OptionBuilder
     public function setMiddlewares(array $middlewares): self
     {
         $this->customMiddlewares = $middlewares;
-        
+
         return $this;
     }
-    
+
     /**
      * @param TokenInterface $token
      *
@@ -71,10 +72,10 @@ class OptionBuilder
     public function useAuthorization(TokenInterface $token): self
     {
         $this->authToken = $token;
-        
+
         return $this;
     }
-    
+
     /**
      * @param string $uri
      *
@@ -83,10 +84,10 @@ class OptionBuilder
     public function setUri(string $uri): self
     {
         $this->uri = $uri;
-        
+
         return $this;
     }
-    
+
     /**
      * @return array
      */
@@ -94,26 +95,26 @@ class OptionBuilder
     {
         $stack = HandlerStack::create();
         $stack->setHandler(new CurlMultiHandler());
-        
+
         $middlewares = $this->prepareMiddlewares();
         foreach ($middlewares as $middleware) {
             $stack->push($middleware);
         }
-        
+
         $options = [
             'headers'         => $this->prepareHeaders(),
             'connect_timeout' => 30,
             'timeout'         => 30,
             'handler'         => $stack,
         ];
-        
+
         if (!empty($this->uri)) {
             $options['base_uri'] = $this->uri;
         }
-    
+
         return $options;
     }
-    
+
     /**
      * @return array
      */
@@ -134,24 +135,24 @@ class OptionBuilder
                 $userAgentHeaderInfo['version']
             )
         ];
-    
+
         return array_merge($defaultHeaders, $this->customHeaders);
     }
-    
+
     /**
      * @return array
      */
     private function prepareMiddlewares(): array
     {
         $middlewares = array_merge($this->getDefaultMiddlewares(), $this->customMiddlewares);
-        
+
         if ($this->authToken) {
             array_unshift($middlewares, new AuthorizationMiddleware($this->authToken));
         }
-        
+
         return $middlewares;
     }
-    
+
     /**
      * @return array
      */
@@ -161,14 +162,14 @@ class OptionBuilder
             new ResponseCheckerMiddleware(),
         ];
     }
-    
+
     /**
      * @return array
      */
     private function getUserAgentInfo(): array
     {
         $systemName = php_uname('s');
-        
+
         return [
             'clientName' => self::USER_AGENT,
             'clientVersion' => self::VERSION,
@@ -180,7 +181,7 @@ class OptionBuilder
             'version' => sprintf('%d.%d.%d', PHP_MAJOR_VERSION, PHP_MINOR_VERSION, PHP_RELEASE_VERSION)
         ];
     }
-    
+
     /**
      * @param string $systemName
      *

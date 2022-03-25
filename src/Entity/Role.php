@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity;
 
@@ -17,19 +18,19 @@ class Role
      * @Serializer\Type("string")
      */
     protected $uniqueId;
-    
+
     /**
      * @var int
      * @Serializer\Type("int")
      */
     protected $signingOrder;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
      */
     protected $name;
-    
+
     /**
      * @return null|string
      */
@@ -37,7 +38,7 @@ class Role
     {
         return $this->name;
     }
-    
+
     /**
      * @param null|string $name
      *
@@ -46,10 +47,10 @@ class Role
     public function setName(?string $name): self
     {
         $this->name = $name;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string
      */
@@ -57,7 +58,7 @@ class Role
     {
         return $this->uniqueId;
     }
-    
+
     /**
      * @param string $uniqueId
      *
@@ -66,10 +67,10 @@ class Role
     public function setUniqueId(string $uniqueId): self
     {
         $this->uniqueId = $uniqueId;
-        
+
         return $this;
     }
-    
+
     /**
      * @return int
      */
@@ -77,7 +78,7 @@ class Role
     {
         return $this->signingOrder;
     }
-    
+
     /**
      * @param int $signingOrder
      *
@@ -86,7 +87,7 @@ class Role
     public function setSigningOrder($signingOrder): self
     {
         $this->signingOrder = $signingOrder;
-        
+
         return $this;
     }
 }

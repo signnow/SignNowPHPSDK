@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Auth;
@@ -32,7 +33,7 @@ class TokenRequestPassword extends TokenRequest
      * @Serializer\Type("string")
      */
     protected $password;
-    
+
     /**
      * @param string $username
      * @param string $password

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\FreeForm;
 
@@ -17,19 +18,19 @@ class InviteResponse
      * @Serializer\Type("string")
      */
     protected $result;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
      */
     protected $id;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
      */
     protected $callbackUrl;
-    
+
     /**
      * @return string|null
      */
@@ -37,7 +38,7 @@ class InviteResponse
     {
         return $this->result;
     }
-    
+
     /**
      * @param string $result
      *
@@ -46,10 +47,10 @@ class InviteResponse
     public function setResult(string $result): self
     {
         $this->result = $result;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -57,7 +58,7 @@ class InviteResponse
     {
         return $this->id;
     }
-    
+
     /**
      * @param string $id
      *
@@ -66,10 +67,10 @@ class InviteResponse
     public function setId(string $id): self
     {
         $this->id = $id;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -77,7 +78,7 @@ class InviteResponse
     {
         return $this->callbackUrl;
     }
-    
+
     /**
      * @param string $callbackUrl
      *
@@ -86,7 +87,7 @@ class InviteResponse
     public function setCallbackUrl(string $callbackUrl): self
     {
         $this->callbackUrl = $callbackUrl;
-        
+
         return $this;
     }
 }

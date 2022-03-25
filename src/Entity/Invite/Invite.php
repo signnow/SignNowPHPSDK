@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Invite;
 
@@ -23,19 +24,19 @@ class Invite extends Entity
      * @Serializer\Type("array<SignNow\Api\Entity\Invite\Recipient>")
      */
     protected $to;
-    
+
     /**
      * @var string
      * @Serializer\Type("string")
      */
     protected $from;
-    
+
     /**
      * @var array
      * @Serializer\Type("array")
      */
     protected $cc;
-    
+
     /**
      * Invite constructor.
      *
@@ -49,7 +50,7 @@ class Invite extends Entity
         $this->to = $to;
         $this->cc = $cc;
     }
-    
+
     /**
      * @return Recipient[]
      */
@@ -57,7 +58,7 @@ class Invite extends Entity
     {
         return $this->to;
     }
-    
+
     /**
      * @return string
      */
@@ -65,7 +66,7 @@ class Invite extends Entity
     {
         return $this->from;
     }
-    
+
     /**
      * @return array
      */

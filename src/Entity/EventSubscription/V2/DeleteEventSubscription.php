@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Entity\EventSubscription\V2;
@@ -16,5 +17,4 @@ use SignNow\Rest\EntityManager\Annotation\ResponseType;
  */
 class DeleteEventSubscription extends Entity
 {
-    
 }

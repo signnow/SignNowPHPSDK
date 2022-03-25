@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Document\Field;
 
@@ -27,19 +28,19 @@ class TextField extends AbstractField
      * @Serializer\Type("string")
      */
     protected $type = 'text';
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
      */
     protected $prefilledText;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
      */
     protected $label;
-    
+
     /**
      * @return string|null
      */
@@ -47,7 +48,7 @@ class TextField extends AbstractField
     {
         return $this->prefilledText;
     }
-    
+
     /**
      * @param string|null $prefilledText
      *
@@ -56,10 +57,10 @@ class TextField extends AbstractField
     public function setPrefilledText(?string $prefilledText): self
     {
         $this->prefilledText = $prefilledText;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -67,7 +68,7 @@ class TextField extends AbstractField
     {
         return $this->label;
     }
-    
+
     /**
      * @param string|null $label
      *
@@ -76,7 +77,7 @@ class TextField extends AbstractField
     public function setLabel(?string $label): self
     {
         $this->label = $label;
-        
+
         return $this;
     }
 }

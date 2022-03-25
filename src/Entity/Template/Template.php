@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Template;
 
@@ -47,10 +48,10 @@ class Template extends Entity
     public function setDocumentName(string $documentName): Template
     {
         $this->documentName = $documentName;
-        
+
         return $this;
     }
-    
+
     /**
      * @param string $documentId
      *
@@ -59,7 +60,7 @@ class Template extends Entity
     public function setDocumentId(string $documentId): Template
     {
         $this->documentId = $documentId;
-        
+
         return $this;
     }
 }

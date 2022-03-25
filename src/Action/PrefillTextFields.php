@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Action;
@@ -42,7 +43,7 @@ class PrefillTextFields
     public function prefill(string $documentUid, array $fields): void
     {
         $this->entityManager->setUpdateHttpMethod(Request::METHOD_PUT);
-        
+
         $this->entityManager->update(
             new PrefillTextField($fields),
             [

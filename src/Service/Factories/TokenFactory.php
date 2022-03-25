@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Service\Factories;
 
@@ -34,7 +35,7 @@ class TokenFactory
     {
         return $this->createToken(BearerToken::TYPE, $token);
     }
-    
+
     /**
      * @param string $type
      * @param string $token

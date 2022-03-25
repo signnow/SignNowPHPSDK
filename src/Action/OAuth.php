@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Action;
@@ -20,7 +21,7 @@ class OAuth
 {
     /**
      * SignNow API host.
-     * 
+     *
      * @var string
      */
     private $host;
@@ -71,12 +72,12 @@ class OAuth
     public function bearerByPassword(string $basicToken, string $username, string $password): EntityManager
     {
         $entityManager = $this->basicAuthorization($basicToken);
-        
+
         /** @var Token $bearerToken */
         $bearerToken = $entityManager->create(
             new TokenRequestPassword($username, $password)
         );
-        
+
         return $this->bearerAuthorization($bearerToken->getAccessToken());
     }
 }

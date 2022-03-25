@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Invite;
 
@@ -23,7 +24,7 @@ class SigningLink extends Entity
      * @Serializer\Type("string")
      */
     private $documentId;
-    
+
     /**
      * SigningLink constructor.
      *
@@ -33,7 +34,7 @@ class SigningLink extends Entity
     {
         $this->documentId = $documentId;
     }
-    
+
     /**
      * @return string
      */

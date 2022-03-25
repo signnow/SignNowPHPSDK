@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Service\OAuth;
 
@@ -11,22 +12,22 @@ namespace SignNow\Api\Service\OAuth;
 abstract class AbstractToken implements TokenInterface
 {
     public const TYPE = '';
-    
+
     /**
      * @var string
      */
     private $token;
-    
+
     /**
      * AbstractToken constructor.
      *
      * @param string $token
      */
-    public function __construct(string  $token)
+    public function __construct(string $token)
     {
         $this->token = $token;
     }
-    
+
     /**
      * @return string
      */
@@ -34,7 +35,7 @@ abstract class AbstractToken implements TokenInterface
     {
         return  $this->token;
     }
-    
+
     /**
      * @return string
      */

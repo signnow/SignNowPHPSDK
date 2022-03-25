@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Embedded\GroupInvite;
 
@@ -27,7 +28,7 @@ class SigningLinkResponse
     {
         $this->data = $data;
     }
-    
+
     /**
      * @return string|null
      */

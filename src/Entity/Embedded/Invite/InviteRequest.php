@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Embedded\Invite;
@@ -66,7 +67,7 @@ class InviteRequest
 
     /**
      * @param string $email
-     * 
+     *
      * @return $this
      */
     public function setEmail(string $email): self
@@ -86,7 +87,7 @@ class InviteRequest
 
     /**
      * @param string $roleId
-     * 
+     *
      * @return $this
      */
     public function setRoleId(string $roleId): self
@@ -106,7 +107,7 @@ class InviteRequest
 
     /**
      * @param int $order
-     * 
+     *
      * @return $this
      */
     public function setOrder(int $order): self
@@ -126,7 +127,7 @@ class InviteRequest
 
     /**
      * @param null|AuthMethodInterface $authMethod
-     * 
+     *
      * @return $this
      */
     public function setAuthMethod(?AuthMethodInterface $authMethod = null): self
@@ -146,7 +147,7 @@ class InviteRequest
 
     /**
      * @param string $firstName
-     * 
+     *
      * @return $this
      */
     public function setFirstName(string $firstName): self
@@ -166,7 +167,7 @@ class InviteRequest
 
     /**
      * @param string $lastName
-     * 
+     *
      * @return $this
      */
     public function setLastName(string $lastName): self
@@ -186,13 +187,13 @@ class InviteRequest
 
     /**
      * @param string $redirectUri
-     * 
+     *
      * @return $this
      */
     public function setRedirectUri(string $redirectUri): self
     {
         $this->redirectUri = $redirectUri;
-        
+
         return $this;
     }
 }

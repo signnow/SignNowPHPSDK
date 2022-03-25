@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Document;
@@ -24,7 +25,7 @@ class TextTag
      * @see TextTagFieldType::class
      */
     private $type;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
@@ -54,7 +55,7 @@ class TextTag
      * @Serializer\Type("boolean")
      */
     private $customDefinedOption;
-    
+
     /**
      * @var int
      * @Serializer\Type("integer")
@@ -96,7 +97,7 @@ class TextTag
      * @Serializer\Type("array")
      */
     private $radio;
-    
+
 
     /**
      * @return null|string
@@ -391,7 +392,7 @@ class TextTag
             'width' => $this->getWidth(),
             'required' => $this->isRequired(),
         ];
-        
+
         if ($this->getLabel() !== null) {
             $data['label'] = $this->getLabel();
         }
@@ -403,7 +404,7 @@ class TextTag
         if ($this->getCustomDefinedOption() !== null) {
             $data['custom_defined_option'] = $this->getCustomDefinedOption();
         }
-        
+
         if ($this->getValidatorId() !== null) {
             $data['validator_id'] = $this->getValidatorId();
         }
@@ -419,7 +420,7 @@ class TextTag
         if ($this->getEnumerationOptions() !== null) {
             $data['enumeration_options'] = $this->getEnumerationOptions();
         }
-        
+
         return $data;
     }
 }

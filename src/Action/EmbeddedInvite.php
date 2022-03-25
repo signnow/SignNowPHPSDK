@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Action;
@@ -25,10 +26,10 @@ class EmbeddedInvite
      * @var EntityManager
      */
     private $entityManager;
-    
+
     /**
      * EmbeddedInvite constructor.
-     * 
+     *
      * @param EntityManager $entityManager
      */
     public function __construct(EntityManager $entityManager)
@@ -70,11 +71,11 @@ class EmbeddedInvite
         int $expiration = 15,
         ?AuthMethodInterface $authMethod = null
     ): SigningLink {
-        
+
         $requestEntity = (new CreateSigningLink())
             ->setAuthMethod($authMethod ?? new None())
             ->setLinkExpiration($expiration);
-        
+
         return $this->entityManager->create(
             $requestEntity,
             [
@@ -99,11 +100,10 @@ class EmbeddedInvite
         string $fieldInviteUniqueId,
         int $expiration,
         ?AuthMethodInterface $authMethod = null
-    )
-    {
+    ) {
         return $this->createSigningLink($documentUid, $fieldInviteUniqueId, $expiration, $authMethod);
     }
-    
+
     /**
      * @param string $documentUid
      *

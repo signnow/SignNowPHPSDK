@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Action\DocumentGroup;
@@ -50,7 +51,7 @@ class GroupInvite
         array $completionEmails = [],
         bool $signAsMerged = false
     ): ResponseGroupInvite {
-        
+
         $groupInvite = (new CreateGroupInvite())
             ->setInviteSteps($inviteSteps)
             ->setCompletionEmails($completionEmails)
@@ -82,7 +83,7 @@ class GroupInvite
             ]
         );
     }
-    
+
     /**
      * @param string $documentGroupUniqueId
      * @param string $groupInviteUniqueId

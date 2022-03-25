@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Action\Invite;
@@ -90,7 +91,7 @@ class FieldInvite
             ]
         );
     }
-    
+
     /**
      * @param string $documentUniqueId
      *

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Document;
 
@@ -70,7 +71,7 @@ class Document extends Entity
      * @Serializer\Type("string")
      */
     protected $documentName;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
@@ -88,7 +89,7 @@ class Document extends Entity
      * @Serializer\Type("string")
      */
     protected $versionTime;
-    
+
     /**
      * @var array|null
      * @Serializer\Type("array")
@@ -124,7 +125,7 @@ class Document extends Entity
      * @Serializer\Type("SignNow\Api\Entity\Document\Thumbnail")
      */
     protected $thumbnail;
-    
+
     /**
      * @var Role[]
      * @Serializer\Type("array<SignNow\Api\Entity\Role>")
@@ -165,7 +166,7 @@ class Document extends Entity
      * @Serializer\Type("array")
      */
     protected $enumerationOptions;
-    
+
     /**
      * @var RoutingDetail[]
      * @Serializer\Type("array<SignNow\Api\Entity\Document\RoutingDetail>")
@@ -234,7 +235,7 @@ class Document extends Entity
 
     /**
      * @var ViewerFieldInvite[]
-     * @Serializer\Type("array<SignNow\Api\Entity\Document\ViewerFieldInvite>") 
+     * @Serializer\Type("array<SignNow\Api\Entity\Document\ViewerFieldInvite>")
      */
     protected $viewerFieldInvites = [];
 
@@ -288,7 +289,7 @@ class Document extends Entity
      * @Serializer\Type("array")
      */
     protected $notaryInvites = [];
-    
+
     /**
      * @return null|string
      */
@@ -368,7 +369,7 @@ class Document extends Entity
 
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -808,7 +809,7 @@ class Document extends Entity
 
         return $this;
     }
-    
+
     /**
      * @return null|DocumentGroupInfo
      */

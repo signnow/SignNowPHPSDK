@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\EventSubscription;
 
@@ -17,19 +18,19 @@ class EventSubscriptionResponse
      * @Serializer\Type("string")
      */
     private $id;
-    
+
     /**
      * @var int|null
      * @Serializer\Type("int")
      */
     private $created;
-    
+
     /**
      * @var int|null
      * @Serializer\Type("int")
      */
     private $updated;
-    
+
     /**
      * @return string|null
      */
@@ -37,7 +38,7 @@ class EventSubscriptionResponse
     {
         return $this->id;
     }
-    
+
     /**
      * @return int|null
      */
@@ -45,7 +46,7 @@ class EventSubscriptionResponse
     {
         return $this->created;
     }
-    
+
     /**
      * @return int|null
      */

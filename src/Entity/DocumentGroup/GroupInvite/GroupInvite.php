@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\DocumentGroup\GroupInvite;
 
@@ -21,7 +22,7 @@ class GroupInvite extends Entity
      * @Serializer\Type("SignNow\Api\Entity\DocumentGroup\GroupInvite\Invite")
      */
     private $invite;
-    
+
     /**
      * @return Invite
      */
@@ -29,7 +30,7 @@ class GroupInvite extends Entity
     {
         return $this->invite;
     }
-    
+
     /**
      * @param Invite $invite
      *
@@ -38,7 +39,7 @@ class GroupInvite extends Entity
     public function setInvite(Invite $invite): self
     {
         $this->invite = $invite;
-        
+
         return $this;
     }
 }

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\EventSubscription;
 
@@ -21,7 +22,7 @@ class GetEventSubscriptions extends Entity
      * @Serializer\Type("array<SignNow\Api\Entity\EventSubscription\Event>")
      */
     private $subscriptions;
-    
+
     /**
      * @return array|Event[]
      */

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\DocumentGroup\GroupInvite;
 
@@ -17,5 +18,4 @@ use SignNow\Rest\EntityManager\Annotation\ResponseType;
  */
 class Cancel extends Entity
 {
-
 }

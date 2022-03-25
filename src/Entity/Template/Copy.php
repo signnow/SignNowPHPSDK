@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Template;
 
@@ -23,13 +24,13 @@ class Copy extends Entity
      * @Serializer\Type("string")
      */
     private $templateId;
-    
+
     /**
      * @var string|null
      * @Serializer\Type("string")
      */
     private $documentName;
-    
+
     /**
      * @param string $documentName
      *
@@ -38,10 +39,10 @@ class Copy extends Entity
     public function setDocumentName(string $documentName): Copy
     {
         $this->documentName = $documentName;
-        
+
         return $this;
     }
-    
+
     /**
      * @param string $templateId
      *
@@ -50,7 +51,7 @@ class Copy extends Entity
     public function setTemplateId(string $templateId): Copy
     {
         $this->templateId = $templateId;
-        
+
         return $this;
     }
 

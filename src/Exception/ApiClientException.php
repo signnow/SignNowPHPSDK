@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Exception;
 
@@ -12,5 +13,4 @@ use Exception;
  */
 class ApiClientException extends Exception
 {
-    
 }

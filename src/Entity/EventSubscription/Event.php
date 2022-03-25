@@ -1,5 +1,6 @@
 <?php
-declare(strict_types =1 );
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\EventSubscription;
 
@@ -17,31 +18,31 @@ class Event
      * @Serializer\Type("string")
      */
     private $id;
-    
+
     /**
      * @var string
      * @Serializer\Type("string")
      */
     private $event;
-    
+
     /**
      * @var string
      * @Serializer\Type("string")
      */
     private $callbackUrl;
-    
+
     /**
      * @var int
      * @Serializer\Type("int")
      */
     private $created;
-    
+
     /**
      * @var array|null
      * @Serializer\Type("array")
      */
     private $attributes;
-    
+
     /**
      * @return string
      */
@@ -49,7 +50,7 @@ class Event
     {
         return $this->id;
     }
-    
+
     /**
      * @return string
      */
@@ -57,7 +58,7 @@ class Event
     {
         return $this->event;
     }
-    
+
     /**
      * @return string
      */
@@ -65,7 +66,7 @@ class Event
     {
         return $this->callbackUrl;
     }
-    
+
     /**
      * @return int
      */
@@ -73,7 +74,7 @@ class Event
     {
         return $this->created;
     }
-    
+
     /**
      * @return array|null
      */

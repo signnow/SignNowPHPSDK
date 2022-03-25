@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\DocumentGroup\GroupInvite;
 
@@ -18,25 +19,25 @@ class Step extends Entity
      * @Serializer\Type("string")
      */
     private $id;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
      */
     private $status;
-    
+
     /**
      * @var null|int
      * @Serializer\Type("int")
      */
     private $order;
-    
+
     /**
      * @var Action[]
      * @Serializer\Type("array<SignNow\Api\Entity\DocumentGroup\GroupInvite\Action>")
      */
     private $actions = [];
-    
+
     /**
      * @return null|string
      */
@@ -44,7 +45,7 @@ class Step extends Entity
     {
         return $this->status;
     }
-    
+
     /**
      * @param string $status
      *
@@ -53,10 +54,10 @@ class Step extends Entity
     public function setStatus(string $status): self
     {
         $this->status = $status;
-        
+
         return $this;
     }
-    
+
     /**
      * @return null|int
      */
@@ -64,7 +65,7 @@ class Step extends Entity
     {
         return $this->order;
     }
-    
+
     /**
      * @param int $order
      *
@@ -73,10 +74,10 @@ class Step extends Entity
     public function setOrder(int $order): self
     {
         $this->order = $order;
-        
+
         return $this;
     }
-    
+
     /**
      * @return null|string
      */
@@ -84,7 +85,7 @@ class Step extends Entity
     {
         return $this->id;
     }
-    
+
     /**
      * @param string $id
      *
@@ -93,10 +94,10 @@ class Step extends Entity
     public function setId(string $id): self
     {
         $this->id = $id;
-        
+
         return $this;
     }
-    
+
     /**
      * @return Action[]
      */
@@ -104,7 +105,7 @@ class Step extends Entity
     {
         return $this->actions;
     }
-    
+
     /**
      * @param Action[] $actions
      *
@@ -113,7 +114,7 @@ class Step extends Entity
     public function setActions(array $actions): self
     {
         $this->actions = $actions;
-        
+
         return $this;
     }
 }

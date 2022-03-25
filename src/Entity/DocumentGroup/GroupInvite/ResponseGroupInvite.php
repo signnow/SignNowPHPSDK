@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SignNow\Api\Entity\DocumentGroup\GroupInvite;
 
@@ -18,13 +19,13 @@ class ResponseGroupInvite extends Entity
      * @Serializer\Type("string")
      */
     private $id;
-    
+
     /**
      * @var null|string
      * @Serializer\Type("string")
      */
     private $pendingInviteLink;
-    
+
     /**
      * @return null|string
      */
@@ -32,7 +33,7 @@ class ResponseGroupInvite extends Entity
     {
         return $this->id;
     }
-    
+
     /**
      * @param string $id
      *
@@ -41,10 +42,10 @@ class ResponseGroupInvite extends Entity
     public function setId(string $id): self
     {
         $this->id = $id;
-        
+
         return $this;
     }
-    
+
     /**
      * @return null|string
      */
@@ -52,7 +53,7 @@ class ResponseGroupInvite extends Entity
     {
         return $this->pendingInviteLink;
     }
-    
+
     /**
      * @param string $pendingInviteLink
      *
@@ -61,7 +62,7 @@ class ResponseGroupInvite extends Entity
     public function setPendingInviteLink(string $pendingInviteLink): self
     {
         $this->pendingInviteLink = $pendingInviteLink;
-        
+
         return $this;
     }
 }

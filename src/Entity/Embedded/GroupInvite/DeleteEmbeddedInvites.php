@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Embedded\GroupInvite;
@@ -15,5 +16,4 @@ use SignNow\Rest\EntityManager\Annotation\HttpEntity;
  */
 class DeleteEmbeddedInvites extends Entity
 {
-
 }

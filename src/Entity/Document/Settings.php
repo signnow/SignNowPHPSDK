@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Entity\Document;
@@ -1051,8 +1052,9 @@ class Settings
      *
      * @return Settings
      */
-    public function setWatermarkDownloadedDocument(bool $watermarkDownloadedDocument): Settings
-    {
+    public function setWatermarkDownloadedDocument(
+        bool $watermarkDownloadedDocument
+    ): Settings {
         $this->watermarkDownloadedDocument = $watermarkDownloadedDocument;
 
         return $this;
@@ -1147,13 +1149,14 @@ class Settings
     }
 
     /**
-     * @param bool $inviteUpdateNotificationsForAllInvitesAtInviteCreate
+     * @param bool $invite
      *
      * @return Settings
      */
-    public function setInviteUpdateNotificationsForAllInvitesAtInviteCreate(bool $inviteUpdateNotificationsForAllInvitesAtInviteCreate): Settings
-    {
-        $this->inviteUpdateNotificationsForAllInvitesAtInviteCreate = $inviteUpdateNotificationsForAllInvitesAtInviteCreate;
+    public function setInviteUpdateNotificationsForAllInvitesAtInviteCreate(
+        bool $invite
+    ): Settings {
+        $this->inviteUpdateNotificationsForAllInvitesAtInviteCreate = $invite;
 
         return $this;
     }
@@ -1227,13 +1230,14 @@ class Settings
     }
 
     /**
-     * @param bool $blockExportOptionsWhenCreditCardValidationIsUsed
+     * @param bool $value
      *
      * @return Settings
      */
-    public function setBlockExportOptionsWhenCreditCardValidationIsUsed(bool $blockExportOptionsWhenCreditCardValidationIsUsed): Settings
-    {
-        $this->blockExportOptionsWhenCreditCardValidationIsUsed = $blockExportOptionsWhenCreditCardValidationIsUsed;
+    public function setBlockExportOptionsWhenCreditCardValidationIsUsed(
+        bool $value
+    ): Settings {
+        $this->blockExportOptionsWhenCreditCardValidationIsUsed = $value;
 
         return $this;
     }
@@ -1247,13 +1251,14 @@ class Settings
     }
 
     /**
-     * @param bool $onlyAdministratorIsAbleToInviteToTheTeam
+     * @param bool $value
      *
      * @return Settings
      */
-    public function setOnlyAdministratorIsAbleToInviteToTheTeam(bool $onlyAdministratorIsAbleToInviteToTheTeam): Settings
-    {
-        $this->onlyAdministratorIsAbleToInviteToTheTeam = $onlyAdministratorIsAbleToInviteToTheTeam;
+    public function setOnlyAdministratorIsAbleToInviteToTheTeam(
+        bool $value
+    ): Settings {
+        $this->onlyAdministratorIsAbleToInviteToTheTeam = $value;
 
         return $this;
     }
@@ -1507,13 +1512,14 @@ class Settings
     }
 
     /**
-     * @param bool $allowBigCountOfAttachmentFieldsPerDocument
+     * @param bool $value
      *
      * @return Settings
      */
-    public function setAllowBigCountOfAttachmentFieldsPerDocument(bool $allowBigCountOfAttachmentFieldsPerDocument): Settings
-    {
-        $this->allowBigCountOfAttachmentFieldsPerDocument = $allowBigCountOfAttachmentFieldsPerDocument;
+    public function setAllowBigCountOfAttachmentFieldsPerDocument(
+        bool $value
+    ): Settings {
+        $this->allowBigCountOfAttachmentFieldsPerDocument = $value;
 
         return $this;
     }
