@@ -72,12 +72,20 @@ class CreateCest extends BaseCest
         $to[] = new Recipient(
             Str::generateEmail(),
             $role,
-            ''
+            '',
+            1,
+            null,
+            'Signing request',
+            'We are waiting for your signature'
         );
         $to[] = new Recipient(
             Str::generateEmail(),
             $role,
-            ''
+            '',
+            2,
+            15,
+            'Sign me',
+            'Please, sign this document'
         );
         
         $response = $fieldInvite->create($documentUniqueId, $from, $to);

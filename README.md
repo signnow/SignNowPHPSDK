@@ -224,7 +224,15 @@ $entityManager->create(new DownloadLink(), ['id' => $documentUniqueId])
 use SignNow\Api\Entity\Invite\Recipient;
 use SignNow\Api\Entity\Invite\Invite;
 
-$to[] = new Recipient($recipientEmail, $role, $roleId, $order);
+$to[] = new Recipient(
+    $recipientEmail,
+    $role,
+    $roleId,
+    $order,
+    $expirationDays,
+    $subject,
+    $message
+);
 $invite = new Invite($email, $to, $cc);
 $entityManager->create($invite, ['documentId' => $documentUniqueId]);
 ```
