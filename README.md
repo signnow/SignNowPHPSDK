@@ -238,17 +238,64 @@ $entityManager->create($invite, ['documentId' => $documentUniqueId]);
 ```
 #### <a name="free-form-invite-document"></a>Create a simple free form invite to sign a document
 ```php
+use SignNow\Api\Action\Document;
+use SignNow\Api\Entity\Document\Field\TextField;
+use SignNow\Api\Action\Invite\FieldInvite;
+use SignNow\Api\Action\OAuth as SignNowOAuth;
 use SignNow\Api\Entity\Invite\Invite;
 
-$invite = (new Invite())
-            ->setDocumentId($documentUniqueId)
-            ->setTo($to)
-            ->setFrom($from)
-            ->setCc([])
-            ->setSubject($subject)
-            ->setMessage($message);
-              
-$entityManager->create($invite, ["documentId" => $documentUniqueId]);
+$auth = new SignNowOAuth(HOST);
+$entityManager = $auth->bearerByPassword(
+    BASIC_TOKEN,
+    USER,
+    PASSWORD
+);
+
+$document = new Document($entityManager);
+$textField = (new TextField())
+   ->setName('My test text')
+   ->setLabel('Some label')
+   ->setPrefilledText('prefilled text')
+   ->setPageNumber(0)
+   ->setRole($role)
+   ->setRequired(true)
+   ->setHeight(20)
+   ->setWidth(10)
+   ->setX(100)
+   ->setY(150);
+$document->addFields($documentUniqueId, [$textField]);
+
+$from = 'sender@domain.com';
+$to[] = new Recipient(
+   Str::generateEmail(),
+   $role,
+   '',
+   1,
+   null,
+   'Signing request',
+   'We are waiting for your signature'
+);
+$to[] = new Recipient(
+   Str::generateEmail(),
+   $role,
+   '',
+   2,
+   15,
+   'Sign me',
+   'Please, sign this document'
+);
+$cc = [];
+
+// using action FieldInvite
+// is more preferable way
+// to create an invitation
+$fieldInvite = new FieldInvite($entityManager);
+$response = $fieldInvite->create($documentUniqueId, $from, $to, $cc);
+
+// or
+// using entity Invite still works as well
+$invite = new Invite($from, $to, $cc);
+$response = $entityManager->create($invite, ["documentId" => $documentUniqueId]);
 ```
 #### <a name="cancel-document-invite"></a>Cancel an invite to sign a document
 ```php
