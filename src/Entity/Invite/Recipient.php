@@ -67,15 +67,14 @@ class Recipient
      * @param string|null $message
      */
     public function __construct(
-        string  $email,
-        string  $role,
-        string  $roleId,
-        ?int    $order = null,
-        ?int    $expirationDays = null,
+        string $email,
+        string $role,
+        string $roleId,
+        ?int $order = null,
+        ?int $expirationDays = null,
         ?string $subject = null,
         ?string $message = null
-    )
-    {
+    ) {
         $this->email = $email;
         $this->role = $role;
         $this->roleId = $roleId;
