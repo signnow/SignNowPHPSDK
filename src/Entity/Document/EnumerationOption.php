@@ -38,7 +38,7 @@ class EnumerationOption
     private $created;
 
     /**
-     * @var null|tring
+     * @var null|string
      * @Serializer\Type("string")
      */
     private $updated;
