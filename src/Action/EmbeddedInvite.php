@@ -73,8 +73,10 @@ class EmbeddedInvite
     ): SigningLink {
 
         $requestEntity = (new CreateSigningLink())
-            ->setAuthMethod($authMethod ?? new None())
-            ->setLinkExpiration($expiration);
+            ->setAuthMethod($authMethod ?? new None());
+
+        if ($expiration > 0)
+            $requestEntity = $requestEntity->setLinkExpiration($expiration);
 
         return $this->entityManager->create(
             $requestEntity,
