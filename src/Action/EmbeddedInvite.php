@@ -59,7 +59,7 @@ class EmbeddedInvite
      * @param string                   $documentUid
      * @param string                   $fieldInviteUniqueId
      * @param null|AuthMethodInterface $authMethod
-     * @param int                      $expiration
+     * @param int|null                 $expiration
      *
      * @return object|SigningLink
      * @throws EntityManagerException
@@ -68,7 +68,7 @@ class EmbeddedInvite
     public function createSigningLink(
         string $documentUid,
         string $fieldInviteUniqueId,
-        int $expiration = 15,
+        ?int $expiration = 15,
         ?AuthMethodInterface $authMethod = null
     ): SigningLink {
 
@@ -88,7 +88,7 @@ class EmbeddedInvite
     /**
      * @param string                   $documentUid
      * @param string                   $fieldInviteUniqueId
-     * @param int                      $expiration
+     * @param null|int                 $expiration
      * @param AuthMethodInterface|null $authMethod
      *
      * @return object|SigningLink
@@ -98,7 +98,7 @@ class EmbeddedInvite
     public function setSigningLinkExpiration(
         string $documentUid,
         string $fieldInviteUniqueId,
-        int $expiration,
+        ?int $expiration,
         ?AuthMethodInterface $authMethod = null
     ) {
         return $this->createSigningLink($documentUid, $fieldInviteUniqueId, $expiration, $authMethod);

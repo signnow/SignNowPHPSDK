@@ -56,4 +56,26 @@ class UpdateCest extends BaseCest
 
         $I->assertStringStartsWith('https://',$response->getLink());
     }
+
+    /**
+     * @param FunctionalTester $I
+     *
+     * @throws EntityManagerException
+     * @throws ReflectionException
+     * @throws Exception
+     */
+    public function testSetEmbeddedInviteSigningNullLinkExpiration(FunctionalTester $I): void
+    {
+        $documentUniqueId = $I->createUniqueId();
+        $inviteUniqueId = $I->createUniqueId();
+        $expirationTime = null;
+
+        $embeddedInvite = new EmbeddedInvite($this->auth);
+
+        $I->mockEmbeddedInviteSigningLinkRequest($documentUniqueId, $inviteUniqueId);
+
+        $response = $embeddedInvite->setSigningLinkExpiration($documentUniqueId, $inviteUniqueId, $expirationTime);
+
+        $I->assertStringStartsWith('https://',$response->getLink());
+    }
 }
