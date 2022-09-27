@@ -250,18 +250,18 @@ $document->addFields($documentUniqueId, [$textField]);
 
 $from = 'sender@domain.com';
 $to[] = new Recipient(
-   Str::generateEmail(),
-   $role,
-   '',
+   'signer1@domain.com',
+   'Role 1',
+   '488d73a3efab032511f144af3a2572a8aae20162',
    1,
    null,
    'Signing request',
    'We are waiting for your signature'
 );
 $to[] = new Recipient(
-   Str::generateEmail(),
-   $role,
-   '',
+   'signer2@domain.com',
+   'Role 2',
+   'e896ec9311a74a8a8ee9faff7049446fe452e461',
    2,
    15,
    'Sign me',
@@ -283,15 +283,20 @@ $response = $entityManager->create($invite, ["documentId" => $documentUniqueId])
 #### <a name="free-form-invite-document"></a>Create a simple free form invite to sign a document
 ```php
 use SignNow\Api\Entity\Invite\Invite;
+use SignNow\Api\Entity\Invite\Recipient;
 
-$invite = (new Invite())
-            ->setDocumentId($documentUniqueId)
-            ->setTo($to)
-            ->setFrom($from)
-            ->setCc([])
+$documentUniqueId = 'd9b490bd613e25cc5ec1a3b0b83dfccc164382bd';
+$signerEmail = 'signer@domain.com';
+$roleName = 'Manager';
+$roleUniqueId = '488d73a3efab032511f144af3a2572a8aae20162';
+$from = 'My Application <no-reply@domain.com>';
+
+$to[] = (new Recipient($signerEmail, $roleName, $roleUniqueId))
             ->setSubject($subject)
             ->setMessage($message);
-              
+
+$invite = new Invite($from, $to, $cc);
+
 $entityManager->create($invite, ["documentId" => $documentUniqueId]);
 ```
 #### <a name="cancel-document-invite"></a>Cancel an invite to sign a document
