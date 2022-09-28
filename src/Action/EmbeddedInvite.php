@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Action;
@@ -25,10 +26,10 @@ class EmbeddedInvite
      * @var EntityManager
      */
     private $entityManager;
-    
+
     /**
      * EmbeddedInvite constructor.
-     * 
+     *
      * @param EntityManager $entityManager
      */
     public function __construct(EntityManager $entityManager)
@@ -58,7 +59,7 @@ class EmbeddedInvite
      * @param string                   $documentUid
      * @param string                   $fieldInviteUniqueId
      * @param null|AuthMethodInterface $authMethod
-     * @param int                      $expiration
+     * @param int|null                 $expiration
      *
      * @return object|SigningLink
      * @throws EntityManagerException
@@ -67,14 +68,14 @@ class EmbeddedInvite
     public function createSigningLink(
         string $documentUid,
         string $fieldInviteUniqueId,
-        int $expiration = 15,
+        ?int $expiration = 15,
         ?AuthMethodInterface $authMethod = null
     ): SigningLink {
-        
+
         $requestEntity = (new CreateSigningLink())
             ->setAuthMethod($authMethod ?? new None())
             ->setLinkExpiration($expiration);
-        
+
         return $this->entityManager->create(
             $requestEntity,
             [
@@ -87,7 +88,7 @@ class EmbeddedInvite
     /**
      * @param string                   $documentUid
      * @param string                   $fieldInviteUniqueId
-     * @param int                      $expiration
+     * @param null|int                 $expiration
      * @param AuthMethodInterface|null $authMethod
      *
      * @return object|SigningLink
@@ -97,13 +98,12 @@ class EmbeddedInvite
     public function setSigningLinkExpiration(
         string $documentUid,
         string $fieldInviteUniqueId,
-        int $expiration,
+        ?int $expiration,
         ?AuthMethodInterface $authMethod = null
-    )
-    {
+    ) {
         return $this->createSigningLink($documentUid, $fieldInviteUniqueId, $expiration, $authMethod);
     }
-    
+
     /**
      * @param string $documentUid
      *
