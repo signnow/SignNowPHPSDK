@@ -85,4 +85,25 @@ class CreateCest extends BaseCest
 
         $I->assertStringStartsWith('https://', $response->getLink());
     }
+
+    /**
+     * @param FunctionalTester $I
+     *
+     * @throws EntityManagerException
+     * @throws ReflectionException
+     * @throws Exception
+     */
+    public function testCreateEmbeddedInviteSigningLinkExpirationNull(FunctionalTester $I): void
+    {
+        $documentUniqueId = $I->createUniqueId();
+        $inviteUniqueId = $I->createUniqueId();
+
+        $embeddedInvite = new EmbeddedInvite($this->auth);
+
+        $I->mockEmbeddedInviteSigningLinkRequest($documentUniqueId, $inviteUniqueId);
+
+        $response = $embeddedInvite->createSigningLink($documentUniqueId, $inviteUniqueId, null);
+
+        $I->assertStringStartsWith('https://', $response->getLink());
+    }
 }
