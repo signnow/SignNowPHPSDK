@@ -27,6 +27,7 @@ class ApiDocumentMock extends Module implements DependsOnModule
     private const DOWNLOAD_DOCUMENT_URL_PATTERN = '/document/{documentUniqueId}/download';
     private const DOWNLOAD_DOCUMENT_LINK_URL_PATTERN = '/document/{documentUniqueId}/download/link';
     private const PREFILL_TEXT_FIELDS_URL_PATTERN = '/v2/documents/{documentUniqueId}/prefill-texts';
+    private const FILL_SMART_FIELDS_URL_PATTERN = '/document/{documentUniqueId}/integration/object/smartfields';
 
     /**
      * @var PhiremockModule
@@ -337,6 +338,25 @@ class ApiDocumentMock extends Module implements DependsOnModule
             )
         );
     }
+
+    /**
+     * @param string $documentUniqueId
+     *
+     * @throws ClientExceptionInterface
+     * @throws Exception
+     */
+    public function mockFillDocumentSmartFieldsRequest(string $documentUniqueId): void
+    {
+        $this->phiremock->expectARequestToRemoteServiceWithAResponse(
+            Phiremock::on(
+                A::postRequest()
+                 ->andHeader('Content-Type', Is::equalTo('application/json'))
+                 ->andUrl(Is::equalTo($this->fillDocumentSmartFieldsUrl($documentUniqueId)))
+            )->then(
+                Respond::withStatusCode(200)
+            )
+        );
+    }
     
     /**
      * @return string
@@ -392,5 +412,15 @@ class ApiDocumentMock extends Module implements DependsOnModule
     private function prefillTextFieldsUrl(string $documentUniqueId): string
     {
         return strtr(self::PREFILL_TEXT_FIELDS_URL_PATTERN, ['{documentUniqueId}' => $documentUniqueId]);
+    }
+
+    /**
+     * @param string $documentUniqueId
+     *
+     * @return string
+     */
+    private function fillDocumentSmartFieldsUrl(string $documentUniqueId): string
+    {
+        return strtr(self::FILL_SMART_FIELDS_URL_PATTERN, ['{documentUniqueId}' => $documentUniqueId]);
     }
 }
