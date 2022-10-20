@@ -365,8 +365,8 @@ $prefill->prefill($documentUniqueId, $fields);
 #### <a name="fill-smart-fields"></a>Fill smart fields
 ```php
 use SignNow\Api\Action\FillSmartFields;
-use SignNow\Api\Entity\Document\SmartField;
 use SignNow\Api\Action\OAuth as SignNowOAuth;
+use SignNow\Api\Entity\Document\SmartField\SmartField;
 
 $auth = new SignNowOAuth(HOST);
 $entityManager = $auth->bearerByPassword(
