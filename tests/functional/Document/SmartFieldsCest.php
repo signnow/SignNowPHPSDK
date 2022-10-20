@@ -7,7 +7,7 @@ namespace SignNow\Tests\Functional\Document;
 use FunctionalTester;
 use ReflectionException;
 use SignNow\Api\Action\FillSmartFields;
-use SignNow\Api\Entity\Document\SmartField;
+use SignNow\Api\Entity\Document\SmartField\SmartField;
 use SignNow\Rest\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Tests\Functional\BaseCest;
@@ -50,6 +50,8 @@ class SmartFieldsCest extends BaseCest
 
         $I->mockFillDocumentSmartFieldsRequest($documentUniqueId);
 
-        $fillFieldsAction->fill($documentUniqueId, $smartFields);
+        $response = $fillFieldsAction->fill($documentUniqueId, $smartFields);
+
+        $I->assertSame('success', $response->getStatus());
     }
 }

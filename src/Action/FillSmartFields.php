@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace SignNow\Api\Action;
 
 use ReflectionException;
-use SignNow\Api\Entity\Document\SmartField;
+use SignNow\Api\Entity\Document\SmartField\SmartField;
+use SignNow\Api\Entity\Document\SmartField\SmartFieldResponse;
 use SignNow\Rest\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Rest\Http\Request;
@@ -36,16 +37,16 @@ class FillSmartFields
      * @param string     $documentUid
      * @param SmartField $smartFields
      *
-     * @return void
+     * @return SmartFieldResponse|object
      *
      * @throws EntityManagerException
      * @throws ReflectionException
      */
-    public function fill(string $documentUid, SmartField $smartFields): void
+    public function fill(string $documentUid, SmartField $smartFields): SmartFieldResponse
     {
         $this->entityManager->setUpdateHttpMethod(Request::METHOD_POST);
 
-        $this->entityManager->create(
+        return $this->entityManager->create(
             $smartFields,
             [
                 'documentUniqueId' => $documentUid,

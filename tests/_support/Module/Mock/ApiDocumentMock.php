@@ -355,6 +355,14 @@ class ApiDocumentMock extends Module implements DependsOnModule
                  ->andUrl(Is::equalTo($this->fillDocumentSmartFieldsUrl($documentUniqueId)))
             )->then(
                 Respond::withStatusCode(200)
+                    ->andHeader('Content-Type', 'application/json')
+                    ->andBody(
+                        json_encode(
+                            [
+                                'status' => 'success',
+                            ]
+                        )
+                    )
             )
         );
     }
