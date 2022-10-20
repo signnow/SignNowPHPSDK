@@ -23,7 +23,7 @@ class FillSmartFields
     private $entityManager;
 
     /**
-     * PrefillTextFields constructor.
+     * FillSmartFields constructor.
      *
      * @param EntityManager $entityManager
      */
