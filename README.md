@@ -362,6 +362,27 @@ $fields[] = (new FieldRequest())
 
 $prefill->prefill($documentUniqueId, $fields);
 ```
+#### <a name="fill-smart-fields"></a>Fill smart fields
+```php
+use SignNow\Api\Action\FillSmartFields;
+use SignNow\Api\Action\OAuth as SignNowOAuth;
+use SignNow\Api\Entity\Document\SmartField\SmartField;
+
+$auth = new SignNowOAuth(HOST);
+$entityManager = $auth->bearerByPassword(
+    BASIC_TOKEN,
+    USER,
+    PASSWORD
+);
+
+$prefill = new FillSmartFields($bearer);
+    
+$fields = [['Country' => 'USA'], ['City' => 'Boston']];
+$smartFields = (new SmartField())->setFields($fields);
+$smartFields->addField('key', 'value');
+
+$prefill->fill($documentUniqueId, $smartFields);
+```
 ### <a name="template"></a>Template
 #### <a name="create-template"></a>Create a template
 ```php
