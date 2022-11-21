@@ -383,6 +383,26 @@ $smartFields->addField('key', 'value');
 
 $prefill->fill($documentUniqueId, $smartFields);
 ```
+#### <a name="move-document"></a>Move document
+```php
+use SignNow\Api\Action\OAuth as SignNowOAuth;
+use SignNow\Api\Action\MoveDocumentAction;
+use SignNow\Api\Entity\Document\MoveDocument\MoveDocument;
+
+$auth = new SignNowOAuth(HOST);
+$entityManager = $auth->bearerByPassword(
+    BASIC_TOKEN,
+    USER,
+    PASSWORD
+);
+
+$moveDocumentEntity = new MoveDocument();
+$moveDocumentEntity->setFolderId($folderId);
+
+$moveDocumentAction = new MoveDocumentAction($entityManager);
+$moveDocumentAction->move($documentUniqueId, $moveDocumentEntity);
+```
+
 ### <a name="template"></a>Template
 #### <a name="create-template"></a>Create a template
 ```php
