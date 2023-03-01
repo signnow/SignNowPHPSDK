@@ -90,4 +90,24 @@ class UpdateDocumentCest extends BaseCest
         
         $I->assertSame($documentUniqueId, $documentEntity->getId());
     }
+
+    /**
+     * @param FunctionalTester $I
+     *
+     * @return void
+     * @throws EntityManagerException
+     * @throws ReflectionException
+     */
+    public function testUpdateDocumentName(FunctionalTester $I): void
+    {
+        $document = new Document($this->auth);
+
+        $documentUniqueId = $I->createUniqueId();
+
+        $I->mockUpdateDocumentRequest($documentUniqueId);
+        
+        $documentEntity = $document->modifyName($documentUniqueId, 'Updated Cool Name');
+
+        $I->assertSame($documentUniqueId, $documentEntity->getId());
+    }
 }

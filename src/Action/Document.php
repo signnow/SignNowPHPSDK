@@ -167,4 +167,22 @@ class Document
             ]
         );
     }
+
+    /**
+     * @param string $newDocumentName
+     * @param string $documentUniqueId
+     *
+     * @return DocumentEntity|object
+     * @throws EntityManagerException
+     * @throws ReflectionException
+     */
+    public function modifyName(string $documentUniqueId, string $newDocumentName): DocumentEntity
+    {
+        $document = new DocumentEntity();
+        $document->setId($documentUniqueId);
+        $document->setDocumentName($newDocumentName);
+        $this->entityManager->setUpdateHttpMethod(Request::METHOD_PUT);
+
+        return $this->entityManager->update($document);
+    }
 }
