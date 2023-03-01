@@ -21,6 +21,7 @@ Simple API Client to integrate SignNow with your application or website. Sign do
       * [Retrieve document](#retrieve-document)
       * [Delete document](#delete-document)
       * [Download document](#download-document)
+      * [Modify document name](#modify-document-name)
       * [Create a single-use link for document downloading](#document-download-link)
       * [Create a role-based invite to sign a document](#role-invite-document)
       * [Create a simple free form invite to sign a document](#free-form-invite-document)
@@ -211,6 +212,24 @@ $entityManager->get(new DocumentDownload(), ['id' => $documentUniqueId], ['type'
 
 // if need table containing the document's history set with_history=1
 $entityManager->get(new DocumentDownload(), ['id' => $documentUniqueId], ['type' => 'collapsed', 'with_history' => 1]);
+```
+#### <a name="modify-document-name"></a>Modify document name
+```php
+use SignNow\Api\Action\Document;
+use SignNow\Api\Action\OAuth as SignNowOAuth;
+
+$auth = new SignNowOAuth(HOST);
+$entityManager = $auth->bearerByPassword(
+    BASIC_TOKEN,
+    USER,
+    PASSWORD
+);
+
+$documentUniqueId = 'd136ce0211a74a808de9fefe7249446fe452e566';
+$documentName = 'Your document name to be modified';
+
+$document = new Document($entityManager);
+$documentEntity = $document->modifyName($documentUniqueId, $documentName);
 ```
 #### <a name="document-download-link"></a>Create a single-use link for document downloading
  ```php
