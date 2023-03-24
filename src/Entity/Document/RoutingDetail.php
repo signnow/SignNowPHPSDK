@@ -190,11 +190,11 @@ class RoutingDetail
     }
 
     /**
-     * @param array $inviteLinkInstructions
+     * @param null|string $inviteLinkInstructions
      *
      * @return RoutingDetail
      */
-    public function setInviteLinkInstructions(array $inviteLinkInstructions): RoutingDetail
+    public function setInviteLinkInstructions(?string $inviteLinkInstructions): RoutingDetail
     {
         $this->inviteLinkInstructions = $inviteLinkInstructions;
 
