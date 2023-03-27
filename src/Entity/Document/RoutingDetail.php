@@ -50,10 +50,10 @@ class RoutingDetail
     private $ccStep = [];
 
     /**
-     * @var array
-     * @Serializer\Type("array")
+     * @var null|string
+     * @Serializer\Type("string")
      */
-    private $inviteLinkInstructions = [];
+    private $inviteLinkInstructions;
 
     /**
      * @var array
@@ -182,19 +182,19 @@ class RoutingDetail
     }
 
     /**
-     * @return array
+     * @return null|string
      */
-    public function getInviteLinkInstructions(): array
+    public function getInviteLinkInstructions(): ?string
     {
         return $this->inviteLinkInstructions;
     }
 
     /**
-     * @param array $inviteLinkInstructions
+     * @param null|string $inviteLinkInstructions
      *
      * @return RoutingDetail
      */
-    public function setInviteLinkInstructions(array $inviteLinkInstructions): RoutingDetail
+    public function setInviteLinkInstructions(?string $inviteLinkInstructions): RoutingDetail
     {
         $this->inviteLinkInstructions = $inviteLinkInstructions;
 
