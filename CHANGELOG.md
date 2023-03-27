@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [v1.5.7] - 2023-03-24
+### Updated
+- Fixed type of `invite_link_instructions` parameter in routing detail
+
 ## [v1.5.6] - 2023-02-28
 ### Added
 - Action to modify document name
