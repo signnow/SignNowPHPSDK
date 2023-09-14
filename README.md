@@ -40,13 +40,17 @@ Simple API Client to integrate SignNow with your application or website. Sign do
       * [Get User Event Subscriptions](#get-event-subscriptions)
       * [Create User Event Subscription](#create-event-subscription)
       * [Delete User Event Subscription](#delete-event-subscription)
-    * [Embedded invites] (#embedded-invites)
+    * [Embedded invites](#embedded-invites)
       * [Create embedded invites](#create-embedded-invites)
       * [Create signing link](#create-signing-link)
       * [Prolong signing link](#prolong-signing-link)
       * [Delete embedded invites](#delete-embedded-invites)
       * [Reassign signers](#reassign-signers)
-      
+    * [User](#user)
+      * [Upload Initials](#upload-initials)
+      * [Get Initials](#get-initials)
+      * [Upload Signature](#upload-signature)
+      * [Get Signature](#get-signature)
 ## <a name="requirements"></a>Requirements 
 
 PHP 7.1 or newer
@@ -104,9 +108,13 @@ $entityManager = $auth->bearerByPassword('YOUR_BASIC_TOKEN_STRING', 'username', 
 SignNow PHP SDK is covered with functional tests using Codeception and Phiremock.
 Phiremock allows us to mock calls to SignNow API. All the calls pass at 127.0.0.1 port 8008. Ensure that this port is not in use in the local machine before running test.
 
-Test execution in console:
+All the tests execution in console:
 ```bash
 vendor/bin/codecept run functional
+```
+A single test execution in console:
+```bash
+vendor/bin/codecept run tests/functional/Template/CreateCest.php
 ```
 Also, tests might be useful as examples of using SignNow PHP SDK.
 ### <a name="sandbox"></a>Sandbox
@@ -579,3 +587,75 @@ $documentUniqueId = '0d3122a857514462a67515c0a39c6015780518f2';
 $embedInvite->delete($documentUniqueId);
 ```
 #### <a name="reassign-signers"></a>Reassign signers
+### <a name="user"></a>User
+### <a name="upload-initials"></a>Upload Initials
+```php
+use SignNow\Api\Action\OAuth as SignNowOAuth;
+use SignNow\Api\Action\User\Initial as UserInitial;
+
+$auth = new SignNowOAuth('https://api.signnow.com');
+$initial = new UserInitial(
+  $auth->bearerByPassword('YOUR_BASIC_TOKEN', 'user', 'password')
+);
+
+$userInitialBase64EncodedImage = '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';
+$entity = $initial->upload($userInitialBase64EncodedImage);
+
+echo $entity->getId(), PHP_EOL,
+    $entity->getWidth(), PHP_EOL, 
+    $entity->getHeight(), PHP_EOL;
+```
+### <a name="get-initials"></a>Get Initials
+```php
+use SignNow\Api\Action\OAuth as SignNowOAuth;
+use SignNow\Api\Action\User\Initial as UserInitial;
+
+$auth = new SignNowOAuth('https://api.signnow.com');
+$initial = new UserInitial(
+  $auth->bearerByPassword('YOUR_BASIC_TOKEN', 'user', 'password')
+);
+
+$entity = $initial->get();
+
+$signatureImage = base64_decode($entity->getData());
+
+echo $entity->getId(), PHP_EOL,
+    $entity->getWidth(), PHP_EOL, 
+    $entity->getHeight(), PHP_EOL;
+```
+### <a name="upload-signature"></a>Upload Signature
+```php
+use SignNow\Api\Action\OAuth as SignNowOAuth;
+use SignNow\Api\Action\User\Signature as UserSignature;
+
+$auth = new SignNowOAuth('https://api.signnow.com');
+$signature = new UserSignature(
+  $auth->bearerByPassword('YOUR_BASIC_TOKEN', 'user', 'password')
+);
+
+$userSignatureImage = file_get_contents('/path/to/image');
+$userSignatureBase64EncodedImage = base64_decode($userSignatureImage);
+$entity = $signature->upload($userSignatureBase64EncodedImage);
+
+echo $entity->getId(), PHP_EOL,
+    $entity->getWidth(), PHP_EOL,
+    $entity->getHeight(), PHP_EOL;
+```
+### <a name="get-signature"></a>Get Signature
+```php
+use SignNow\Api\Action\OAuth as SignNowOAuth;
+use SignNow\Api\Action\User\Signature as UserSignature;
+
+$auth = new SignNowOAuth('https://api.signnow.com');
+$signature = new UserSignature(
+  $auth->bearerByPassword('YOUR_BASIC_TOKEN', 'user', 'password')
+);
+
+$entity = $signature->get();
+
+$signatureImage = base64_decode($entity->getData());
+
+echo $entity->getId(), PHP_EOL,
+    $entity->getWidth(), PHP_EOL,
+    $entity->getHeight(), PHP_EOL;
+```
