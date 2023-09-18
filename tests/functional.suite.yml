@@ -38,4 +38,6 @@ modules:
               depends: Phiremock
         - \Module\Mock\Debug:
               depends: Phiremock
+        - \Module\Mock\ApiUserMock:
+            depends: Phiremock
     step_decorators: ~
