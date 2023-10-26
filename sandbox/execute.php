@@ -38,6 +38,9 @@ use SignNow\Api\Action\Data\Document\DocumentDownloadLinkParams;
 use SignNow\Api\Action\Data\Document\GetDocumentRequestParams;
 
 try {
+    // TODO: 1. Change SignNow\Rest\EntityManager -> SignNow\Api\Service\EntityManager\EntityManager
+    // TODO:    in all places in Action namespace.
+    // TODO: 2. Run tests
     $auth = new SignNowOAuth(HOST);
     $document = new Document(
         $auth->bearerByPassword(BASIC_TOKEN, USER, PASSWORD)
