@@ -8,7 +8,7 @@ use Codeception\Module;
 use Exception;
 use ReflectionException;
 use SignNow\Api\Action\OAuth as SignNowOAuth;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 
 /**
@@ -19,7 +19,7 @@ use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 class Api extends Module
 {
     private const SIGN_NOW_API_TESTS_LOCAL_PORT = 8008;
-    
+
     /**
      * @return string
      */
@@ -93,6 +93,7 @@ class Api extends Module
 
     /**
      * @param array $credentials
+     * @param string $basicToken
      *
      * @return EntityManager
      * @throws EntityManagerException

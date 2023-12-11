@@ -24,7 +24,7 @@ class EntityManager implements EntityManagerInterface
     private $restEntityManager;
 
     /**
-     * @var string
+     * @var null|string
      */
     private $clientName;
 
@@ -54,6 +54,10 @@ class EntityManager implements EntityManagerInterface
         );
     }
 
+    /**
+     * @throws ReflectionException
+     * @throws EntityManagerException
+     */
     public function create(Entity $entity, array $uriParams = [], array $queryParams = [], array $headers = [])
     {
         return $this->restEntityManager->create(
@@ -64,6 +68,10 @@ class EntityManager implements EntityManagerInterface
         );
     }
 
+    /**
+     * @throws ReflectionException
+     * @throws EntityManagerException
+     */
     public function update(Entity $entity, $uriParams = [], $queryParams = [], array $headers = [])
     {
         return $this->restEntityManager->update(
@@ -74,6 +82,10 @@ class EntityManager implements EntityManagerInterface
         );
     }
 
+    /**
+     * @throws ReflectionException
+     * @throws EntityManagerException
+     */
     public function delete(Entity $entity, $uriParams = [], $queryParams = [], array $headers = [])
     {
         return $this->restEntityManager->delete(
@@ -96,7 +108,7 @@ class EntityManager implements EntityManagerInterface
         return $this;
     }
 
-    public function getClientName(): string
+    public function getClientName(): ?string
     {
         return $this->clientName;
     }
@@ -108,10 +120,14 @@ class EntityManager implements EntityManagerInterface
      */
     private function makeHeaders(array $headers): array
     {
+        if ($this->getClientName() === null) {
+            return $headers;
+        }
+
         return array_merge(
             $headers,
             [
-                'X-SN-API-CLIENT' => $this->getClientName(),
+                'User-Agent' => $this->getClientName(),
             ]
         );
     }

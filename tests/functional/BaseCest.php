@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace SignNow\Tests\Functional;
 
 use FunctionalTester;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 
 /**
  * Class BaseCest
