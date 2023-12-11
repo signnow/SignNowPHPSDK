@@ -41,8 +41,10 @@ class EntityManager implements EntityManagerInterface
     }
 
     /**
-     * @throws ReflectionException
      * @throws EntityManagerException
+     * @throws ReflectionException
+     *
+     * @return object
      */
     public function get($entity, array $uriParams = [], array $queryParams = [], array $headers = [])
     {
@@ -57,6 +59,8 @@ class EntityManager implements EntityManagerInterface
     /**
      * @throws ReflectionException
      * @throws EntityManagerException
+     *
+     * @return object
      */
     public function create(Entity $entity, array $uriParams = [], array $queryParams = [], array $headers = [])
     {
@@ -71,6 +75,8 @@ class EntityManager implements EntityManagerInterface
     /**
      * @throws ReflectionException
      * @throws EntityManagerException
+     *
+     * @return object
      */
     public function update(Entity $entity, $uriParams = [], $queryParams = [], array $headers = [])
     {
@@ -85,6 +91,8 @@ class EntityManager implements EntityManagerInterface
     /**
      * @throws ReflectionException
      * @throws EntityManagerException
+     *
+     * @return object
      */
     public function delete(Entity $entity, $uriParams = [], $queryParams = [], array $headers = [])
     {
