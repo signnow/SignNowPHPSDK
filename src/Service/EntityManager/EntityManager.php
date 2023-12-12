@@ -16,7 +16,7 @@ use SignNow\Rest\EntityManager\Exception\EntityManagerException;
  */
 class EntityManager implements EntityManagerInterface
 {
-    private const CLIENT = 'SN_PHP_SDK';
+    private const CLIENT_NAME = 'SN_PHP_SDK';
 
     /**
      * @var RestEntityManager
@@ -24,7 +24,7 @@ class EntityManager implements EntityManagerInterface
     private $restEntityManager;
 
     /**
-     * @var null|string
+     * @var string
      */
     private $clientName;
 
@@ -37,7 +37,7 @@ class EntityManager implements EntityManagerInterface
     public function __construct(RestEntityManager $baseEntityManager, ?string $clientName = null)
     {
         $this->restEntityManager = $baseEntityManager;
-        $this->clientName = $clientName ?? self::CLIENT;
+        $this->clientName = $clientName ?? self::CLIENT_NAME;
     }
 
     /**
@@ -116,7 +116,7 @@ class EntityManager implements EntityManagerInterface
         return $this;
     }
 
-    public function getClientName(): ?string
+    public function getClientName(): string
     {
         return $this->clientName;
     }
@@ -128,10 +128,6 @@ class EntityManager implements EntityManagerInterface
      */
     private function makeHeaders(array $headers): array
     {
-        if ($this->getClientName() === null) {
-            return $headers;
-        }
-
         return array_merge(
             $headers,
             [

@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace SignNow\Tests\Functional\DocumentGroup\GroupInvite;
 
-use Exception;
 use FunctionalTester;
-use Helper\Str;
 use ReflectionException;
-use SignNow\Api\Action\Data\DocumentGroupInvite\AuthenticationType;
 use SignNow\Api\Action\DocumentGroup\GroupInvite;
 use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
