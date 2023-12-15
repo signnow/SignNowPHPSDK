@@ -8,7 +8,7 @@ use ReflectionException;
 use SignNow\Api\Action\Data\Document\TextTagFieldType;
 use SignNow\Api\Action\Document;
 use SignNow\Api\Entity\Document\TextTag;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Tests\Functional\BaseCest;
 

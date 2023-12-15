@@ -7,7 +7,7 @@ namespace SignNow\Api\Action\User;
 use ReflectionException;
 use SignNow\Api\Entity\User\Signature as UserSignatureEntity;
 use SignNow\Api\Entity\User\ImageResponse;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Rest\Http\Request;
 

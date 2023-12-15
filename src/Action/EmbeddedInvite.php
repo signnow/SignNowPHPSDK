@@ -10,9 +10,9 @@ use SignNow\Api\Entity\Embedded\Invite\DeleteEmbeddedInvites;
 use SignNow\Api\Entity\Embedded\Invite\EmbeddedInvites;
 use SignNow\Api\Entity\Embedded\SigningLink\CreateSigningLink;
 use SignNow\Api\Entity\Embedded\SigningLink\SigningLink;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Api\Service\OAuth\AuthMethod\AuthMethodInterface;
 use SignNow\Api\Service\OAuth\AuthMethod\Method\None;
-use SignNow\Rest\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 
 /**

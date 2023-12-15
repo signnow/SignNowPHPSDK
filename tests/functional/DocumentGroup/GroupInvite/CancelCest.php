@@ -3,19 +3,10 @@ declare(strict_types=1);
 
 namespace SignNow\Tests\Functional\DocumentGroup\GroupInvite;
 
-use Exception;
 use FunctionalTester;
-use Helper\Str;
 use ReflectionException;
-use SignNow\Api\Action\Data\DocumentGroupInvite\AuthenticationType;
 use SignNow\Api\Action\DocumentGroup\GroupInvite;
-use SignNow\Api\Entity\DocumentGroup\GroupInvite\Authentication;
-use SignNow\Api\Entity\DocumentGroup\GroupInvite\CompletionEmail;
-use SignNow\Api\Entity\DocumentGroup\GroupInvite\InviteAction;
-use SignNow\Api\Entity\DocumentGroup\GroupInvite\InviteEmail;
-use SignNow\Api\Entity\DocumentGroup\GroupInvite\InviteStep;
-use SignNow\Api\Entity\DocumentGroup\GroupInvite\Reminder;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Tests\Functional\BaseCest;
 

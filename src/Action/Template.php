@@ -7,7 +7,7 @@ use ReflectionException;
 use SignNow\Api\Entity\Document\Document as DocumentEntity;
 use SignNow\Api\Entity\Template\Copy as TemplateCopyEntity;
 use SignNow\Api\Entity\Template\Template as TemplateEntity;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 
 /**

@@ -8,7 +8,7 @@ use FunctionalTester;
 use ReflectionException;
 use SignNow\Api\Entity\Document\MoveDocument\MoveDocument;
 use SignNow\Api\Action\MoveDocumentAction as MoveDocumentAction;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Tests\Functional\BaseCest;
 

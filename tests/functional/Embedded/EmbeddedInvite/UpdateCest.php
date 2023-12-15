@@ -6,12 +6,9 @@ namespace SignNow\Tests\Functional\Embedded\EmbeddedInvite;
 
 use Exception;
 use FunctionalTester;
-use Helper\Str;
 use ReflectionException;
 use SignNow\Api\Action\EmbeddedInvite;
-use SignNow\Api\Entity\Embedded\Invite\InviteRequest;
-use SignNow\Api\Service\OAuth\AuthMethod\Method\None;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Tests\Functional\BaseCest;
 

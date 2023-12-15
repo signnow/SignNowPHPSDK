@@ -41,13 +41,13 @@ try {
     $document = new Document(
         $auth->bearerByPassword(BASIC_TOKEN, USER, PASSWORD)
     );
-    
+
     // 1. Upload a doc
     $documentEntity = $document->upload(dirname(__DIR__) . '/tests/_data/blank.pdf');
     echo 'Uploaded the document: ', $documentEntity->getId(), PHP_EOL, PHP_EOL;
 
     usleep(500);
-    
+
     // 2. Get the doc
     $params = (new GetDocumentRequestParams())
         ->setExclude(
@@ -67,13 +67,13 @@ try {
     echo 'Given document name: ', $documentEntity->getDocumentName(), PHP_EOL, PHP_EOL;
 
     sleep(2);
-    
+
     // 3. Create download link
     $link = $document->createDownloadLink($documentEntity->getId());
     echo 'Download link: ', $link->getLink(), PHP_EOL, PHP_EOL;
 
     sleep(2);
-    
+
     // 4. Download the doc
     $path = DOWNLOADED_DIRECTORY_PATH . '/sign_now_downloaded_document.pdf';
     $params = (new DocumentDownloadLinkParams())
@@ -87,7 +87,7 @@ try {
     echo 'Downloaded the document in ', $path, PHP_EOL, PHP_EOL;
 
     sleep(2);
-    
+
     // 5. Delete the doc
     $document->delete($documentEntity->getId());
     echo 'Deleted the document ', $documentEntity->getId(), PHP_EOL, PHP_EOL;
