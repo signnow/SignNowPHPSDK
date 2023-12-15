@@ -51,10 +51,218 @@ class InviteRequest
     private $lastName;
 
     /**
-     * @var string
+     * @var null|string
      * @Serializer\Type("string")
      */
     private $redirectUri;
+
+    /**
+     * @var null|string
+     * @Serializer\Type("string")
+     */
+    private $declineRedirectUri;
+
+    /**
+     * @var null|string
+     * @Serializer\Type("string")
+     */
+    private $closeRedirectUri;
+
+    /**
+     * @var null|string
+     * @Serializer\Type("string")
+     */
+    private $redirectTarget;
+
+    /**
+     * @var null|string
+     * @Serializer\Type("string")
+     */
+    private $prefillSignatureName;
+
+    /**
+     * @var null|integer
+     * @Serializer\Type("integer")
+     */
+    private $forceNewSignature;
+
+    /**
+     * @var null|string
+     * @Serializer\Type("string")
+     */
+    private $signingInstructions;
+
+    /**
+     * @var null|string
+     * @Serializer\Type("string")
+     */
+    private $requiredPresetSignatureName;
+
+    /**
+     * @var null|string
+     * @Serializer\Type("string")
+     */
+    private $language;
+
+    /**
+     * @return string|null
+     */
+    public function getDeclineRedirectUri(): ?string
+    {
+        return $this->declineRedirectUri;
+    }
+
+    /**
+     * @param string|null $declineRedirectUri
+     *
+     * @return InviteRequest
+     */
+    public function setDeclineRedirectUri(?string $declineRedirectUri): InviteRequest
+    {
+        $this->declineRedirectUri = $declineRedirectUri;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCloseRedirectUri(): ?string
+    {
+        return $this->closeRedirectUri;
+    }
+
+    /**
+     * @param string|null $closeRedirectUri
+     *
+     * @return InviteRequest
+     */
+    public function setCloseRedirectUri(?string $closeRedirectUri): InviteRequest
+    {
+        $this->closeRedirectUri = $closeRedirectUri;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRedirectTarget(): ?string
+    {
+        return $this->redirectTarget;
+    }
+
+    /**
+     * @param string|null $redirectTarget
+     *
+     * @return InviteRequest
+     */
+    public function setRedirectTarget(?string $redirectTarget): InviteRequest
+    {
+        $this->redirectTarget = $redirectTarget;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPrefillSignatureName(): ?string
+    {
+        return $this->prefillSignatureName;
+    }
+
+    /**
+     * @param string|null $prefillSignatureName
+     *
+     * @return InviteRequest
+     */
+    public function setPrefillSignatureName(?string $prefillSignatureName): InviteRequest
+    {
+        $this->prefillSignatureName = $prefillSignatureName;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getForceNewSignature(): ?int
+    {
+        return $this->forceNewSignature;
+    }
+
+    /**
+     * @param int|null $forceNewSignature
+     *
+     * @return InviteRequest
+     */
+    public function setForceNewSignature(?int $forceNewSignature): InviteRequest
+    {
+        $this->forceNewSignature = $forceNewSignature;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSigningInstructions(): ?string
+    {
+        return $this->signingInstructions;
+    }
+
+    /**
+     * @param string|null $signingInstructions
+     *
+     * @return InviteRequest
+     */
+    public function setSigningInstructions(?string $signingInstructions): InviteRequest
+    {
+        $this->signingInstructions = $signingInstructions;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRequiredPresetSignatureName(): ?string
+    {
+        return $this->requiredPresetSignatureName;
+    }
+
+    /**
+     * @param string|null $requiredPresetSignatureName
+     *
+     * @return InviteRequest
+     */
+    public function setRequiredPresetSignatureName(?string $requiredPresetSignatureName): InviteRequest
+    {
+        $this->requiredPresetSignatureName = $requiredPresetSignatureName;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLanguage(): ?string
+    {
+        return $this->language;
+    }
+
+    /**
+     * @param string|null $language
+     *
+     * @return InviteRequest
+     */
+    public function setLanguage(?string $language): InviteRequest
+    {
+        $this->language = $language;
+
+        return $this;
+    }
 
     /**
      * @return string
@@ -177,9 +385,9 @@ class InviteRequest
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getRedirectUri(): string
+    public function getRedirectUri(): ?string
     {
         return $this->redirectUri;
     }

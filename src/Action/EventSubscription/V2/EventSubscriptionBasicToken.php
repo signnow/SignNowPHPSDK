@@ -5,12 +5,11 @@ namespace SignNow\Api\Action\EventSubscription\V2;
 
 use ReflectionException;
 use SignNow\Api\Action\Data\EventSubscription\V2\ActionsList;
-use SignNow\Api\Entity\EventSubscription\V2\EventCollection;
 use SignNow\Api\Entity\EventSubscription\V2\CreateEventSubscription;
 use SignNow\Api\Entity\EventSubscription\V2\DeleteEventSubscription;
+use SignNow\Api\Entity\EventSubscription\V2\EventCollection;
 use SignNow\Api\Entity\EventSubscription\V2\GetEventSubscriptions;
-use SignNow\Api\Entity\EventSubscription\V2\UpdateEventSubscription;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 
 /**

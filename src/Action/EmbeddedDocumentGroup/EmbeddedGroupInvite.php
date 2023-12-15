@@ -9,7 +9,7 @@ use SignNow\Api\Entity\Embedded\GroupInvite\CreateSigningLinkEmbeddedInvites;
 use SignNow\Api\Entity\Embedded\GroupInvite\DeleteEmbeddedInvites;
 use SignNow\Api\Entity\Embedded\GroupInvite\EmbeddedInvites;
 use SignNow\Api\Entity\Embedded\GroupInvite\SigningLinkResponse;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 
 /**

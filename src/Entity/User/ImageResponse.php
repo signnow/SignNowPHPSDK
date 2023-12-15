@@ -46,7 +46,7 @@ class ImageResponse
      * base64 encoded image data
      *
      * @var null|string
-     * 
+     *
      * @Serializer\Type("string")
      */
     private $data;

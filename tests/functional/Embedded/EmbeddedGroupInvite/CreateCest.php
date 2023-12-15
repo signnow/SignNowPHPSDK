@@ -13,7 +13,7 @@ use SignNow\Api\Action\EmbeddedDocumentGroup\EmbeddedGroupInvite;
 use SignNow\Api\Entity\Embedded\GroupInvite\Document;
 use SignNow\Api\Entity\Embedded\GroupInvite\InviteRequest;
 use SignNow\Api\Entity\Embedded\GroupInvite\Signer;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Tests\Functional\BaseCest;
 

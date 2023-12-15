@@ -7,7 +7,7 @@ namespace SignNow\Api\Action;
 use ReflectionException;
 use SignNow\Api\Entity\Document\SmartField\SmartField;
 use SignNow\Api\Entity\Document\SmartField\SmartFieldResponse;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Rest\Http\Request;
 

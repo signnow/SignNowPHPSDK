@@ -12,7 +12,7 @@ use SignNow\Api\Entity\Invite\Response;
 use SignNow\Api\Entity\FreeForm\InviteResponse as FreeFormResponse;
 use SignNow\Api\Entity\Invite\SigningLinkResponse;
 use SignNow\Api\Entity\Invite\SigningLink;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Rest\Http\Request;
 

@@ -7,7 +7,7 @@ namespace SignNow\Api\Action\User;
 use ReflectionException;
 use SignNow\Api\Entity\User\Initial as UserInitialEntity;
 use SignNow\Api\Entity\User\ImageResponse;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Rest\Http\Request;
 
@@ -42,7 +42,7 @@ class Initial
     public function upload(string $base64ImageData): ImageResponse
     {
         $this->entityManager->setUpdateHttpMethod(Request::METHOD_PUT);
-        
+
         return $this->entityManager->update(
             new UserInitialEntity($base64ImageData)
         );

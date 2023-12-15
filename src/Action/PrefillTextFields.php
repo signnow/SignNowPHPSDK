@@ -5,7 +5,7 @@ namespace SignNow\Api\Action;
 
 use ReflectionException;
 use SignNow\Api\Entity\Document\PrefillText\PrefillTextField;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Rest\Http\Request;
 

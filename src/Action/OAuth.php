@@ -4,11 +4,11 @@ declare(strict_types=1);
 namespace SignNow\Api\Action;
 
 use ReflectionException;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Api\Entity\Auth\Token;
 use SignNow\Api\Entity\Auth\TokenRequestPassword;
 use SignNow\Api\Service\Factory\EntityManagerFactory;
 use SignNow\Api\Service\Factories\TokenFactory;
-use SignNow\Rest\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 
 /**
@@ -26,11 +26,17 @@ class OAuth
     private $host;
 
     /**
+     * @var null|string
+     */
+    private $clientName;
+
+    /**
      * @param string $host
      */
-    public function __construct(string $host)
+    public function __construct(string $host, ?string $clientName = null)
     {
         $this->host = $host;
+        $this->clientName = $clientName;
     }
 
     /**
@@ -42,7 +48,8 @@ class OAuth
     {
         return (new EntityManagerFactory())->create(
             $this->host,
-            (new TokenFactory())->basicToken($basicToken)
+            (new TokenFactory())->basicToken($basicToken),
+            $this->clientName
         );
     }
 
@@ -55,7 +62,8 @@ class OAuth
     {
         return (new EntityManagerFactory())->create(
             $this->host,
-            (new TokenFactory())->bearerToken($bearerToken)
+            (new TokenFactory())->bearerToken($bearerToken),
+            $this->clientName
         );
     }
 

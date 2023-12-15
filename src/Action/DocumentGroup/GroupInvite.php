@@ -9,7 +9,7 @@ use SignNow\Api\Entity\DocumentGroup\GroupInvite\CreateGroupInvite;
 use SignNow\Api\Entity\DocumentGroup\GroupInvite\GroupInvite as GroupInviteEntity;
 use SignNow\Api\Entity\DocumentGroup\GroupInvite\ResponseGroupInvite;
 use SignNow\Api\Entity\Status;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 
 /**

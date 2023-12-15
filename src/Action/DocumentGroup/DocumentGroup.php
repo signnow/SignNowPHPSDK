@@ -6,7 +6,7 @@ namespace SignNow\Api\Action\DocumentGroup;
 use ReflectionException;
 use SignNow\Api\Entity\DocumentGroup\CreateDocumentGroup;
 use SignNow\Api\Entity\DocumentGroup\DocumentGroup as DocumentGroupEntity;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 
 /**
