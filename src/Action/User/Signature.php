@@ -42,7 +42,7 @@ class Signature
     public function upload(string $base64ImageData): ImageResponse
     {
         $this->entityManager->setUpdateHttpMethod(Request::METHOD_PUT);
-        
+
         return $this->entityManager->update(
             new UserSignatureEntity($base64ImageData)
         );
