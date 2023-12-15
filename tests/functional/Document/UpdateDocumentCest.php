@@ -10,7 +10,7 @@ use SignNow\Api\Action\Document;
 use SignNow\Api\Entity\Document\Field\InitialsField;
 use SignNow\Api\Entity\Document\Field\SignatureField;
 use SignNow\Api\Entity\Document\Field\TextField;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Tests\Functional\BaseCest;
 

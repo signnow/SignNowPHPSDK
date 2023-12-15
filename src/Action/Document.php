@@ -14,7 +14,7 @@ use SignNow\Api\Entity\Document\TextTag;
 use SignNow\Api\Entity\Document\Upload as DocumentUpload;
 use SignNow\Api\Entity\Document\FieldExtract as DocumentUploadFieldExtract;
 use SignNow\Rest\Entity\Binary;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Rest\Http\Request;
 use SplFileInfo;

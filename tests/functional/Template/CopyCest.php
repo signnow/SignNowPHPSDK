@@ -7,7 +7,7 @@ namespace SignNow\Tests\Functional\Template;
 use FunctionalTester;
 use ReflectionException;
 use SignNow\Api\Action\Template;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Tests\Functional\BaseCest;
 

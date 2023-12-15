@@ -8,7 +8,7 @@ use FunctionalTester;
 use ReflectionException;
 use SignNow\Api\Action\PrefillTextFields;
 use SignNow\Api\Entity\Document\PrefillText\FieldRequest;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Tests\Functional\BaseCest;
 

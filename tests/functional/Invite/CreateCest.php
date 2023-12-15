@@ -13,7 +13,7 @@ use SignNow\Api\Action\Invite\FieldInvite;
 use SignNow\Api\Entity\Document\Field\TextField;
 use SignNow\Api\Entity\FreeForm\Invite as FreeFormInvite;
 use SignNow\Api\Entity\Invite\Recipient;
-use SignNow\Rest\EntityManager;
+use SignNow\Api\Service\EntityManager\EntityManager;
 use SignNow\Rest\EntityManager\Exception\EntityManagerException;
 use SignNow\Tests\Functional\BaseCest;
 
