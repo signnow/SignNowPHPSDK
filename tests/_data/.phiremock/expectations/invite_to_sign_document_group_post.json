@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"matches":"/^\\/documentgroup\\/[0-9a-z]{40}\\/groupinvite$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"id\":\"1e693f450d544aa6606dc25ca7661687b770625f\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

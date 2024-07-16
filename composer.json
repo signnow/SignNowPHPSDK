@@ -1,38 +1,41 @@
 {
-    "name": "signnow/api-php-sdk",
-    "license": "MIT",
-    "description": "Library gives you ability to communicate with SignNow API",
-    "type": "library",
-    "keywords": ["php sdk", "api", "signnow"],
-    "autoload": {
-        "psr-4": {
-            "SignNow\\Api\\": "src",
-            "Examples\\": "examples/"
-        }
-    },
-    "require": {
-        "php": ">=7.1",
-        "ext-json": "*",
-        "signnow/rest-entity-manager": "^2.0.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^7",
-        "codeception/codeception": "^4.1",
-        "codeception/module-asserts": "^1.2",
-        "mcustiel/phiremock-codeception-extension": "^2.0",
-        "mcustiel/phiremock-server": "^1.0",
-        "mcustiel/phiremock-client": "^1.2",
-        "mcustiel/phiremock-codeception-module": "^1.1",
-        "squizlabs/php_codesniffer": "^3.6"
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "SignNow\\Tests\\Functional\\": "tests/functional/",
-            "SignNow\\Tests\\Unit\\": "tests/unit/"
-        },
-        "classmap": [
-            "tests/_support"
-        ]
-    },
-    "prefer-stable": true
+  "name": "signnow/api-php-sdk",
+  "license": "MIT",
+  "description": "Library to communicate with SignNow API",
+  "type": "library",
+  "keywords": [
+    "php sdk",
+    "api",
+    "signnow"
+  ],
+  "autoload": {
+    "psr-4": {
+      "SignNow\\": "src/SignNow"
+    }
+  },
+  "require": {
+    "php": "^8.2",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "^7.8.0",
+    "symfony/dependency-injection": "^7.0",
+    "symfony/property-access": "^7.0",
+    "symfony/serializer": "^7.0"
+  },
+  "require-dev": {
+    "fakerphp/faker": "^1.23",
+    "mcustiel/phiremock-server": "^1.2",
+    "squizlabs/php_codesniffer": "^3.7"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SignNow\\Sdk\\Tests\\": "tests/api/",
+      "SignNow\\Sdk\\Tests\\Core\\": "tests/core/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "prefer-stable": true
 }

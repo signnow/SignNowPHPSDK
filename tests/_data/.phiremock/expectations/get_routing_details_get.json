@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "GET" },
+    "url": {"matches":"/^\\/document\\/[0-9a-z]{40}\\/template\\/routing\\/detail$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"routing_details\":[{\"default_email\":\"\",\"inviter_role\":false,\"name\":\"et\",\"role_id\":\"ad5f74fc9f59e2201814d09c8dfa0f4ff4d7e063\",\"signing_order\":19435,\"decline_by_signature\":false,\"delivery_type\":\"odio\"}],\"cc\":[\"bethany.kautzer@ruecker.com\"],\"cc_step\":[{\"email\":\"penelope01@yahoo.com\",\"name\":\"nobis\",\"step\":76157}],\"viewers\":[{\"default_email\":\"adrianna94@ernser.com\",\"name\":\"laborum\",\"signing_order\":76689}],\"approvers\":[{\"default_email\":\"dcarter@kuhic.com\",\"name\":\"exercitationem\",\"signing_order\":60273}],\"invite_link_instructions\":[\"sapiente\"]}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "PUT" },
+    "url": {"isSameString":"/user/email/verify"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "[]",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"isSameString":"/oauth2/token"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"expires_in\":317467546,\"token_type\":\"bearer\",\"access_token\":\"cdcccb6ab7af9b20fcc8ce459b6f0ccfa38d13d09c864f8d1011bf2512c3f26b\",\"refresh_token\":\"29db003b4e2884be27deb2c973763e363a35eec0bbd7b7e46cf8ae2274884642\",\"scope\":\"*\",\"last_login\":790918188}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

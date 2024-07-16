@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "PUT" },
+    "url": {"isSameString":"/user"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"id\":\"f6de5f1baf8be306ec1d50495eb38cc59b39a080\",\"first_name\":\"eius\",\"last_name\":\"enim\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

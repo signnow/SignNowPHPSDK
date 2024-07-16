@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"matches":"/^\\/template\\/[0-9a-z]{40}\\/bulkinvite$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"status\":\"success\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

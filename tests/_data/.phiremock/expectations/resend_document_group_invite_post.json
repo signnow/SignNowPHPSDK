@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"matches":"/^\\/documentgroup\\/[0-9a-z]{40}\\/groupinvite\\/[0-9a-z]{40}\\/resendinvites$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"status\":\"success\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

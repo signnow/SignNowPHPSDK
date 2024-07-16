@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"isSameString":"/document"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"id\":\"8f586e028fb48dfe078a37fc7a4448ad8110e7e4\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

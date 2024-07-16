@@ -1,0 +1,37 @@
+#!/bin/env php
+<?php
+
+declare(strict_types=1);
+
+require dirname(__DIR__, 2) . '/vendor/autoload.php';
+
+use SignNow\Sdk\Tests\Core\TestCaseExecutor;
+
+$pathToTestCases = dirname(__DIR__) . '/api';
+
+echo "\n\033[36msignNow API SDK testing\033[0m ...\n\n";
+
+$executor = new TestCaseExecutor($pathToTestCases);
+
+// Execute a single test
+if (isset($argv[1])) {
+    $testCase = $argv[1];
+    $result = $executor->runOne($testCase);
+    $result->displayProcessingMessage();
+    if ($result->isFailed()) {
+        $result->displayErrors();
+        exit(1);
+    }
+    exit(0);
+}
+
+// Execute all the tests
+$results = $executor->runAll();
+if ($results->isPassed()) {
+    $results->displayPassedTitle();
+    exit(0);
+}
+
+$results->displayErrorsTitle();
+$results->displayErrors();
+exit(1);

@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"isSameString":"/template"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"id\":\"524b067e386aa707699df2f0a3e18f3c5676dde5\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "GET" },
+    "url": {"matches":"/^\\/v2\\/documents\\/[0-9a-z]{40}\\/fields$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"data\":[{\"id\":\"766bc66e9259e84d65b617fe5f61a32ce0e47453\",\"name\":\"provident\",\"type\":\"minus\",\"value\":\"harum\"}]}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

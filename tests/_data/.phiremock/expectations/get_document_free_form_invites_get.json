@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "GET" },
+    "url": {"matches":"/^\\/v2\\/documents\\/[0-9a-z]{40}\\/free-form-invites$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"meta\":{\"pagination\":{\"total\":87790,\"count\":76461,\"per_page\":73916,\"current_page\":12488,\"total_pages\":73810,\"links\":[\"voluptatibus\"]}}}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

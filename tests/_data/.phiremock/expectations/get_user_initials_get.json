@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "GET" },
+    "url": {"isSameString":"/user/initial"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"unique_id\":\"26058ecf1423b763b91033a2dc00db33781494bd\",\"width\":\"12660\",\"height\":\"56984\",\"data\":\"iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAABHNCSVQICAgIfAhkiAAAABl0RVh0U29mdHdhcmUAZ25vbWUtc2NyZWVuc2hvdO8Dvz4AAAApSURBVAiZVcvBCQAgEMTAObH\\/itX1IYgG8ksqc8RDA9WO6CDrFpXkWzZ2uwn\\/AFD5ZAAAAABJRU5ErkJggg==\",\"created\":\"826808455\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "DELETE" },
+    "url": {"matches":"/^\\/api\\/v2\\/events\\/[0-9a-z]{40}$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "[]",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

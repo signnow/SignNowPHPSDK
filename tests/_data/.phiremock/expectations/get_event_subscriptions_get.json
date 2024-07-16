@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "GET" },
+    "url": {"isSameString":"/api/v2/events"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"data\":[{\"id\":\"048be454ea2dd62c1f5c05b0e8dd17043eb5b66c\",\"event\":\"in\",\"entity_id\":16884,\"action\":\"voluptatem\",\"json_attributes\":{\"use_tls_12\":false,\"docid_queryparam\":true,\"integration_id\":\"43d989335a35239f151f71539acdcca6fadc89f2\",\"callback_url\":\"http:\\/\\/www.mayert.com\\/cupiditate-suscipit-et-molestiae-error-consectetur\",\"headers\":{\"string_head\":\"esse\",\"int_head\":67094,\"bool_head\":true,\"float_head\":7635653.4879238745},\"secret_key\":\"ffce1d28ee7053e4b4a237ee4af193eaf475ab98\"},\"created\":806520857,\"content\":{\"key\":\"assumenda\",\"key1\":\"aut\",\"key2\":\"sunt\",\"account_id\":\"1e0ed41e5af356c6be8bb7a2cb27066390b9e0a7\",\"source\":\"quia\"}}]}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"matches":"/^\\/v2\\/documents\\/[0-9a-z]{40}\\/embedded-invites$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"data\":[{\"id\":\"960a9315c27e2dea6953521c04d87be2f9c27362\",\"email\":\"gabshire@hansen.info\",\"role_id\":\"52ba26853facbf5a3126330ae02bf14fc02c9091\",\"order\":54943,\"status\":\"success\"}]}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}
