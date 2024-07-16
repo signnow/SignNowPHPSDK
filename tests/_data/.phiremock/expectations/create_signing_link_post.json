@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"isSameString":"/link"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"url\":\"http:\\/\\/www.deckow.com\\/nulla-non-qui-aut-tenetur-molestiae-in-dolor.html\",\"url_no_signup\":\"http:\\/\\/www.rutherford.net\\/debitis-qui-alias-minima-ipsa-aut-id\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+/vendor
+/.idea
+/.fleet
+/.vscode
+/.netbeans
+composer.lock
+.env
+.env.backup
+.env.test
+.env.production
+.env.development

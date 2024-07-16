@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "GET" },
+    "url": {"matches":"/^\\/documentgroup\\/[0-9a-z]{40}\\/groupinvite\\/[0-9a-z]{40}$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"invite\":{\"id\":\"c842d42de497b78b89e750be28e840df0a4c2895\",\"status\":\"iste\",\"steps\":[{\"id\":\"2322021147073ea49a909321710f44be00342a35\",\"status\":\"et\",\"order\":89904,\"actions\":[{\"action\":\"aperiam\",\"email\":\"gleichner.dax@leffler.org\",\"document_id\":\"3f10062beeb080166793f66dff0dd84077621d1f\",\"status\":\"enim\",\"role_name\":\"perspiciatis\"}]}]}}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

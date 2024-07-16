@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"matches":"/^\\/v2\\/document-groups\\/[0-9a-z]{40}\\/embedded-invites\\/[0-9a-z]{40}\\/link$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"data\":{\"link\":\"http:\\/\\/www.gorczany.org\\/ad-maxime-aut-ratione\"}}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

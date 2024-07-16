@@ -1,0 +1,9 @@
+<?php
+
+return [
+    'port'             => 8086,
+    'ip'               => '0.0.0.0',
+    'expectations-dir' => __DIR__ . '/tests/_data/.phiremock/expectations',
+    'debug'            => 1,
+    'factory-class'    => '\\SignNow\\Sdk\\Tests\\Core\\Mock\\PhiremockFactory',
+];

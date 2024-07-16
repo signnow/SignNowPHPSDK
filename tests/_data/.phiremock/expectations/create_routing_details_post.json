@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"matches":"/^\\/document\\/[0-9a-z]{40}\\/template\\/routing\\/detail$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"routing_details\":[{\"default_email\":\"carmine.kris@will.com\",\"inviter_role\":false,\"name\":\"harum\",\"role_id\":\"960b8db7ec2dd66424de506afe871f7b7875b33c\",\"signing_order\":91465}]}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

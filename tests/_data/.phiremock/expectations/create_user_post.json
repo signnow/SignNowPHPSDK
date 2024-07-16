@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"isSameString":"/user"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"id\":\"1d94fad4541948f004e2ba030019964388a63933\",\"verified\":35479,\"email\":\"pfeffer.bradley@hotmail.com\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

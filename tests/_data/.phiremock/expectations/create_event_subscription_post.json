@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"isSameString":"/api/v2/events"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "[]",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

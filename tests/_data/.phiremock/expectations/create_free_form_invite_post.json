@@ -1,0 +1,17 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"matches":"/^\\/document\\/[0-9a-z]{40}\\/invite$/"},
+    "body": {"matches": "{\"to\":\"*@*\"}"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"result\":\"success\",\"id\":\"961e1c026a3b596ca83abd1207b72e7b1a2e7811\",\"callback_url\":\"http:\\/\\/www.shanahan.com\\/\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

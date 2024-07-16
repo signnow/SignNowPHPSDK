@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "PUT" },
+    "url": {"matches":"/^\\/document\\/[0-9a-z]{40}$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"id\":\"ee04066a98811cfee5aba5428066a7d91bf4ac5f\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

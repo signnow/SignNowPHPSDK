@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "PUT" },
+    "url": {"matches":"/^\\/v2\\/documents\\/[0-9a-z]{40}\\/prefill-texts$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "[]",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

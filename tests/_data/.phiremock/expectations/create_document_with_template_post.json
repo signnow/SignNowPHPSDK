@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"matches":"/^\\/template\\/[0-9a-z]{40}\\/copy$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"id\":\"b17b3e9df2d5acdf78eccf33dd996dc94bc47c7c\",\"name\":\"dolores\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

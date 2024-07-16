@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "PUT" },
+    "url": {"matches":"/^\\/document\\/[0-9a-z]{40}\\/template\\/routing\\/detail$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"id\":\"d74740e3178f19b01ec2b24e2e6612f6e364e938\",\"document_id\":\"703ca2c1b456abe7388ffe16d52cf38e8e4887d9\",\"data\":{\"name\":\"accusamus\",\"role_id\":\"65d455dc2f2b1f1deaed7f2e1b1ee1d2d2454a08\",\"signing_order\":76110},\"cc\":[\"kathryne.olson@rempel.com\"],\"cc_step\":[{\"email\":\"leann.raynor@hermiston.com\",\"name\":\"et\",\"step\":8578}],\"viewers\":[{\"default_email\":\"angelina.rogahn@stanton.com\",\"name\":\"hic\",\"signing_order\":88691}],\"approvers\":[{\"default_email\":\"creola89@jaskolski.com\",\"name\":\"facere\",\"signing_order\":96979}],\"invite_link_instructions\":[\"incidunt\"]}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

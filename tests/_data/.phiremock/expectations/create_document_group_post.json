@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"isSameString":"/documentgroup"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"id\":\"5a525636ca1b50e6b6bc938d34a03412057d67dc\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

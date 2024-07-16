@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"matches":"/^\\/v2\\/documents\\/[0-9a-z]{40}\\/embedded-invites\\/[0-9a-z]{40}\\/link$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"data\":{\"link\":\"https:\\/\\/www.bergnaum.com\\/commodi-nisi-commodi-dolorem-dolor-omnis-magni-rerum\"}}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

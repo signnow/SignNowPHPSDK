@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "GET" },
+    "url": {"matches":"/^\\/v2\\/document-groups\\/[0-9a-z]{40}\\/recipients$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"data\":{\"recipients\":[{\"name\":\"est\",\"email\":\"cecelia.anderson@crooks.net\",\"email_group\":{\"id\":\"9142f3d37710fce8865f458b39eccd620f43cc31\"},\"order\":65904,\"attributes\":{\"message\":\"dolore\",\"subject\":\"veniam\",\"expiration_days\":18077,\"reminder\":{\"remind_after\":46376,\"remind_before\":50387,\"remind_repeat\":90861},\"allow_forwarding\":false,\"show_decline_button\":true,\"i_am_recipient\":false,\"authentication\":{\"type\":\"necessitatibus\",\"value\":\"in\",\"phone\":\"impedit\",\"method\":\"fugit\"}},\"documents\":[{\"id\":\"db746263847ecc2b930afec884269964f27f6e68\",\"role\":\"sint\",\"action\":\"quis\"}]}],\"unmapped_documents\":[{\"id\":\"a3ca106ea54d05e64528a0c73303246fa5128a39\",\"role\":\"dolorem\",\"action\":\"quo\"}],\"allowed_unmapped_sign_documents\":[{\"id\":\"9eef3bc366ee3050810b3924d6d65cfb16912f1f\",\"role\":\"deserunt\",\"recipient\":\"quas\"}],\"cc\":[\"esse\"]}}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

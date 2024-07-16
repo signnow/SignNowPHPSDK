@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "GET" },
+    "url": {"isSameString":"/oauth2/token"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"access_token\":\"e9034359eacbdc91f1fc10dc6d6f5327864bf748ee94a803b4a0be521c20db4a\",\"scope\":\"*\",\"expires_in\":\"1258366114\",\"token_type\":\"bearer\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

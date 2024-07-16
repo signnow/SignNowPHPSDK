@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "GET" },
+    "url": {"matches":"/^\\/documentgroup\\/[0-9a-z]{40}\\/groupinvite\\/[0-9a-z]{40}\\/pendinginvites$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"document_group_name\":\"qui\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}
