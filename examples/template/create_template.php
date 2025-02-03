@@ -6,7 +6,6 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use SignNow\Api\Template\Request\TemplatePost;
 use SignNow\Api\Template\Response\TemplatePost as TemplatePostResponse;
-use SignNow\ApiClient;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
@@ -18,7 +17,6 @@ use SignNow\Sdk;
  */
 try {
     $sdk = new Sdk();
-    /** @var ApiClient $apiClient */
     $apiClient = $sdk->build()
         ->authenticate()
         ->getApiClient();

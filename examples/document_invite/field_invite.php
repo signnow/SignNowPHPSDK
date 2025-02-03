@@ -7,22 +7,20 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use SignNow\Api\Document\Request\Data\Field;
 use SignNow\Api\Document\Request\Data\FieldCollection;
 use SignNow\Api\Document\Request\DocumentGet;
+use SignNow\Api\Document\Request\DocumentPost;
 use SignNow\Api\Document\Request\DocumentPut;
 use SignNow\Api\Document\Response\DocumentGet as DocumentGetResponse;
+use SignNow\Api\Document\Response\DocumentPost as DocumentPostResponse;
 use SignNow\Api\Document\Response\DocumentPut as DocumentPutResponse;
 use SignNow\Api\DocumentInvite\Request\Data\To;
 use SignNow\Api\DocumentInvite\Request\Data\ToCollection;
 use SignNow\Api\DocumentInvite\Request\SendInvitePost;
 use SignNow\Api\DocumentInvite\Response\SendInvitePost as SendInvitePostResponse;
-use SignNow\ApiClient;
-use SignNow\Api\Document\Request\DocumentPost;
-use SignNow\Api\Document\Response\DocumentPost as DocumentPostResponse;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
 try {
     $sdk = new Sdk();
-    /** @var ApiClient $apiClient */
     $apiClient = $sdk->build()
         ->authenticate()
         ->getApiClient();

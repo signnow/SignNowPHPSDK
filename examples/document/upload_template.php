@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-use SignNow\ApiClient;
 use SignNow\Api\Document\Request\DocumentPost;
 use SignNow\Api\Document\Response\DocumentPost as DocumentPostResponse;
 use SignNow\Exception\Output\ErrorOutput;
@@ -12,7 +11,6 @@ use SignNow\Sdk;
 
 try {
     $sdk = new Sdk();
-    /** @var ApiClient $apiClient */
     $apiClient = $sdk->build()
         ->authenticate()
         ->getApiClient();

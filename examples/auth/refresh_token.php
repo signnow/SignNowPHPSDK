@@ -6,13 +6,11 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use SignNow\Api\Auth\Request\RefreshTokenPost;
 use SignNow\Api\Auth\Response\RefreshTokenPost as RefreshTokenPostResponse;
-use SignNow\ApiClient;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
 try {
     $sdk = new Sdk();
-    /** @var ApiClient $apiClient */
     $apiClient = $sdk->build()
          ->authenticate()
          ->getApiClient();

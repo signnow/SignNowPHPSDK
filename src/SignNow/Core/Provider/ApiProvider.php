@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is a part of signNow SDK API client.
+ *
+ * (с) Copyright © 2011-present airSlate Inc. (https://www.signnow.com)
+ *
+ * For more details on copyright, see LICENSE.md file
+ * that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace SignNow\Core\Provider;
@@ -27,7 +36,7 @@ readonly class ApiProvider
 {
     public function __construct(
         private ContainerBuilder $container,
-        private string $configPath,
+        private ?string $configPath = null,
     ) {
     }
 
@@ -100,17 +109,9 @@ readonly class ApiProvider
      */
     private function buildConfig(): void
     {
-        if (!file_exists($this->configPath)) {
-            throw new RuntimeException(
-                sprintf(
-                    'Config file not found at "%s" directory.',
-                    $this->configPath
-                )
-            );
-        }
-
         $loader = new ConfigLoader();
         $config = new ConfigRepository($loader->load($this->configPath));
+        $config->validate();
 
         $this->container
             ->set('config', $config);

@@ -7,7 +7,7 @@
   "then": {
     "response": {
       "statusCode": 200,
-      "body": "[]",
+      "body": "{\"data\":[{\"id\":\"b912e5417df185918d6fc0b0a5405670e10d5400\",\"entity_type\":\"user\",\"event\":\"user.document.open\",\"entity_id\":18831095,\"entity_unique_id\":\"de12e5437df115911d6fc1b1a5415671e10d5411\",\"request_method\":\"post\",\"action\":\"callback\",\"active\":true,\"json_attributes\":{\"use_tls_12\":false,\"docid_queryparam\":false,\"delete_access_token\":false,\"include_metadata\":true,\"callback_url\":\"https://dvv.rqestctxz.com/\"},\"application_name\":\"Demo Application\",\"version\":\"2\",\"created\":1720800201,\"event_count\":89},{\"id\":\"bbbac739ceef2470b242f635e038343f6ba5104f0\",\"entity_type\":\"user\",\"event\":\"user.document.open\",\"entity_id\":18831095,\"entity_unique_id\":\"eee2e34a7bfa35313ddfe0b4a0425075f05d3410\",\"request_method\":\"post\",\"action\":\"callback\",\"active\":false,\"json_attributes\":{\"use_tls_12\":true,\"docid_queryparam\":true,\"callback_url\":\"https://webhookzzz-try-not-real.com/123\",\"delete_access_token\":true,\"include_metadata\":false},\"application_name\":\"Test Application\",\"version\":\"2\",\"created\":1717664525,\"event_count\":5}]}",
       "headers": {
         "Content-Type": "application/json"
       }

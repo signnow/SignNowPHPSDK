@@ -7,7 +7,6 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use SignNow\Api\Webhook\Request\Data\Attribute;
 use SignNow\Api\Webhook\Request\SubscriptionPost;
 use SignNow\Api\Webhook\Response\SubscriptionPost as SubscriptionPostResponse;
-use SignNow\ApiClient;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
@@ -18,7 +17,6 @@ use SignNow\Sdk;
  */
 try {
     $sdk = new Sdk();
-    /** @var ApiClient $apiClient */
     $apiClient = $sdk->build()
         ->authenticate()
         ->getApiClient();

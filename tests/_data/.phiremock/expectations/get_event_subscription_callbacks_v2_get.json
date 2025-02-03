@@ -7,7 +7,7 @@
   "then": {
     "response": {
       "statusCode": 200,
-      "body": "[]",
+      "body": "{\"data\":[{\"id\":\"604a94910251380cc1255f81fefdcf633ec23aaf\",\"application_name\":\"Demo Application\",\"entity_id\":\"3ee2e5ea0dfe3531836ff2b4b5325875e05d3423\",\"event_subscription_id\":\"f98982e069ba592a36ec19743a1f20624225385d\",\"event_subscription_active\":true,\"entity_type\":\"user\",\"event_name\":\"user.document.open\",\"callback_url\":\"https://dvv.rqestctxz.com/\",\"request_method\":\"post\",\"duration\":0.2174,\"request_start_time\":1725521585,\"request_end_time\":1725521585,\"request_headers\":{},\"request_content\":{\"meta\":{\"timestamp\":1725521582,\"event\":\"user.document.open\",\"environment\":\"https://api.signnow.com\",\"callback_url\":\"https://dvv.rqestctxz.com/\",\"access_token\":\"********\",\"initiator_id\":\"f98982e069ba592a36ec19743a1f20624225385d\"},\"content\":{\"document_id\":\"3b34b36b58343123a64634f634538c8093c2d3c6\",\"document_name\":\"blank\",\"user_id\":\"b912e5417df185918d6fc0b0a5405670e10d5400\",\"viewer_user_unique_id\":\"de12e5437df115911d6fc1b1a5415671e10d5411\"}},\"response_content\":\"<html><body>Content</body></html>\",\"response_status_code\":200}]}",
       "headers": {
         "Content-Type": "application/json"
       }

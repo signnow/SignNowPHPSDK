@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-use SignNow\Api\DocumentInvite\Request\FreeFormInvitePost;
-use SignNow\Api\DocumentInvite\Response\FreeFormInvitePost as FreeFormInvitePostResponse;
-use SignNow\ApiClient;
 use SignNow\Api\Document\Request\DocumentPost;
 use SignNow\Api\Document\Response\DocumentPost as DocumentPostResponse;
+use SignNow\Api\DocumentInvite\Request\FreeFormInvitePost;
+use SignNow\Api\DocumentInvite\Response\FreeFormInvitePost as FreeFormInvitePostResponse;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
 try {
     $sdk = new Sdk();
-    /** @var ApiClient $apiClient */
     $apiClient = $sdk->build()
         ->authenticate()
         ->getApiClient();

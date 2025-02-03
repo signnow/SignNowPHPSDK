@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is a part of signNow SDK API client.
+ *
+ * (с) Copyright © 2011-present airSlate Inc. (https://www.signnow.com)
+ *
+ * For more details on copyright, see LICENSE.md file
+ * that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace SignNow\Sdk\Tests\Document;
@@ -35,7 +44,6 @@ class DocumentMergeTest extends BaseTest
         $response = $client->send($request);
 
         assert(is_object($response));
-        assert(is_array($response->getDocumentId()));
-        assert($expectation->getDocumentId() === $response->getDocumentId()->toArray());
+        assert($expectation->getDocumentId() === $response->getDocumentId());
     }
 }
