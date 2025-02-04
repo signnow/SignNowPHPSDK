@@ -3,16 +3,27 @@ name: Functional tests
 on:
   pull_request:
     branches:
-    - master
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest --ignore-platform-reqs
+      - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest --ignore-platform-reqs
 
-    - name: Run functional tests
-      run: ./vendor/bin/codecept run functional
+      - name: Assign configuration
+        run: cp .env.test.dist .env.test
+
+      - name: Raise mock server
+        run: |
+          ./vendor/bin/phiremock &
+          sleep 5
+
+      - name: Run functional tests
+        run: ./tests/_bin/run
+
+      - name: Stop mock server
+        run: kill $(ps -ef | grep phiremock | awk '{print $2}' | head -n 1)
