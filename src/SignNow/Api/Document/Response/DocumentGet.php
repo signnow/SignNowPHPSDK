@@ -99,7 +99,8 @@ readonly class DocumentGet
         private InsertCollection $inserts = new InsertCollection(),
         private FieldsDataCollection $fieldsData = new FieldsDataCollection(),
         private FieldValidatorCollection $fieldValidators = new FieldValidatorCollection(),
-        private DocumentGroupTemplateInfoCollection $documentGroupTemplateInfo = new DocumentGroupTemplateInfoCollection(),
+        private DocumentGroupTemplateInfoCollection $documentGroupTemplateInfo = new
+        DocumentGroupTemplateInfoCollection(),
     ) {
     }
 

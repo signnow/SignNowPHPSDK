@@ -35,7 +35,8 @@ final class ReassignSignerPost implements RequestInterface
         private string $userToUpdate,
         private string $replaceWithThisUser = '',
         private ?InviteEmail $inviteEmail = null,
-        private UpdateInviteActionAttributeCollection $updateInviteActionAttributes = new UpdateInviteActionAttributeCollection(),
+        private UpdateInviteActionAttributeCollection $updateInviteActionAttributes = new
+        UpdateInviteActionAttributeCollection(),
     ) {
     }
 

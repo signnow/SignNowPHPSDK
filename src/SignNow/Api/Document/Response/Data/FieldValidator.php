@@ -90,7 +90,9 @@ readonly class FieldValidator
             $data['description'],
             $data['scope'],
             $data['error_message'] ?? '',
-            isset($data['display_json_attributes']) ? DisplayJsonAttribute::fromArray($data['display_json_attributes']) : null,
+            isset($data['display_json_attributes'])
+                ? DisplayJsonAttribute::fromArray($data['display_json_attributes'])
+                : null,
             $data['formula_calculation'] ?? '',
         );
     }

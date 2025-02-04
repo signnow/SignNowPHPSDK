@@ -15,7 +15,7 @@ namespace SignNow\Core\Config;
 
 class ConfigLoader
 {
-    const SIGNNOW_API_HOST = 'https://api.signnow.com';
+    private const SIGNNOW_API_HOST = 'https://api.signnow.com';
 
     public function load(?string $path = null): array
     {
