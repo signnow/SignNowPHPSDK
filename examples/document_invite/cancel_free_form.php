@@ -6,13 +6,11 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use SignNow\Api\DocumentInvite\Request\CancelFreeFormInvitePut;
 use SignNow\Api\DocumentInvite\Response\CancelFreeFormInvitePut as CancelFreeFormInvitePutResponse;
-use SignNow\ApiClient;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
 try {
     $sdk = new Sdk();
-    /** @var ApiClient $apiClient */
     $apiClient = $sdk->build()
         ->authenticate()
         ->getApiClient();

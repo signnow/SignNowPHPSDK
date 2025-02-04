@@ -6,13 +6,11 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use SignNow\Api\Template\Request\BulkInvitePost;
 use SignNow\Api\Template\Response\BulkInvitePost as BulkInviteResponse;
-use SignNow\ApiClient;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
 try {
     $sdk = new Sdk();
-    /** @var ApiClient $apiClient */
     $apiClient = $sdk->build()
         ->authenticate()
         ->getApiClient();

@@ -9,3 +9,4 @@ composer.lock
 .env.test
 .env.production
 .env.development
+.phpactor.json

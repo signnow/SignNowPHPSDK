@@ -9,7 +9,6 @@ use SignNow\Api\DocumentGroup\Request\DocumentGroupGet;
 use SignNow\Api\DocumentGroup\Request\DocumentGroupPost;
 use SignNow\Api\DocumentGroup\Response\DocumentGroupGet as DocumentGroupGetResponse;
 use SignNow\Api\DocumentGroup\Response\DocumentGroupPost as DocumentGroupPostResponse;
-use SignNow\ApiClient;
 use SignNow\Api\Document\Request\DocumentPost;
 use SignNow\Api\Document\Response\DocumentPost as DocumentPostResponse;
 use SignNow\Exception\Output\ErrorOutput;
@@ -21,7 +20,6 @@ use SignNow\Sdk;
  */
 try {
     $sdk = new Sdk();
-    /** @var ApiClient $apiClient */
     $apiClient = $sdk->build()
         ->authenticate()
         ->getApiClient();

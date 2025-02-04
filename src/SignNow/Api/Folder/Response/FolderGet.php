@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is a part of signNow SDK API client.
+ *
+ * (с) Copyright © 2011-present airSlate Inc. (https://www.signnow.com)
+ *
+ * For more details on copyright, see LICENSE.md file
+ * that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Folder\Response;
@@ -20,6 +29,9 @@ readonly class FolderGet
         private int $totalDocuments,
         private DocumentFolderCollection $documents,
         private ?string $parentId = null,
+        private ?string $teamId = null,
+        private ?string $teamName = null,
+        private ?string $teamType = null,
     ) {
     }
 
@@ -71,5 +83,20 @@ readonly class FolderGet
     public function getDocuments(): DocumentFolderCollection
     {
         return $this->documents;
+    }
+
+    public function getTeamId(): ?string
+    {
+        return $this->teamId;
+    }
+
+    public function getTeamName(): ?string
+    {
+        return $this->teamName;
+    }
+
+    public function getTeamType(): ?string
+    {
+        return $this->teamType;
     }
 }

@@ -1,16 +1,27 @@
-.PHONY: install mock-up test-env test-run static-run
+.PHONY: install mock-up test-env tests test static-run
 
+# Install the dependencies
 install:
 	composer install
 
+# Raise local server to mock signNow API
 mock-up:
 	./vendor/bin/phiremock
 
+# Create the test configuration file
 test-env:
 	cp .env.test.dist .env.test
 
-test-run: test-env
+# Run a single test by specified argument
+# Example:
+#   make test T=Document/DocumentTest.php
+test: test-env
+	./tests/_bin/run ${T}
+
+# Run all the tests
+tests: test-env
 	./tests/_bin/run
 
+# Run static code analysis
 static-run:
 	./vendor/bin/phpcs

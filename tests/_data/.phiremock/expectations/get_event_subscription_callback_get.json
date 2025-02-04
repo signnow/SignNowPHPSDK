@@ -7,7 +7,7 @@
   "then": {
     "response": {
       "statusCode": 200,
-      "body": "[]",
+      "body": "{\"data\":{\"id\":\"c040f14d85981ed8659cc8a6f2ec7194bb5378b9\",\"application_name\":\"Test Application\",\"entity_id\":\"c040f14d85981ed8659cc8a6f2ec7194bb5378b9\",\"event_subscription_id\":\"0cac629dddd1479e949f675e49834906bf51e4f0\",\"event_subscription_active\":false,\"entity_type\":\"user\",\"event_name\":\"user.document.open\",\"callback_url\":\"https://zwbok-test.com/0000\",\"request_method\":\"post\",\"duration\":0.3303,\"request_start_time\":1717664657,\"request_end_time\":1717664657,\"request_headers\":{\"string_head\":\"content-test\",\"int_head\":0,\"bool_head\":false,\"float_head\":3.5},\"request_content\":{\"meta\":{\"timestamp\":1717664656,\"event\":\"user.document.open\",\"environment\":\"https://api.signnow.com\",\"callback_url\":\"https://zwbok-test.com/0000\",\"access_token\":\"********\",\"initiator_id\":\"50ead8c7f63856df287adbd62bbe1a3a6100cbf1\"},\"content\":{\"document_id\":\"4f93b6ca5a118b50e57e55f22d32e82de172051c\",\"document_name\":\"21\",\"user_id\":\"4f93b6ca5a118b50e57e55f22d32e82de172051c\",\"viewer_user_unique_id\":\"3e93b6ca5a118b50e57e55f22d32e82de172251d\"}},\"response_content\":\"body\",\"response_status_code\":200}}",
       "headers": {
         "Content-Type": "application/json"
       }

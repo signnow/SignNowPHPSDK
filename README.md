@@ -1,5 +1,5 @@
 # signNow API PHP SDK
-## v3.0.0
+## v3.0.1
 
 [![PHP Version](https://img.shields.io/badge/supported->=8.2-blue?logo=php)](https://php.net/)
 
@@ -35,8 +35,10 @@ However, the file will be created automatically if you just run test execution w
 ```bash
 ## Run mock server locally
 make mock-up
-## Run tests
-make test-run
+## Run all the tests
+make tests
+## Run a single test by specified argument
+make test T=Document/DocumentTest.php
 ```
 Mock server will be available at `http://0.0.0.0:8086`.
 

@@ -11,7 +11,6 @@ use SignNow\Api\Document\Request\Data\Tag\Tag;
 use SignNow\Api\Document\Request\Data\Tag\TagCollection;
 use SignNow\Api\Document\Request\FieldExtractPost;
 use SignNow\Api\Document\Response\FieldExtractPost as FieldExtractPostResponse;
-use SignNow\ApiClient;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
@@ -27,7 +26,6 @@ use SignNow\Sdk;
  */
 try {
     $sdk = new Sdk();
-    /** @var ApiClient $apiClient */
     $apiClient = $sdk->build()
         ->authenticate()
         ->getApiClient();

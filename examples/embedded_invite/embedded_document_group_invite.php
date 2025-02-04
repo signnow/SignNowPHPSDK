@@ -11,10 +11,9 @@ use SignNow\Api\EmbeddedGroupInvite\Request\Data\Invite\InviteCollection;
 use SignNow\Api\EmbeddedGroupInvite\Request\Data\Invite\Signer;
 use SignNow\Api\EmbeddedGroupInvite\Request\Data\Invite\SignerCollection;
 use SignNow\Api\EmbeddedGroupInvite\Request\GroupInviteLinkPost as EmbeddedGroupInviteLinkPost;
-use SignNow\Api\EmbeddedGroupInvite\Response\GroupInviteLinkPost as EmbeddedGroupInviteLinkResponse;
 use SignNow\Api\EmbeddedGroupInvite\Request\GroupInvitePost as EmbeddedGroupInvitePost;
+use SignNow\Api\EmbeddedGroupInvite\Response\GroupInviteLinkPost as EmbeddedGroupInviteLinkResponse;
 use SignNow\Api\EmbeddedGroupInvite\Response\GroupInvitePost as EmbeddedGroupInvitePostResponse;
-use SignNow\ApiClient;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
@@ -32,7 +31,6 @@ use SignNow\Sdk;
  */
 try {
     $sdk = new Sdk();
-    /** @var ApiClient $apiClient */
     $apiClient = $sdk->build()
         ->authenticate()
         ->getApiClient();

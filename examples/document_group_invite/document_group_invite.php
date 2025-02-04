@@ -22,7 +22,6 @@ use SignNow\Api\DocumentGroupInvite\Request\Data\InviteStep\InviteStep;
 use SignNow\Api\DocumentGroupInvite\Request\Data\InviteStep\InviteStepCollection;
 use SignNow\Api\DocumentGroupInvite\Request\GroupInvitePost;
 use SignNow\Api\DocumentGroupInvite\Response\GroupInvitePost as GroupInvitePostResponse;
-use SignNow\ApiClient;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
@@ -31,7 +30,6 @@ use SignNow\Sdk;
  */
 try {
     $sdk = new Sdk();
-    /** @var ApiClient $apiClient */
     $apiClient = $sdk->build()
         ->authenticate()
         ->getApiClient();

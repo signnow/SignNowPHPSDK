@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is a part of signNow SDK API client.
+ *
+ * (с) Copyright © 2011-present airSlate Inc. (https://www.signnow.com)
+ *
+ * For more details on copyright, see LICENSE.md file
+ * that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace SignNow\Api\Document\Response\Data;
@@ -81,7 +90,9 @@ readonly class FieldValidator
             $data['description'],
             $data['scope'],
             $data['error_message'] ?? '',
-            isset($data['display_json_attributes']) ? DisplayJsonAttribute::fromArray($data['display_json_attributes']) : null,
+            isset($data['display_json_attributes'])
+                ? DisplayJsonAttribute::fromArray($data['display_json_attributes'])
+                : null,
             $data['formula_calculation'] ?? '',
         );
     }
