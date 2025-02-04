@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"matches":"/^\\/v2\\/documents\\/[0-9a-z]{40}\\/embedded-editor$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"data\":{\"url\":\"http:\\/\\/www.moen.org\\/ipsa-veritatis-laborum-quia-voluptatem-enim-facere-expedita-dicta\"}}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

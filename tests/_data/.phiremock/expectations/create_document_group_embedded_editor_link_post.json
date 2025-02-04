@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"matches":"/^\\/v2\\/document-groups\\/[0-9a-z]{40}\\/embedded-editor$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"data\":{\"url\":\"http:\\/\\/www.stanton.com\\/consectetur-excepturi-natus-ut-iure-aut-id-ut.html\"}}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}
