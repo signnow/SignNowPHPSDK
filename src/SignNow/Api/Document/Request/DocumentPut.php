@@ -131,15 +131,19 @@ final class DocumentPut implements RequestInterface
     {
         return [
            'fields' => $this->getFields()->toArray(),
-           'lines' => $this->getLines()->toArray(),
-           'checks' => $this->getChecks()->toArray(),
-           'radiobuttons' => $this->getRadiobuttons()->toArray(),
-           'signatures' => $this->getSignatures()->toArray(),
-           'texts' => $this->getTexts()->toArray(),
-           'attachments' => $this->getAttachments()->toArray(),
-           'hyperlinks' => $this->getHyperlinks()->toArray(),
-           'integration_objects' => $this->getIntegrationObjects()->toArray(),
-           'deactivate_elements' => $this->getDeactivateElements()->toArray(),
+           'lines' => !is_null($this->getLines()) ? $this->getLines()->toArray() : null,
+           'checks' => !is_null($this->getChecks()) ? $this->getChecks()->toArray() : null,
+           'radiobuttons' => !is_null($this->getRadiobuttons()) ? $this->getRadiobuttons()->toArray() : null,
+           'signatures' => !is_null($this->getSignatures()) ? $this->getSignatures()->toArray() : null,
+           'texts' => !is_null($this->getTexts()) ? $this->getTexts()->toArray() : null,
+           'attachments' => !is_null($this->getAttachments()) ? $this->getAttachments()->toArray() : null,
+           'hyperlinks' => !is_null($this->getHyperlinks()) ? $this->getHyperlinks()->toArray() : null,
+           'integration_objects' => !is_null($this->getIntegrationObjects())
+               ? $this->getIntegrationObjects()->toArray()
+               : null,
+           'deactivate_elements' => !is_null($this->getDeactivateElements())
+               ? $this->getDeactivateElements()->toArray()
+               : null,
            'document_name' => $this->getDocumentName(),
            'client_timestamp' => $this->getClientTimestamp(),
         ];

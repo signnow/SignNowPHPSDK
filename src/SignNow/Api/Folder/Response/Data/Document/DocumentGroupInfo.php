@@ -77,7 +77,7 @@ readonly class DocumentGroupInfo
            'state' => $this->getState(),
            'doc_count_in_group' => $this->getDocCountInGroup(),
            'sign_as_merged' => $this->isSignAsMerged(),
-           'freeform_invite' => $this->getFreeformInvite(),
+           'freeform_invite' => $this->getFreeformInvite()->toArray(),
         ];
     }
 

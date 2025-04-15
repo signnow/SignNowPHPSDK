@@ -119,7 +119,7 @@ readonly class Invite
            'redirect_uri' => $this->getRedirectUri(),
            'decline_redirect_uri' => $this->getDeclineRedirectUri(),
            'redirect_target' => $this->getRedirectTarget(),
-           'authentication' => $this->getAuthentication(),
+           'authentication' => !is_null($this->getAuthentication()) ? $this->getAuthentication()->toArray() : null,
         ];
     }
 

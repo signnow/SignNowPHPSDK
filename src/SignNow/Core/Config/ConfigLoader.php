@@ -48,6 +48,7 @@ class ConfigLoader
             'signnow_api_password' => getenv('SIGNNOW_API_PASSWORD') ?? '',
             'signnow_api_basic_token' => getenv('SIGNNOW_API_BASIC_TOKEN') ?? '',
             'signnow_api_host' => getenv('SIGNNOW_API_HOST') ?? self::SIGNNOW_API_HOST,
+            'signnow_downloads_dir' => getenv('SIGNNOW_DOWNLOADS_DIR') ?? null,
         ];
     }
 }

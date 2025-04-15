@@ -188,7 +188,7 @@ readonly class DocumentFolder
            'origin_document_id' => $this->getOriginDocumentId(),
            'owner' => $this->getOwner(),
            'origin_user_id' => $this->getOriginUserId(),
-           'thumbnail' => $this->getThumbnail(),
+           'thumbnail' => $this->getThumbnail()->toArray(),
            'template' => $this->isTemplate(),
            'is_favorite' => $this->IsFavorite(),
            'signatures' => $this->getSignatures()->toArray(),

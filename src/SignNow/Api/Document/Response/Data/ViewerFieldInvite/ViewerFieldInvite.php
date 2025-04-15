@@ -104,7 +104,7 @@ readonly class ViewerFieldInvite
            'role_id' => $this->getRoleId(),
            'close_redirect_uri' => $this->getCloseRedirectUri(),
            'redirect_target' => $this->getRedirectTarget(),
-           'email_group' => $this->getEmailGroup(),
+           'email_group' => $this->getEmailGroup()->toArray(),
            'email_statuses' => $this->getEmailStatuses()->toArray(),
         ];
     }

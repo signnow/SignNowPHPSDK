@@ -19,6 +19,7 @@ use SignNow\Api\Template\Response\Data\CcStepGetCollection;
 use SignNow\Api\Template\Response\Data\ViewerGetCollection;
 use SignNow\Api\Template\Response\Data\ApproverGetCollection;
 use SignNow\Api\Template\Response\Data\InviteLinkInstructionGetCollection;
+use SignNow\Api\Template\Response\Data\AttributeGet;
 
 readonly class RoutingDetailsGet
 {
@@ -28,7 +29,8 @@ readonly class RoutingDetailsGet
         private CcStepGetCollection $ccStep,
         private ViewerGetCollection $viewers,
         private ApproverGetCollection $approvers,
-        private InviteLinkInstructionGetCollection $inviteLinkInstructions,
+        private AttributeGet $attributes,
+        private InviteLinkInstructionGetCollection $inviteLinkInstructions = new InviteLinkInstructionGetCollection(),
     ) {
     }
 
@@ -60,5 +62,10 @@ readonly class RoutingDetailsGet
     public function getInviteLinkInstructions(): InviteLinkInstructionGetCollection
     {
         return $this->inviteLinkInstructions;
+    }
+
+    public function getAttributes(): AttributeGet
+    {
+        return $this->attributes;
     }
 }

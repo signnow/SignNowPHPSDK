@@ -44,10 +44,10 @@ class CloneTemplateTest extends BaseTest
         $request->withTemplateId($faker->templateId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getId()));
-        assert($expectation->getId() === $response->getId());
-        assert(is_string($response->getName()));
-        assert($expectation->getName() === $response->getName());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_string($response->getId()));
+        $this->assertTrue($expectation->getId() === $response->getId());
+        $this->assertTrue(is_string($response->getName()));
+        $this->assertTrue($expectation->getName() === $response->getName());
     }
 }

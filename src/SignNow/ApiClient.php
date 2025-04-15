@@ -130,6 +130,10 @@ class ApiClient
             RequestOptions::TIMEOUT => $this->configRepository->timeout(),
         ];
 
+        if (method_exists($request, 'queryParams') && count($request->queryParams()) > 0) {
+            $options[RequestOptions::QUERY] = $request->queryParams();
+        }
+
         if (in_array($endpoint->getMethod(), ['get', 'delete'])) {
             return $options;
         }

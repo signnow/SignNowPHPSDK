@@ -351,7 +351,7 @@ readonly class FieldInvite
            'pfrmerchant_account_name' => $this->getPfrmerchantAccountName(),
            'created' => $this->getCreated(),
            'updated' => $this->getUpdated(),
-           'email_group' => $this->getEmailGroup(),
+           'email_group' => $this->getEmailGroup()->toArray(),
            'email' => $this->getEmail(),
            'email_statuses' => $this->getEmailStatuses()->toArray(),
            'role' => $this->getRole(),

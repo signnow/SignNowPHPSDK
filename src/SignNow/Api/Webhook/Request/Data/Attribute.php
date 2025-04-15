@@ -59,7 +59,7 @@ readonly class Attribute
            'use_tls_12' => $this->isUseTls12(),
            'integration_id' => $this->getIntegrationId(),
            'docid_queryparam' => $this->isDocidQueryparam(),
-           'headers' => $this->getHeaders(),
+           'headers' => !is_null($this->getHeaders()) ? $this->getHeaders()->toArray() : null,
         ];
     }
 

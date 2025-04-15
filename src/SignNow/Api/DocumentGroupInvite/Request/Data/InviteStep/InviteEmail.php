@@ -59,7 +59,7 @@ readonly class InviteEmail
     {
         return [
            'email' => $this->getEmail(),
-           'email_group' => $this->getEmailGroup(),
+           'email_group' => !is_null($this->getEmailGroup()) ? $this->getEmailGroup()->toArray() : null,
            'subject' => $this->getSubject(),
            'message' => $this->getMessage(),
            'expiration_days' => $this->getExpirationDays(),

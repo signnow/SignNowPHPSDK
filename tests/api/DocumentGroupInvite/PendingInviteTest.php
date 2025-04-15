@@ -42,10 +42,12 @@ class PendingInviteTest extends BaseTest
         $request->withInviteId($faker->inviteId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_array($response->getInvites()));
-        assert($expectation->getInvites() === $response->getInvites()->toArray());
-        assert(is_string($response->getDocumentGroupName()));
-        assert($expectation->getDocumentGroupName() === $response->getDocumentGroupName());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_array($response->getInvites()->toArray()));
+        $this->assertTrue($expectation->getInvites() === $response->getInvites()->toArray());
+        $this->assertTrue(is_string($response->getDocumentGroupName()));
+        $this->assertTrue($expectation->getDocumentGroupName() === $response->getDocumentGroupName());
+        $this->assertTrue(is_bool($response->isSignAsMerged()));
+        $this->assertTrue($expectation->isSignAsMerged() === $response->isSignAsMerged());
     }
 }

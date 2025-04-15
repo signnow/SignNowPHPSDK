@@ -132,7 +132,7 @@ readonly class Attachment
            'file_type' => $this->getFileType(),
            'mime_type' => $this->getMimeType(),
            'file_size' => $this->getFileSize(),
-           'json_attributes' => $this->getJsonAttributes(),
+           'json_attributes' => $this->getJsonAttributes()->toArray(),
            'allow_editing' => $this->isAllowEditing(),
         ];
     }

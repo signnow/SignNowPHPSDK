@@ -40,22 +40,22 @@ class RefreshTokenTest extends BaseTest
             $faker->refreshToken(),
             $faker->scope(),
             $faker->expirationTime(),
-            $faker->grantType()
+            $faker->grantType('refresh_token')
         );
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_int($response->getExpiresIn()));
-        assert($expectation->getExpiresIn() === $response->getExpiresIn());
-        assert(is_string($response->getTokenType()));
-        assert($expectation->getTokenType() === $response->getTokenType());
-        assert(is_string($response->getAccessToken()));
-        assert($expectation->getAccessToken() === $response->getAccessToken());
-        assert(is_string($response->getRefreshToken()));
-        assert($expectation->getRefreshToken() === $response->getRefreshToken());
-        assert(is_string($response->getScope()));
-        assert($expectation->getScope() === $response->getScope());
-        assert(is_int($response->getLastLogin()));
-        assert($expectation->getLastLogin() === $response->getLastLogin());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_int($response->getExpiresIn()));
+        $this->assertTrue($expectation->getExpiresIn() === $response->getExpiresIn());
+        $this->assertTrue(is_string($response->getTokenType()));
+        $this->assertTrue($expectation->getTokenType() === $response->getTokenType());
+        $this->assertTrue(is_string($response->getAccessToken()));
+        $this->assertTrue($expectation->getAccessToken() === $response->getAccessToken());
+        $this->assertTrue(is_string($response->getRefreshToken()));
+        $this->assertTrue($expectation->getRefreshToken() === $response->getRefreshToken());
+        $this->assertTrue(is_string($response->getScope()));
+        $this->assertTrue($expectation->getScope() === $response->getScope());
+        $this->assertTrue(is_int($response->getLastLogin()));
+        $this->assertTrue($expectation->getLastLogin() === $response->getLastLogin());
     }
 }

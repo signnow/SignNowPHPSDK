@@ -76,7 +76,7 @@ final class SubscriptionPut implements RequestInterface
            'event' => $this->getEvent(),
            'entity_id' => $this->getEntityId(),
            'action' => $this->getAction(),
-           'attributes' => $this->getAttributes(),
+           'attributes' => $this->getAttributes()->toArray(),
         ];
     }
 }

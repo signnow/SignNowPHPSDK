@@ -182,7 +182,7 @@ readonly class To
            'role_id' => $this->getRoleId(),
            'role' => $this->getRole(),
            'order' => $this->getOrder(),
-           'email_group' => $this->getEmailGroup(),
+           'email_group' => !is_null($this->getEmailGroup()) ? $this->getEmailGroup()->toArray() : null,
            'prefill_signature_name' => $this->getPrefillSignatureName(),
            'required_preset_signature_name' => $this->getRequiredPresetSignatureName(),
            'force_new_signature' => $this->getForceNewSignature(),
@@ -203,7 +203,7 @@ readonly class To
            'close_redirect_uri' => $this->getCloseRedirectUri(),
            'redirect_target' => $this->getRedirectTarget(),
            'language' => $this->getLanguage(),
-           'signature' => $this->getSignature(),
+           'signature' => !is_null($this->getSignature()) ? $this->getSignature()->toArray() : null,
         ];
     }
 

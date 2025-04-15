@@ -68,9 +68,9 @@ readonly class DataSubscription
            'event' => $this->getEvent(),
            'entity_id' => $this->getEntityId(),
            'action' => $this->getAction(),
-           'json_attributes' => $this->getJsonAttributes(),
+           'json_attributes' => $this->getJsonAttributes()->toArray(),
            'created' => $this->getCreated(),
-           'content' => $this->getContent(),
+           'content' => !is_null($this->getContent()) ? $this->getContent()->toArray() : null,
         ];
     }
 

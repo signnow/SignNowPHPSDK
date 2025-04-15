@@ -42,21 +42,37 @@ class GroupTemplateTest extends BaseTest
         $request->withTemplateId($faker->templateId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getId()));
-        assert($expectation->getId() === $response->getId());
-        assert(is_string($response->getName()));
-        assert($expectation->getName() === $response->getName());
-        assert(is_string($response->getFilename()));
-        assert($expectation->getFilename() === $response->getFilename());
-        assert(is_int($response->getPageCount()));
-        assert($expectation->getPageCount() === $response->getPageCount());
-        assert(is_int($response->getCreated()));
-        assert($expectation->getCreated() === $response->getCreated());
-        assert(is_int($response->getUpdated()));
-        assert($expectation->getUpdated() === $response->getUpdated());
-        assert(is_string($response->getEditorLink()));
-        assert($expectation->getEditorLink() === $response->getEditorLink());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_string($response->getId()));
+        $this->assertTrue($expectation->getId() === $response->getId());
+        $this->assertTrue(is_string($response->getUserId()));
+        $this->assertTrue($expectation->getUserId() === $response->getUserId());
+        $this->assertTrue(is_string($response->getGroupName()));
+        $this->assertTrue($expectation->getGroupName() === $response->getGroupName());
+        $this->assertTrue(is_string($response->getFolderId()));
+        $this->assertTrue($expectation->getFolderId() === $response->getFolderId());
+        $this->assertTrue(is_object($response->getRoutingDetails()));
+        $this->assertTrue($expectation->getRoutingDetails() === $response->getRoutingDetails()->toArray());
+        $this->assertTrue(is_array($response->getTemplates()->toArray()));
+        $this->assertTrue($expectation->getTemplates() === $response->getTemplates()->toArray());
+        $this->assertTrue(is_int($response->getShared()));
+        $this->assertTrue($expectation->getShared() === $response->getShared());
+        $this->assertTrue(is_string($response->getDocumentGroupTemplateOwnerEmail()));
+        $this->assertTrue($expectation->getDocumentGroupTemplateOwnerEmail() === $response->getDocumentGroupTemplateOwnerEmail());
+        $this->assertTrue(is_string($response->getSharedTeamId()));
+        $this->assertTrue($expectation->getSharedTeamId() === $response->getSharedTeamId());
+        $this->assertTrue(is_bool($response->isOwnAsMerged()));
+        $this->assertTrue($expectation->isOwnAsMerged() === $response->isOwnAsMerged());
+        $this->assertTrue(is_string($response->getEmailActionOnComplete()));
+        $this->assertTrue($expectation->getEmailActionOnComplete() === $response->getEmailActionOnComplete());
+        $this->assertTrue(is_int($response->getCreated()));
+        $this->assertTrue($expectation->getCreated() === $response->getCreated());
+        $this->assertTrue(is_int($response->getUpdated()));
+        $this->assertTrue($expectation->getUpdated() === $response->getUpdated());
+        $this->assertTrue(is_int($response->getRecentlyUsed()));
+        $this->assertTrue($expectation->getRecentlyUsed() === $response->getRecentlyUsed());
+        $this->assertTrue(is_bool($response->isPinned()));
+        $this->assertTrue($expectation->isPinned() === $response->isPinned());
     }
 
     /**
@@ -76,6 +92,6 @@ class GroupTemplateTest extends BaseTest
         $request->withTemplateId($faker->templateId());
         $response = $client->send($request);
 
-        assert(is_object($response));
+        $this->assertTrue(is_object($response));
     }
 }

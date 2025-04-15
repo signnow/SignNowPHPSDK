@@ -77,14 +77,14 @@ readonly class PremiumAccess
     {
         return [
            'error' => $this->isError(),
-           'user' => $this->getUser(),
+           'user' => !is_null($this->getUser()) ? $this->getUser()->toArray() : null,
            'active' => $this->isActive(),
-           'subscription' => $this->getSubscription(),
+           'subscription' => $this->getSubscription()->toArray(),
            'plan' => $this->getPlan(),
            'business' => $this->isBusiness(),
            'trial' => $this->isTrial(),
            'credit_card' => $this->isCreditCard(),
-           'api' => $this->getApi(),
+           'api' => $this->getApi()->toArray(),
         ];
     }
 

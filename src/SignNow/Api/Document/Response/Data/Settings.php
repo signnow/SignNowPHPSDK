@@ -13,283 +13,245 @@ declare(strict_types=1);
 
 namespace SignNow\Api\Document\Response\Data;
 
-use Symfony\Component\Serializer\Annotation\SerializedName;
-
 readonly class Settings
 {
     public function __construct(
-        private bool $noDocumentAttachment,
-        private bool $copyExport,
-        private bool $noDocumentFileAttachments,
-        private bool $noUserSignatureReturn,
-        private bool $mobilewebOption,
-        private bool $requireDrawnSignatures,
-        private bool $orgAllowedTeamAdmins,
-        private bool $cloudAutoExport,
-        private bool $digitallySignDowloadedDocs,
-        private bool $inviteCompletionRedirectUrl,
-        private bool $inviteDeclineRedirectUrl,
-        private bool $addSignatureStamp,
-        private bool $pendingInviteDocumentViewNotification,
-        private bool $signingLinkDocumentDownload,
-        private bool $requiredPresetSignatureName,
-        private bool $cloudExportWithHistory,
-        private bool $emailedDocsIncludeHistory,
-        private bool $requireEmailSubject,
-        private bool $documentCompletionRetentionDays,
-        private bool $enableHyperlinkProtection,
-        private bool $enableAdvancedThreatProtection,
-        private bool $requireLoginForSigning,
-        private bool $logoutOnSigning,
-        private bool $auditTrailCompletionRetentionDays,
-        private bool $frontEndSessionLength,
-        private bool $emailAdminOnBannedLogin,
-        private bool $addSignatureStampWithName,
-        #[SerializedName('cfr_title_21_part_11')]
-        private bool $cfrTitle21Part11,
-        private bool $unsuccessfulLogoutAttemptsAllowed,
-        private bool $requireAuthenticationForInvites,
-        private bool $electronicConsentRequired,
-        private bool $electronicConsentText,
-        private bool $documentGuide,
-        private bool $watermarkDownloadedDocument,
-        private bool $restrictDownload,
-        private bool $disableEmailNotifications,
-        private bool $uploadLimit,
-        private bool $documentSchemaExtended,
-        private bool $inviteUpdateNotificationsForAllInvitesAtInviteCreate,
-        private bool $enableFullStoryTracker,
-        private bool $documentAttachmentOnlyForSigner,
-        #[SerializedName('sso-only-login')]
-        private bool $ssoOnlyLogin,
-        private bool $blockExportOptionsWhenCreditCardValidationIsUsed,
-        private bool $onlyAdministratorIsAbleToInviteToTheTeam,
-        private bool $blockLoginViaSocialNetworks,
+        private array $settings = [],
     ) {
     }
 
     public function isNoDocumentAttachment(): bool
     {
-        return $this->noDocumentAttachment;
+        return $this->settings['no_document_attachment'] ?? false;
     }
 
     public function isCopyExport(): bool
     {
-        return $this->copyExport;
+        return $this->settings['copy_export'] ?? false;
     }
 
     public function isNoDocumentFileAttachments(): bool
     {
-        return $this->noDocumentFileAttachments;
+        return $this->settings['no_document_file_attachments'] ?? false;
     }
 
     public function isNoUserSignatureReturn(): bool
     {
-        return $this->noUserSignatureReturn;
+        return $this->settings['no_user_signature_return'] ?? false;
     }
 
     public function isMobilewebOption(): bool
     {
-        return $this->mobilewebOption;
+        return $this->settings['mobileweb_option'] ?? false;
     }
 
     public function isRequireDrawnSignatures(): bool
     {
-        return $this->requireDrawnSignatures;
+        return $this->settings['require_drawn_signatures'] ?? false;
     }
 
     public function isOrgAllowedTeamAdmins(): bool
     {
-        return $this->orgAllowedTeamAdmins;
+        return $this->settings['org_allowed_team_admins'] ?? false;
     }
 
     public function isCloudAutoExport(): bool
     {
-        return $this->cloudAutoExport;
+        return $this->settings['cloud_auto_export'] ?? false;
     }
 
     public function isDigitallySignDowloadedDocs(): bool
     {
-        return $this->digitallySignDowloadedDocs;
+        return $this->settings['digitally_sign_dowloaded_docs'] ?? false;
     }
 
     public function isInviteCompletionRedirectUrl(): bool
     {
-        return $this->inviteCompletionRedirectUrl;
+        return $this->settings['invite_completion_redirect_url'] ?? false;
     }
 
     public function isInviteDeclineRedirectUrl(): bool
     {
-        return $this->inviteDeclineRedirectUrl;
+        return $this->settings['invite_decline_redirect_url'] ?? false;
     }
 
     public function isAddSignatureStamp(): bool
     {
-        return $this->addSignatureStamp;
+        return $this->settings['add_signature_stamp'] ?? false;
     }
 
     public function isPendingInviteDocumentViewNotification(): bool
     {
-        return $this->pendingInviteDocumentViewNotification;
+        return $this->settings['pending_invite_document_view_notification'] ?? false;
     }
 
     public function isSigningLinkDocumentDownload(): bool
     {
-        return $this->signingLinkDocumentDownload;
+        return $this->settings['signing_link_document_download'] ?? false;
     }
 
     public function isRequiredPresetSignatureName(): bool
     {
-        return $this->requiredPresetSignatureName;
+        return $this->settings['required_preset_signature_name'] ?? false;
     }
 
     public function isCloudExportWithHistory(): bool
     {
-        return $this->cloudExportWithHistory;
+        return $this->settings['cloud_export_with_history'] ?? false;
     }
 
     public function isEmailedDocsIncludeHistory(): bool
     {
-        return $this->emailedDocsIncludeHistory;
+        return $this->settings['emailed_docs_include_history'] ?? false;
     }
 
     public function isRequireEmailSubject(): bool
     {
-        return $this->requireEmailSubject;
+        return $this->settings['require_email_subject'] ?? false;
     }
 
     public function isDocumentCompletionRetentionDays(): bool
     {
-        return $this->documentCompletionRetentionDays;
+        return $this->settings['document_completion_retention_days'] ?? false;
     }
 
     public function isEnableHyperlinkProtection(): bool
     {
-        return $this->enableHyperlinkProtection;
+        return $this->settings['enable_hyperlink_protection'] ?? false;
     }
 
     public function isEnableAdvancedThreatProtection(): bool
     {
-        return $this->enableAdvancedThreatProtection;
+        return $this->settings['enable_advanced_threat_protection'] ?? false;
     }
 
     public function isRequireLoginForSigning(): bool
     {
-        return $this->requireLoginForSigning;
+        return $this->settings['require_login_for_signing'] ?? false;
     }
 
     public function isLogoutOnSigning(): bool
     {
-        return $this->logoutOnSigning;
+        return $this->settings['logout_on_signing'] ?? false;
     }
 
     public function isAuditTrailCompletionRetentionDays(): bool
     {
-        return $this->auditTrailCompletionRetentionDays;
+        return $this->settings['audit_trail_completion_retention_days'] ?? false;
     }
 
     public function isFrontEndSessionLength(): bool
     {
-        return $this->frontEndSessionLength;
+        return $this->settings['front_end_session_length'] ?? false;
     }
 
     public function isEmailAdminOnBannedLogin(): bool
     {
-        return $this->emailAdminOnBannedLogin;
+        return $this->settings['email_admin_on_banned_login'] ?? false;
     }
 
     public function isAddSignatureStampWithName(): bool
     {
-        return $this->addSignatureStampWithName;
+        return $this->settings['add_signature_stamp_with_name'] ?? false;
     }
 
     public function isCfrTitle21Part11(): bool
     {
-        return $this->cfrTitle21Part11;
+        return $this->settings['cfr_title_21_part_11'] ?? false;
     }
 
     public function isUnsuccessfulLogoutAttemptsAllowed(): bool
     {
-        return $this->unsuccessfulLogoutAttemptsAllowed;
+        return $this->settings['unsuccessful_logout_attempts_allowed'] ?? false;
     }
 
     public function isRequireAuthenticationForInvites(): bool
     {
-        return $this->requireAuthenticationForInvites;
+        return $this->settings['require_authentication_for_invites'] ?? false;
     }
 
     public function isElectronicConsentRequired(): bool
     {
-        return $this->electronicConsentRequired;
+        return $this->settings['electronic_consent_required'] ?? false;
     }
 
     public function isElectronicConsentText(): bool
     {
-        return $this->electronicConsentText;
+        return $this->settings['electronic_consent_text'] ?? false;
     }
 
     public function isDocumentGuide(): bool
     {
-        return $this->documentGuide;
+        return $this->settings['document_guide'] ?? false;
     }
 
     public function isWatermarkDownloadedDocument(): bool
     {
-        return $this->watermarkDownloadedDocument;
+        return $this->settings['watermark_downloaded_document'] ?? false;
     }
 
     public function isRestrictDownload(): bool
     {
-        return $this->restrictDownload;
+        return $this->settings['restrict_download'] ?? false;
     }
 
     public function isDisableEmailNotifications(): bool
     {
-        return $this->disableEmailNotifications;
+        return $this->settings['disable_email_notifications'] ?? false;
     }
 
     public function isUploadLimit(): bool
     {
-        return $this->uploadLimit;
+        return $this->settings['upload_limit'] ?? false;
     }
 
     public function isDocumentSchemaExtended(): bool
     {
-        return $this->documentSchemaExtended;
+        return $this->settings['document_schema_extended'] ?? false;
     }
 
     public function isInviteUpdateNotificationsForAllInvitesAtInviteCreate(): bool
     {
-        return $this->inviteUpdateNotificationsForAllInvitesAtInviteCreate;
+        return $this->settings['invite_update_notifications_for_all_invites_at_invite_create'] ?? false;
     }
 
     public function isEnableFullStoryTracker(): bool
     {
-        return $this->enableFullStoryTracker;
+        return $this->settings['enable_full_story_tracker'] ?? false;
     }
 
     public function isDocumentAttachmentOnlyForSigner(): bool
     {
-        return $this->documentAttachmentOnlyForSigner;
+        return $this->settings['document_attachment_only_for_signer'] ?? false;
     }
 
     public function isSsoOnlyLogin(): bool
     {
-        return $this->ssoOnlyLogin;
+        return $this->settings['sso-only-login'] ?? false;
     }
 
     public function isBlockExportOptionsWhenCreditCardValidationIsUsed(): bool
     {
-        return $this->blockExportOptionsWhenCreditCardValidationIsUsed;
+        return $this->settings['block_export_options_when_credit_card_validation_is_used'] ?? false;
     }
 
     public function isOnlyAdministratorIsAbleToInviteToTheTeam(): bool
     {
-        return $this->onlyAdministratorIsAbleToInviteToTheTeam;
+        return $this->settings['only_administrator_is_able_to_invite_to_the_team'] ?? false;
     }
 
     public function isBlockLoginViaSocialNetworks(): bool
     {
-        return $this->blockLoginViaSocialNetworks;
+        return $this->settings['block_login_via_social_networks'] ?? false;
+    }
+
+    public function toArray(): array
+    {
+        return $this->settings;
+    }
+
+    public static function fromArray(array $data): self
+    {
+        return new self($data);
     }
 }

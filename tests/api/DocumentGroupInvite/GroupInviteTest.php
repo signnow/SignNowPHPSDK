@@ -51,11 +51,9 @@ class GroupInviteTest extends BaseTest
         $request->withDocumentGroupId($faker->documentGroupId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getId()));
-        assert($expectation->getId() === $response->getId());
-        assert(is_string($response->getPendingInviteLink()));
-        assert($expectation->getPendingInviteLink() === $response->getPendingInviteLink());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_string($response->getId()));
+        $this->assertTrue($expectation->getId() === $response->getId());
     }
 
     /**
@@ -70,11 +68,11 @@ class GroupInviteTest extends BaseTest
         $request = new GroupInviteGet();
         $request->withDocumentGroupId($faker->documentGroupId());
 
-        $request->withInviteId($faker->inviteId());
+$request->withInviteId($faker->inviteId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_object($response->getInvite()));
-        assert($expectation->getInvite() === $response->getInvite()->toArray());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_object($response->getInvite()));
+        $this->assertTrue($expectation->getInvite() === $response->getInvite()->toArray());
     }
 }

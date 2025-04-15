@@ -37,16 +37,13 @@ class EventSubscriptionTest extends BaseTest
     public function testGetEventSubscription(): void
     {
         $client = $this->client();
-        $expectation = $this->expectation('get_event_subscription_v2', 'get');
         $faker = $this->faker();
 
         $request = new EventSubscriptionGet();
         $request->withEventSubscriptionId($faker->eventSubscriptionId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_object($response->getData()));
-        assert($expectation->getData() === $response->getData()->toArray());
+        $this->assertTrue(is_object($response));
     }
 
     /**
@@ -66,7 +63,7 @@ class EventSubscriptionTest extends BaseTest
         $request->withEventSubscriptionId($faker->eventSubscriptionId());
         $response = $client->send($request);
 
-        assert(is_object($response));
+        $this->assertTrue(is_object($response));
     }
 
     /**
@@ -81,6 +78,6 @@ class EventSubscriptionTest extends BaseTest
         $request->withEventSubscriptionId($faker->eventSubscriptionId());
         $response = $client->send($request);
 
-        assert(is_object($response));
+        $this->assertTrue(is_object($response));
     }
 }

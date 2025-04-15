@@ -35,7 +35,7 @@ readonly class Page
     {
         return [
            'src' => $this->getSrc(),
-           'size' => $this->getSize(),
+           'size' => $this->getSize()->toArray(),
         ];
     }
 

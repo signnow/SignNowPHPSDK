@@ -130,8 +130,8 @@ readonly class Data
            'request_start_time' => $this->getRequestStartTime(),
            'request_end_time' => $this->getRequestEndTime(),
            'duration' => $this->getDuration(),
-           'request_headers' => $this->getRequestHeaders(),
-           'request_content' => $this->getRequestContent(),
+           'request_headers' => !is_null($this->getRequestHeaders()) ? $this->getRequestHeaders()->toArray() : null,
+           'request_content' => $this->getRequestContent()->toArray(),
            'response_content' => $this->getResponseContent(),
            'response_status_code' => $this->getResponseStatusCode(),
         ];

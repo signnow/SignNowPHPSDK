@@ -28,7 +28,7 @@ use SignNow\Core\Request\RequestInterface;
 final class DocumentDownloadGet implements RequestInterface
 {
     private array $uriParams = [];
-
+    private array $queryParams = [];
 
     public function withDocumentId(string $documentId): self
     {
@@ -37,9 +37,28 @@ final class DocumentDownloadGet implements RequestInterface
         return $this;
     }
 
+    public function withType(string $type): self
+    {
+        $this->queryParams['type'] = $type;
+
+        return $this;
+    }
+
+    public function withHistory(string $withHistory): self
+    {
+        $this->queryParams['with_history'] = $withHistory;
+
+        return $this;
+    }
+
     public function uriParams(): array
     {
         return $this->uriParams;
+    }
+
+    public function queryParams(): array
+    {
+        return $this->queryParams;
     }
 
     public function toArray(): array

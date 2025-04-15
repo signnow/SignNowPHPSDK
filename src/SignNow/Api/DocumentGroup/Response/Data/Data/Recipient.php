@@ -60,9 +60,9 @@ readonly class Recipient
         return [
            'name' => $this->getName(),
            'email' => $this->getEmail(),
-           'email_group' => $this->getEmailGroup(),
+           'email_group' => !is_null($this->getEmailGroup()) ? $this->getEmailGroup()->toArray() : null,
            'order' => $this->getOrder(),
-           'attributes' => $this->getAttributes(),
+           'attributes' => !is_null($this->getAttributes()) ? $this->getAttributes()->toArray() : null,
            'documents' => $this->getDocuments()->toArray(),
         ];
     }

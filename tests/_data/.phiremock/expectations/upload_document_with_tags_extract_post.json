@@ -7,9 +7,9 @@
   "then": {
     "response": {
       "statusCode": 200,
-      "body": "{\"id\":\"1077ecd0ad99cf5cc9491b7b3886e705afe55881\"}",
+      "body": "{\"id\":\"9ba6de5777301bd3c2a94a84dbac78b441643814\"}",
       "headers": {
-        "Content-Type": "application/json"
+        "Content-Type": "multipart/form-data"
       }
     }
   }

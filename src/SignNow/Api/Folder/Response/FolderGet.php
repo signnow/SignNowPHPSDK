@@ -20,7 +20,7 @@ readonly class FolderGet
 {
     public function __construct(
         private string $id,
-        private int $created,
+        private string $created,
         private string $name,
         private string $userId,
         private bool $systemFolder,
@@ -29,8 +29,8 @@ readonly class FolderGet
         private int $totalDocuments,
         private DocumentFolderCollection $documents,
         private ?string $parentId = null,
-        private ?string $teamId = null,
         private ?string $teamName = null,
+        private ?string $teamId = null,
         private ?string $teamType = null,
     ) {
     }
@@ -40,7 +40,7 @@ readonly class FolderGet
         return $this->id;
     }
 
-    public function getCreated(): int
+    public function getCreated(): string
     {
         return $this->created;
     }
@@ -85,14 +85,14 @@ readonly class FolderGet
         return $this->documents;
     }
 
-    public function getTeamId(): ?string
-    {
-        return $this->teamId;
-    }
-
     public function getTeamName(): ?string
     {
         return $this->teamName;
+    }
+
+    public function getTeamId(): ?string
+    {
+        return $this->teamId;
     }
 
     public function getTeamType(): ?string

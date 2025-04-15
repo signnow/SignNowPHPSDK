@@ -67,7 +67,7 @@ readonly class DocumentItem
            'id' => $this->getId(),
            'roles' => $this->getRoles()->toArray(),
            'document_name' => $this->getDocumentName(),
-           'thumbnail' => $this->getThumbnail(),
+           'thumbnail' => $this->getThumbnail()->toArray(),
            'origin_document_id' => $this->getOriginDocumentId(),
            'has_unassigned_field' => $this->HasUnassignedField(),
            'has_credit_card_number' => $this->HasCreditCardNumber(),

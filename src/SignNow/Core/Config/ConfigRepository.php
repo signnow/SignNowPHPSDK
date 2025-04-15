@@ -19,11 +19,13 @@ use SignNow\Core\Token\BasicToken;
 class ConfigRepository
 {
     private const CLIENT_NAME = 'SignNowApiClient/v3.0.0 (PHP)';
-    private const TIMEOUT = 5;
+    private const TIMEOUT = 10;
     private const HOST = 'signnow_api_host';
     private const USERNAME = 'signnow_api_username';
     private const PASSWORD = 'signnow_api_password';
     private const BASIC_TOKEN = 'signnow_api_basic_token';
+    private const DOWNLOADS_DIR = 'signnow_downloads_dir';
+    public const DEFAULT_DOWNLOADS_DIR = './storage/downloads';
 
     public function __construct(
         private readonly array $config,
@@ -58,6 +60,18 @@ class ConfigRepository
     public function timeout(): int
     {
         return self::TIMEOUT;
+    }
+
+    public function projectDirectory(): string
+    {
+        return dirname(__DIR__, 4);
+    }
+
+    public function downloadsDirectory(): string
+    {
+        $path = $this->config[self::DOWNLOADS_DIR] ?? self::DEFAULT_DOWNLOADS_DIR;
+
+        return str_starts_with($path, '.') ? str_replace('.', $this->projectDirectory(), $path) : $path;
     }
 
     public function validate(): void

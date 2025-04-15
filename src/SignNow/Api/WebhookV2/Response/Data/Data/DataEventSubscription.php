@@ -81,7 +81,7 @@ readonly class DataEventSubscription
            'entity_id' => $this->getEntityId(),
            'entity_unique_id' => $this->getEntityUniqueId(),
            'active' => $this->isActive(),
-           'json_attributes' => $this->getJsonAttributes(),
+           'json_attributes' => $this->getJsonAttributes()->toArray(),
            'application_name' => $this->getApplicationName(),
            'created' => $this->getCreated(),
            'version' => $this->getVersion(),

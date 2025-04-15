@@ -42,10 +42,10 @@ class SigningLinkTest extends BaseTest
         );
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getUrl()));
-        assert($expectation->getUrl() === $response->getUrl());
-        assert(is_string($response->getUrlNoSignup()));
-        assert($expectation->getUrlNoSignup() === $response->getUrlNoSignup());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_string($response->getUrl()));
+        $this->assertTrue($expectation->getUrl() === $response->getUrl());
+        $this->assertTrue(is_string($response->getUrlNoSignup()));
+        $this->assertTrue($expectation->getUrlNoSignup() === $response->getUrlNoSignup());
     }
 }

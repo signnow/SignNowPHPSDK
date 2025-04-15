@@ -49,7 +49,7 @@ readonly class ExportedTo
            'export_domain' => $this->getExportDomain(),
            'is_exported' => $this->IsExported(),
            'exported_user_ids' => $this->getExportedUserIds()->toArray(),
-           'storages' => $this->getStorages()->toArray(),
+           'storages' => !is_null($this->getStorages()) ? $this->getStorages()->toArray() : null,
         ];
     }
 

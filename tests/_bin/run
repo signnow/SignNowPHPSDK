@@ -1,4 +1,4 @@
-#!/bin/env php
+#!/usr/bin/env php
 <?php
 
 /*
@@ -43,4 +43,5 @@ if ($results->isPassed()) {
 
 $results->displayErrorsTitle();
 $results->displayErrors();
+$results->displayErrorsCount();
 exit(1);

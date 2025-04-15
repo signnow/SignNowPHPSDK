@@ -245,7 +245,7 @@ readonly class FieldInvite
            'delivery_type' => $this->getDeliveryType(),
            'signer_phone_invite' => $this->getSignerPhoneInvite(),
            'signature_type' => $this->getSignatureType(),
-           'email_group' => $this->getEmailGroup(),
+           'email_group' => $this->getEmailGroup()->toArray(),
         ];
     }
 

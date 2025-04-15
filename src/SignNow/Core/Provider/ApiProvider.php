@@ -19,8 +19,11 @@ use SignNow\ApiClient;
 use SignNow\Core\Config\ConfigLoader;
 use SignNow\Core\Config\ConfigRepository;
 use SignNow\Core\Request\EndpointResolver;
+use SignNow\Core\Response\FileDownloader;
 use SignNow\Core\Response\ResponseToEntityMapper as ResponseMapper;
+use SignNow\Core\Serializer\DocumentSettingsNormalizer;
 use SignNow\Core\Serializer\TypedCollectionNormalizer;
+use SignNow\Core\Serializer\UserSettingsNormalizer;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -60,6 +63,8 @@ readonly class ApiProvider
             ->setArgument(
                 '$normalizers',
                 [
+                    new DocumentSettingsNormalizer(),
+                    new UserSettingsNormalizer(),
                     new TypedCollectionNormalizer(),
                     new ArrayDenormalizer(),
                     new ObjectNormalizer(
@@ -79,6 +84,7 @@ readonly class ApiProvider
             )
             ->setPublic(true);
 
+        $config = $this->getConfig();
         $this->container
             ->register('http_client', HttpClient::class)
             ->setPublic(true);
@@ -86,8 +92,13 @@ readonly class ApiProvider
             ->register('resolver', EndpointResolver::class)
             ->setPublic(true);
         $this->container
+            ->register('file_downloader', FileDownloader::class)
+            ->addArgument($config->downloadsDirectory())
+            ->setPublic(true);
+        $this->container
             ->register('mapper', ResponseMapper::class)
             ->addArgument(new Reference('serializer'))
+            ->addArgument(new Reference('file_downloader'))
             ->setPublic(true);
 
         $this->container->autowire('api_client', ApiClient::class)
@@ -107,7 +118,7 @@ readonly class ApiProvider
     /**
      * @throws RuntimeException
      */
-    private function buildConfig(): void
+    private function buildConfig(): ConfigRepository
     {
         $loader = new ConfigLoader();
         $config = new ConfigRepository($loader->load($this->configPath));
@@ -118,5 +129,16 @@ readonly class ApiProvider
 
         $this->container
             ->set('basic_token', $config->basicToken());
+
+        return $config;
+    }
+
+    private function getConfig(): ConfigRepository
+    {
+        if ($this->container->has('config')) {
+            return $this->container->get('config');
+        }
+
+        return $this->buildConfig();
     }
 }

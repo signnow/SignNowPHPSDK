@@ -75,9 +75,13 @@ final class GroupTemplatePut implements RequestInterface
     public function toArray(): array
     {
         return [
-           'template_ids_to_add' => $this->getTemplateIdsToAdd()->toArray(),
-           'template_ids_to_remove' => $this->getTemplateIdsToRemove()->toArray(),
-           'routing_details' => $this->getRoutingDetails(),
+           'template_ids_to_add' => !is_null($this->getTemplateIdsToAdd())
+               ? $this->getTemplateIdsToAdd()->toArray()
+               : null,
+           'template_ids_to_remove' => !is_null($this->getTemplateIdsToRemove())
+               ? $this->getTemplateIdsToRemove()->toArray()
+               : null,
+           'routing_details' => $this->getRoutingDetails()->toArray(),
            'template_group_name' => $this->getTemplateGroupName(),
         ];
     }

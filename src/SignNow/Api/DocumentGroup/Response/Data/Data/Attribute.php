@@ -73,11 +73,11 @@ readonly class Attribute
            'message' => $this->getMessage(),
            'subject' => $this->getSubject(),
            'expiration_days' => $this->getExpirationDays(),
-           'reminder' => $this->getReminder(),
+           'reminder' => !is_null($this->getReminder()) ? $this->getReminder()->toArray() : null,
            'allow_forwarding' => $this->isAllowForwarding(),
            'show_decline_button' => $this->isShowDeclineButton(),
            'i_am_recipient' => $this->isIAmRecipient(),
-           'authentication' => $this->getAuthentication(),
+           'authentication' => !is_null($this->getAuthentication()) ? $this->getAuthentication()->toArray() : null,
         ];
     }
 

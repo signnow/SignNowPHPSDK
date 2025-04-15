@@ -74,7 +74,7 @@ final class SubscriptionPost implements RequestInterface
            'event' => $this->getEvent(),
            'entity_id' => $this->getEntityId(),
            'action' => $this->getAction(),
-           'attributes' => $this->getAttributes(),
+           'attributes' => !is_null($this->getAttributes()) ? $this->getAttributes()->toArray() : null,
            'secret_key' => $this->getSecretKey(),
         ];
     }

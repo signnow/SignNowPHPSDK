@@ -26,7 +26,7 @@ readonly class Text
         private string $x,
         private string $y,
         private string $lineHeight,
-        private int $created,
+        private string $created,
     ) {
     }
 
@@ -80,7 +80,7 @@ readonly class Text
         return $this->lineHeight;
     }
 
-    public function getCreated(): int
+    public function getCreated(): string
     {
         return $this->created;
     }

@@ -101,8 +101,10 @@ final class GroupInvitePost implements RequestInterface
     {
         return [
            'invite_steps' => $this->getInviteSteps()->toArray(),
-           'email_groups' => $this->getEmailGroups()->toArray(),
-           'completion_emails' => $this->getCompletionEmails()->toArray(),
+           'email_groups' => !is_null($this->getEmailGroups()) ? $this->getEmailGroups()->toArray() : null,
+           'completion_emails' => !is_null($this->getCompletionEmails())
+               ? $this->getCompletionEmails()->toArray()
+               : null,
            'sign_as_merged' => $this->isSignAsMerged(),
            'client_timestamp' => $this->getClientTimestamp(),
            'cc' => $this->getCc()->toArray(),

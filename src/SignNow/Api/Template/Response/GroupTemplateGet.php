@@ -13,16 +13,29 @@ declare(strict_types=1);
 
 namespace SignNow\Api\Template\Response;
 
+use SignNow\Api\Template\Response\Data\RoutingDetail\RoutingDetail;
+use SignNow\Api\Template\Response\Data\Template\TemplateCollection;
+use SignNow\Api\Template\Response\Data\ShareInfo;
+
 readonly class GroupTemplateGet
 {
     public function __construct(
         private string $id,
-        private string $name,
-        private string $filename,
-        private int $pageCount,
+        private string $userId,
+        private string $groupName,
+        private string $folderId,
+        private RoutingDetail $routingDetails,
+        private TemplateCollection $templates,
+        private int $shared,
+        private string $documentGroupTemplateOwnerEmail,
+        private ?string $sharedTeamId,
+        private bool $ownAsMerged,
+        private ?string $emailActionOnComplete,
         private int $created,
         private int $updated,
-        private string $editorLink,
+        private int $recentlyUsed,
+        private bool $pinned,
+        private ?ShareInfo $shareInfo = null,
     ) {
     }
 
@@ -31,19 +44,59 @@ readonly class GroupTemplateGet
         return $this->id;
     }
 
-    public function getName(): string
+    public function getUserId(): string
     {
-        return $this->name;
+        return $this->userId;
     }
 
-    public function getFilename(): string
+    public function getGroupName(): string
     {
-        return $this->filename;
+        return $this->groupName;
     }
 
-    public function getPageCount(): int
+    public function getFolderId(): string
     {
-        return $this->pageCount;
+        return $this->folderId;
+    }
+
+    public function getRoutingDetails(): RoutingDetail
+    {
+        return $this->routingDetails;
+    }
+
+    public function getTemplates(): TemplateCollection
+    {
+        return $this->templates;
+    }
+
+    public function getShared(): int
+    {
+        return $this->shared;
+    }
+
+    public function getDocumentGroupTemplateOwnerEmail(): string
+    {
+        return $this->documentGroupTemplateOwnerEmail;
+    }
+
+    public function getSharedTeamId(): ?string
+    {
+        return $this->sharedTeamId;
+    }
+
+    public function getShareInfo(): ?ShareInfo
+    {
+        return $this->shareInfo;
+    }
+
+    public function isOwnAsMerged(): bool
+    {
+        return $this->ownAsMerged;
+    }
+
+    public function getEmailActionOnComplete(): ?string
+    {
+        return $this->emailActionOnComplete;
     }
 
     public function getCreated(): int
@@ -56,8 +109,13 @@ readonly class GroupTemplateGet
         return $this->updated;
     }
 
-    public function getEditorLink(): string
+    public function getRecentlyUsed(): int
     {
-        return $this->editorLink;
+        return $this->recentlyUsed;
+    }
+
+    public function isPinned(): bool
+    {
+        return $this->pinned;
     }
 }
