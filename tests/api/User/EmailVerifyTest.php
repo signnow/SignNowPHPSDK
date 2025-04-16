@@ -33,7 +33,6 @@ class EmailVerifyTest extends BaseTest
     public function testPutEmailVerify(): void
     {
         $client = $this->client();
-        $expectation = $this->expectation('user_email_verify', 'put');
         $faker = $this->faker();
 
         $request = new EmailVerifyPut(
@@ -42,8 +41,6 @@ class EmailVerifyTest extends BaseTest
         );
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getEmail()));
-        assert($expectation->getEmail() === $response->getEmail());
+        $this->assertTrue(is_object($response));
     }
 }

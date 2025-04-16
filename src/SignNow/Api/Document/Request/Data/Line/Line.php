@@ -84,7 +84,7 @@ readonly class Line
            'page_number' => $this->getPageNumber(),
            'fill_color' => $this->getFillColor(),
            'line_width' => $this->getLineWidth(),
-           'control_points' => $this->getControlPoints()->toArray(),
+           'control_points' => !is_null($this->getControlPoints()) ? $this->getControlPoints()->toArray() : null,
         ];
     }
 

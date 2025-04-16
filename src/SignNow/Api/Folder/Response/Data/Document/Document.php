@@ -19,35 +19,37 @@ readonly class Document
         private string $id,
         private string $userId,
         private string $documentName,
+        private bool $pinned,
         private string $pageCount,
         private string $created,
         private string $updated,
-        private string $versionTime,
+        private string $recentlyUsed,
         private string $originalFilename,
-        private string $owner,
-        private ?string $originUserId,
+        private string $entityType,
         private Thumbnail $thumbnail,
-        private bool $template,
-        private RoleCollection $roles,
-        private RoutingDetailCollection $routingDetails,
-        private FieldInviteCollection $fieldInvites,
-        private SignatureCollection $signatures,
-        private SealCollection $seals,
-        private TextCollection $texts,
-        private CheckCollection $checks,
-        private RadiobuttonCollection $radiobuttons,
-        private IntegrationCollection $integrations,
-        private InsertCollection $inserts,
-        private TagCollection $tags,
-        private FieldDocumentCollection $fields,
-        private RequestCollection $requests,
-        private EnumerationOptionCollection $enumerationOptions,
-        private AttachmentCollection $attachments,
-        private DocumentGroupInfo $documentGroupInfo,
         private ?string $originDocumentId = null,
+        private ?string $owner = null,
+        private ?string $versionTime = null,
+        private ?string $originUserId = null,
         private ?string $projectId = null,
+        private ?bool $template = null,
         private ?bool $isFavorite = null,
-        private ?string $recentlyUsed = null,
+        private ?RoleCollection $roles = new RoleCollection(),
+        private ?RoutingDetailCollection $routingDetails = new RoutingDetailCollection(),
+        private ?FieldInviteCollection $fieldInvites = new FieldInviteCollection(),
+        private ?SignatureCollection $signatures = new SignatureCollection(),
+        private ?SealCollection $seals = new SealCollection(),
+        private ?TextCollection $texts = new TextCollection(),
+        private ?CheckCollection $checks = new CheckCollection(),
+        private ?RadiobuttonCollection $radiobuttons = new RadiobuttonCollection(),
+        private ?IntegrationCollection $integrations = new IntegrationCollection(),
+        private ?InsertCollection $inserts = new InsertCollection(),
+        private ?TagCollection $tags = new TagCollection(),
+        private ?FieldDocumentCollection $fields = new FieldDocumentCollection(),
+        private ?RequestCollection $requests = new RequestCollection(),
+        private ?EnumerationOptionCollection $enumerationOptions = new EnumerationOptionCollection(),
+        private ?AttachmentCollection $attachments = new AttachmentCollection(),
+        private ?DocumentGroupInfo $documentGroupInfo = null,
     ) {
     }
 
@@ -66,6 +68,11 @@ readonly class Document
         return $this->documentName;
     }
 
+    public function isPinned(): bool
+    {
+        return $this->pinned;
+    }
+
     public function getPageCount(): string
     {
         return $this->pageCount;
@@ -81,9 +88,9 @@ readonly class Document
         return $this->updated;
     }
 
-    public function getVersionTime(): string
+    public function getRecentlyUsed(): string
     {
-        return $this->versionTime;
+        return $this->recentlyUsed;
     }
 
     public function getOriginalFilename(): string
@@ -91,14 +98,29 @@ readonly class Document
         return $this->originalFilename;
     }
 
+    public function getEntityType(): string
+    {
+        return $this->entityType;
+    }
+
+    public function getThumbnail(): Thumbnail
+    {
+        return $this->thumbnail;
+    }
+
     public function getOriginDocumentId(): ?string
     {
         return $this->originDocumentId;
     }
 
-    public function getOwner(): string
+    public function getOwner(): ?string
     {
         return $this->owner;
+    }
+
+    public function getVersionTime(): ?string
+    {
+        return $this->versionTime;
     }
 
     public function getOriginUserId(): ?string
@@ -111,12 +133,7 @@ readonly class Document
         return $this->projectId;
     }
 
-    public function getThumbnail(): Thumbnail
-    {
-        return $this->thumbnail;
-    }
-
-    public function isTemplate(): bool
+    public function isTemplate(): ?bool
     {
         return $this->template;
     }
@@ -126,89 +143,84 @@ readonly class Document
         return $this->isFavorite;
     }
 
-    public function getRoles(): RoleCollection
+    public function getRoles(): ?RoleCollection
     {
         return $this->roles;
     }
 
-    public function getRoutingDetails(): RoutingDetailCollection
+    public function getRoutingDetails(): ?RoutingDetailCollection
     {
         return $this->routingDetails;
     }
 
-    public function getFieldInvites(): FieldInviteCollection
+    public function getFieldInvites(): ?FieldInviteCollection
     {
         return $this->fieldInvites;
     }
 
-    public function getSignatures(): SignatureCollection
+    public function getSignatures(): ?SignatureCollection
     {
         return $this->signatures;
     }
 
-    public function getSeals(): SealCollection
+    public function getSeals(): ?SealCollection
     {
         return $this->seals;
     }
 
-    public function getTexts(): TextCollection
+    public function getTexts(): ?TextCollection
     {
         return $this->texts;
     }
 
-    public function getChecks(): CheckCollection
+    public function getChecks(): ?CheckCollection
     {
         return $this->checks;
     }
 
-    public function getRadiobuttons(): RadiobuttonCollection
+    public function getRadiobuttons(): ?RadiobuttonCollection
     {
         return $this->radiobuttons;
     }
 
-    public function getIntegrations(): IntegrationCollection
+    public function getIntegrations(): ?IntegrationCollection
     {
         return $this->integrations;
     }
 
-    public function getInserts(): InsertCollection
+    public function getInserts(): ?InsertCollection
     {
         return $this->inserts;
     }
 
-    public function getTags(): TagCollection
+    public function getTags(): ?TagCollection
     {
         return $this->tags;
     }
 
-    public function getFields(): FieldDocumentCollection
+    public function getFields(): ?FieldDocumentCollection
     {
         return $this->fields;
     }
 
-    public function getRequests(): RequestCollection
+    public function getRequests(): ?RequestCollection
     {
         return $this->requests;
     }
 
-    public function getEnumerationOptions(): EnumerationOptionCollection
+    public function getEnumerationOptions(): ?EnumerationOptionCollection
     {
         return $this->enumerationOptions;
     }
 
-    public function getAttachments(): AttachmentCollection
+    public function getAttachments(): ?AttachmentCollection
     {
         return $this->attachments;
     }
 
-    public function getDocumentGroupInfo(): DocumentGroupInfo
+    public function getDocumentGroupInfo(): ?DocumentGroupInfo
     {
         return $this->documentGroupInfo;
-    }
-
-    public function getRecentlyUsed(): ?string
-    {
-        return $this->recentlyUsed;
     }
 
     public function toArray(): array
@@ -217,35 +229,43 @@ readonly class Document
            'id' => $this->getId(),
            'user_id' => $this->getUserId(),
            'document_name' => $this->getDocumentName(),
+           'pinned' => $this->isPinned(),
            'page_count' => $this->getPageCount(),
            'created' => $this->getCreated(),
            'updated' => $this->getUpdated(),
-           'version_time' => $this->getVersionTime(),
+           'recently_used' => $this->getRecentlyUsed(),
            'original_filename' => $this->getOriginalFilename(),
+           'entity_type' => $this->getEntityType(),
+           'thumbnail' => $this->getThumbnail()->toArray(),
            'origin_document_id' => $this->getOriginDocumentId(),
            'owner' => $this->getOwner(),
+           'version_time' => $this->getVersionTime(),
            'origin_user_id' => $this->getOriginUserId(),
            'project_id' => $this->getProjectId(),
-           'thumbnail' => $this->getThumbnail(),
            'template' => $this->isTemplate(),
            'is_favorite' => $this->IsFavorite(),
-           'roles' => $this->getRoles()->toArray(),
-           'routing_details' => $this->getRoutingDetails()->toArray(),
-           'field_invites' => $this->getFieldInvites()->toArray(),
-           'signatures' => $this->getSignatures()->toArray(),
-           'seals' => $this->getSeals()->toArray(),
-           'texts' => $this->getTexts()->toArray(),
-           'checks' => $this->getChecks()->toArray(),
-           'radiobuttons' => $this->getRadiobuttons()->toArray(),
-           'integrations' => $this->getIntegrations()->toArray(),
-           'inserts' => $this->getInserts()->toArray(),
-           'tags' => $this->getTags()->toArray(),
-           'fields' => $this->getFields()->toArray(),
-           'requests' => $this->getRequests()->toArray(),
-           'enumeration_options' => $this->getEnumerationOptions()->toArray(),
-           'attachments' => $this->getAttachments()->toArray(),
-           'document_group_info' => $this->getDocumentGroupInfo(),
-           'recently_used' => $this->getRecentlyUsed(),
+           'roles' => !is_null($this->getRoles()) ? $this->getRoles()->toArray() : null,
+           'routing_details' => !is_null($this->getRoutingDetails()) ? $this->getRoutingDetails()->toArray() : null,
+           'field_invites' => !is_null($this->getFieldInvites()) ? $this->getFieldInvites()->toArray() : null,
+           'signatures' => !is_null($this->getSignatures()) ? $this->getSignatures()->toArray() : null,
+           'seals' => !is_null($this->getSeals()) ? $this->getSeals()->toArray() : null,
+           'texts' => !is_null($this->getTexts()) ? $this->getTexts()->toArray() : null,
+           'checks' => !is_null($this->getChecks()) ? $this->getChecks()->toArray() : null,
+           'radiobuttons' => !is_null($this->getRadiobuttons()) ? $this->getRadiobuttons()->toArray() : null,
+           'integrations' => !is_null($this->getIntegrations()) ? $this->getIntegrations()->toArray() : null,
+           'inserts' => !is_null($this->getInserts()) ? $this->getInserts()->toArray() : null,
+           'tags' => !is_null($this->getTags()) ? $this->getTags()->toArray() : null,
+           'fields' => !is_null($this->getFields()) ? $this->getFields()->toArray() : null,
+           'requests' => !is_null($this->getRequests()) ? $this->getRequests()->toArray() : null,
+           'enumeration_options' => !is_null($this->getEnumerationOptions())
+               ? $this->getEnumerationOptions()->toArray()
+               : null,
+           'attachments' => !is_null($this->getAttachments())
+               ? $this->getAttachments()->toArray()
+               : null,
+           'document_group_info' => !is_null($this->getDocumentGroupInfo())
+               ? $this->getDocumentGroupInfo()->toArray()
+               : null,
         ];
     }
 
@@ -255,15 +275,21 @@ readonly class Document
             $data['id'],
             $data['user_id'],
             $data['document_name'],
+            $data['pinned'],
             $data['page_count'],
             $data['created'],
             $data['updated'],
-            $data['version_time'],
+            $data['recently_used'],
             $data['original_filename'],
-            $data['owner'],
-            $data['origin_user_id'],
+            $data['entity_type'],
             Thumbnail::fromArray($data['thumbnail']),
-            $data['template'],
+            $data['origin_document_id'] ?? null,
+            $data['owner'] ?? null,
+            $data['version_time'] ?? null,
+            $data['origin_user_id'] ?? null,
+            $data['project_id'] ?? null,
+            $data['template'] ?? null,
+            $data['is_favorite'] ?? null,
             new RoleCollection($data['roles']),
             new RoutingDetailCollection($data['routing_details']),
             new FieldInviteCollection($data['field_invites']),
@@ -279,11 +305,7 @@ readonly class Document
             new RequestCollection($data['requests']),
             new EnumerationOptionCollection($data['enumeration_options']),
             new AttachmentCollection($data['attachments']),
-            DocumentGroupInfo::fromArray($data['document_group_info']),
-            $data['origin_document_id'] ?? null,
-            $data['project_id'] ?? null,
-            $data['is_favorite'] ?? null,
-            $data['recently_used'] ?? null,
+            isset($data['document_group_info']) ? DocumentGroupInfo::fromArray($data['document_group_info']) : null,
         );
     }
 }

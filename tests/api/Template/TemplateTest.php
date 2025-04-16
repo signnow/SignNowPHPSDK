@@ -42,8 +42,8 @@ class TemplateTest extends BaseTest
         );
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getId()));
-        assert($expectation->getId() === $response->getId());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_string($response->getId()));
+        $this->assertTrue($expectation->getId() === $response->getId());
     }
 }

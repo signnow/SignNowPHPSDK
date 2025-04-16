@@ -16,24 +16,14 @@ namespace SignNow\Api\Template\Response\Data;
 readonly class RoutingDetailGet
 {
     public function __construct(
-        private bool $inviterRole,
         private string $name,
         private string $roleId,
+        private string $defaultEmail,
+        private bool $inviterRole,
         private int $signingOrder,
-        private string $defaultEmail = '',
         private bool $declineBySignature = false,
         private ?string $deliveryType = null,
     ) {
-    }
-
-    public function getDefaultEmail(): string
-    {
-        return $this->defaultEmail;
-    }
-
-    public function isInviterRole(): bool
-    {
-        return $this->inviterRole;
     }
 
     public function getName(): string
@@ -44,6 +34,16 @@ readonly class RoutingDetailGet
     public function getRoleId(): string
     {
         return $this->roleId;
+    }
+
+    public function getDefaultEmail(): string
+    {
+        return $this->defaultEmail;
+    }
+
+    public function isInviterRole(): bool
+    {
+        return $this->inviterRole;
     }
 
     public function getSigningOrder(): int
@@ -64,10 +64,10 @@ readonly class RoutingDetailGet
     public function toArray(): array
     {
         return [
-           'default_email' => $this->getDefaultEmail(),
-           'inviter_role' => $this->isInviterRole(),
            'name' => $this->getName(),
            'role_id' => $this->getRoleId(),
+           'default_email' => $this->getDefaultEmail(),
+           'inviter_role' => $this->isInviterRole(),
            'signing_order' => $this->getSigningOrder(),
            'decline_by_signature' => $this->isDeclineBySignature(),
            'delivery_type' => $this->getDeliveryType(),
@@ -77,11 +77,11 @@ readonly class RoutingDetailGet
     public static function fromArray(array $data): self
     {
         return new self(
-            $data['inviter_role'],
             $data['name'],
             $data['role_id'],
+            $data['default_email'],
+            $data['inviter_role'],
             $data['signing_order'],
-            $data['default_email'] ?? '',
             $data['decline_by_signature'] ?? false,
             $data['delivery_type'] ?? null,
         );

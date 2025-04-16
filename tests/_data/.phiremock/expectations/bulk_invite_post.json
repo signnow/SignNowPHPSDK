@@ -9,7 +9,7 @@
       "statusCode": 200,
       "body": "{\"status\":\"success\"}",
       "headers": {
-        "Content-Type": "application/json"
+        "Content-Type": "multipart/form-data"
       }
     }
   }

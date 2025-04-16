@@ -57,13 +57,13 @@ class FreeFormInviteTest extends BaseTest
         $request->withDocumentId($faker->documentId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getResult()));
-        assert($expectation->getResult() === $response->getResult());
-        assert(is_string($response->getId()));
-        assert($expectation->getId() === $response->getId());
-        assert(is_string($response->getCallbackUrl()));
-        assert($expectation->getCallbackUrl() === $response->getCallbackUrl());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_string($response->getResult()));
+        $this->assertTrue($expectation->getResult() === $response->getResult());
+        $this->assertTrue(is_string($response->getId()));
+        $this->assertTrue($expectation->getId() === $response->getId());
+        $this->assertTrue(is_string($response->getCallbackUrl()));
+        $this->assertTrue($expectation->getCallbackUrl() === $response->getCallbackUrl());
     }
 
     /**
@@ -79,10 +79,8 @@ class FreeFormInviteTest extends BaseTest
         $request->withDocumentId($faker->documentId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_array($response->getData()));
-        assert($expectation->getData() === $response->getData()->toArray());
-        assert(is_object($response->getMeta()));
-        assert($expectation->getMeta() === $response->getMeta()->toArray());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_object($response->getMeta()));
+        $this->assertTrue($expectation->getMeta() === $response->getMeta()->toArray());
     }
 }

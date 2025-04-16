@@ -55,9 +55,9 @@ class DocumentTest extends BaseTest
         );
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getId()));
-        assert($expectation->getId() === $response->getId());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_string($response->getId()));
+        $this->assertTrue($expectation->getId() === $response->getId());
     }
 
     /**
@@ -73,107 +73,59 @@ class DocumentTest extends BaseTest
         $request->withDocumentId($faker->documentId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getId()));
-        assert($expectation->getId() === $response->getId());
-        assert(is_string($response->getUserId()));
-        assert($expectation->getUserId() === $response->getUserId());
-        assert(is_string($response->getDocumentName()));
-        assert($expectation->getDocumentName() === $response->getDocumentName());
-        assert(is_string($response->getPageCount()));
-        assert($expectation->getPageCount() === $response->getPageCount());
-        assert(is_int($response->getCreated()));
-        assert($expectation->getCreated() === $response->getCreated());
-        assert(is_int($response->getUpdated()));
-        assert($expectation->getUpdated() === $response->getUpdated());
-        assert(is_string($response->getOriginalFilename()));
-        assert($expectation->getOriginalFilename() === $response->getOriginalFilename());
-        assert(is_string($response->getOriginUserId()));
-        assert($expectation->getOriginUserId() === $response->getOriginUserId());
-        assert(is_string($response->getOriginDocumentId()));
-        assert($expectation->getOriginDocumentId() === $response->getOriginDocumentId());
-        assert(is_string($response->getOwner()));
-        assert($expectation->getOwner() === $response->getOwner());
-        assert(is_string($response->getOwnerName()));
-        assert($expectation->getOwnerName() === $response->getOwnerName());
-        assert(is_bool($response->isTemplate()));
-        assert($expectation->isTemplate() === $response->isTemplate());
-        assert(is_string($response->getParentId()));
-        assert($expectation->getParentId() === $response->getParentId());
-        assert(is_string($response->getRecentlyUsed()));
-        assert($expectation->getRecentlyUsed() === $response->getRecentlyUsed());
-        assert(is_string($response->getOriginatorLogo()));
-        assert($expectation->getOriginatorLogo() === $response->getOriginatorLogo());
-        assert(is_array($response->getPages()));
-        assert($expectation->getPages() === $response->getPages()->toArray());
-        assert(is_string($response->getDefaultFolder()));
-        assert($expectation->getDefaultFolder() === $response->getDefaultFolder());
-        assert(is_array($response->getEntityLabels()));
-        assert($expectation->getEntityLabels() === $response->getEntityLabels()->toArray());
-        assert(is_int($response->getVersionTime()));
-        assert($expectation->getVersionTime() === $response->getVersionTime());
-        assert(is_array($response->getRoutingDetails()));
-        assert($expectation->getRoutingDetails() === $response->getRoutingDetails()->toArray());
-        assert(is_object($response->getThumbnail()));
-        assert($expectation->getThumbnail() === $response->getThumbnail()->toArray());
-        assert(is_array($response->getSignatures()));
-        assert($expectation->getSignatures() === $response->getSignatures()->toArray());
-        assert(is_array($response->getTags()));
-        assert($expectation->getTags() === $response->getTags()->toArray());
-        assert(is_array($response->getFields()));
-        assert($expectation->getFields() === $response->getFields()->toArray());
-        assert(is_array($response->getRoles()));
-        assert($expectation->getRoles() === $response->getRoles()->toArray());
-        assert(is_array($response->getViewerRoles()));
-        assert($expectation->getViewerRoles() === $response->getViewerRoles()->toArray());
-        assert(is_array($response->getFieldInvites()));
-        assert($expectation->getFieldInvites() === $response->getFieldInvites()->toArray());
-        assert(is_array($response->getViewerFieldInvites()));
-        assert($expectation->getViewerFieldInvites() === $response->getViewerFieldInvites()->toArray());
-        assert(is_object($response->getSigningSessionSettings()));
-        assert($expectation->getSigningSessionSettings() === $response->getSigningSessionSettings()->toArray());
-        assert(is_array($response->getEnumerationOptions()));
-        assert($expectation->getEnumerationOptions() === $response->getEnumerationOptions()->toArray());
-        assert(is_array($response->getPayments()));
-        assert($expectation->getPayments() === $response->getPayments()->toArray());
-        assert(is_array($response->getIntegrations()));
-        assert($expectation->getIntegrations() === $response->getIntegrations()->toArray());
-        assert(is_array($response->getIntegrationObjects()));
-        assert($expectation->getIntegrationObjects() === $response->getIntegrationObjects()->toArray());
-        assert(is_array($response->getExportedTo()));
-        assert($expectation->getExportedTo() === $response->getExportedTo()->toArray());
-        assert(is_array($response->getRadiobuttons()));
-        assert($expectation->getRadiobuttons() === $response->getRadiobuttons()->toArray());
-        assert(is_array($response->getSeals()));
-        assert($expectation->getSeals() === $response->getSeals()->toArray());
-        assert(is_array($response->getChecks()));
-        assert($expectation->getChecks() === $response->getChecks()->toArray());
-        assert(is_array($response->getTexts()));
-        assert($expectation->getTexts() === $response->getTexts()->toArray());
-        assert(is_array($response->getLines()));
-        assert($expectation->getLines() === $response->getLines()->toArray());
-        assert(is_array($response->getAttachments()));
-        assert($expectation->getAttachments() === $response->getAttachments()->toArray());
-        assert(is_array($response->getHyperlinks()));
-        assert($expectation->getHyperlinks() === $response->getHyperlinks()->toArray());
-        assert(is_array($response->getRequests()));
-        assert($expectation->getRequests() === $response->getRequests()->toArray());
-        assert(is_array($response->getInserts()));
-        assert($expectation->getInserts() === $response->getInserts()->toArray());
-        assert(is_array($response->getFieldsData()));
-        assert($expectation->getFieldsData() === $response->getFieldsData()->toArray());
-        assert(is_array($response->getFieldValidators()));
-        assert($expectation->getFieldValidators() === $response->getFieldValidators()->toArray());
-        assert(is_array($response->getOriginatorOrganizationSettings()));
-        assert($expectation->getOriginatorOrganizationSettings() === $response->getOriginatorOrganizationSettings()->toArray());
-        assert(is_object($response->getDocumentGroupInfo()));
-        assert($expectation->getDocumentGroupInfo() === $response->getDocumentGroupInfo()->toArray());
-        assert(is_array($response->getDocumentGroupTemplateInfo()));
-        assert($expectation->getDocumentGroupTemplateInfo() === $response->getDocumentGroupTemplateInfo()->toArray());
-        assert(is_object($response->getSettings()));
-        assert($expectation->getSettings() === $response->getSettings()->toArray());
-        assert(is_object($response->getShareInfo()));
-        assert($expectation->getShareInfo() === $response->getShareInfo()->toArray());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_string($response->getId()));
+        $this->assertTrue($expectation->getId() === $response->getId());
+        $this->assertTrue(is_string($response->getUserId()));
+        $this->assertTrue($expectation->getUserId() === $response->getUserId());
+        $this->assertTrue(is_string($response->getDocumentName()));
+        $this->assertTrue($expectation->getDocumentName() === $response->getDocumentName());
+        $this->assertTrue(is_string($response->getPageCount()));
+        $this->assertTrue($expectation->getPageCount() === $response->getPageCount());
+        $this->assertTrue(is_int($response->getCreated()));
+        $this->assertTrue($expectation->getCreated() === $response->getCreated());
+        $this->assertTrue(is_int($response->getUpdated()));
+        $this->assertTrue($expectation->getUpdated() === $response->getUpdated());
+        $this->assertTrue(is_string($response->getOriginalFilename()));
+        $this->assertTrue($expectation->getOriginalFilename() === $response->getOriginalFilename());
+        $this->assertTrue(is_string($response->getOwner()));
+        $this->assertTrue($expectation->getOwner() === $response->getOwner());
+        $this->assertTrue(is_string($response->getOwnerName()));
+        $this->assertTrue($expectation->getOwnerName() === $response->getOwnerName());
+        $this->assertTrue(is_bool($response->isTemplate()));
+        $this->assertTrue($expectation->isTemplate() === $response->isTemplate());
+        $this->assertTrue(is_string($response->getParentId()));
+        $this->assertTrue($expectation->getParentId() === $response->getParentId());
+        $this->assertTrue(is_string($response->getOriginatorLogo()));
+        $this->assertTrue($expectation->getOriginatorLogo() === $response->getOriginatorLogo());
+        $this->assertTrue(is_array($response->getPages()->toArray()));
+        $this->assertTrue($expectation->getPages() === $response->getPages()->toArray());
+        $this->assertTrue(is_int($response->getVersionTime()));
+        $this->assertTrue($expectation->getVersionTime() === $response->getVersionTime());
+        $this->assertTrue(is_array($response->getRoutingDetails()->toArray()));
+        $this->assertTrue($expectation->getRoutingDetails() === $response->getRoutingDetails()->toArray());
+        $this->assertTrue(is_object($response->getThumbnail()));
+        $this->assertTrue($expectation->getThumbnail() === $response->getThumbnail()->toArray());
+        $this->assertTrue(is_array($response->getSignatures()->toArray()));
+        $this->assertTrue($expectation->getSignatures() === $response->getSignatures()->toArray());
+        $this->assertTrue(is_array($response->getTags()->toArray()));
+        $this->assertTrue($expectation->getTags() === $response->getTags()->toArray());
+        $this->assertTrue(is_array($response->getFields()->toArray()));
+        $this->assertTrue($expectation->getFields() === $response->getFields()->toArray());
+        $this->assertTrue(is_array($response->getRoles()->toArray()));
+        $this->assertTrue($expectation->getRoles() === $response->getRoles()->toArray());
+        $this->assertTrue(is_array($response->getViewerRoles()->toArray()));
+        $this->assertTrue($expectation->getViewerRoles() === $response->getViewerRoles()->toArray());
+        $this->assertTrue(is_object($response->getSigningSessionSettings()));
+        $this->assertTrue($expectation->getSigningSessionSettings() === $response->getSigningSessionSettings()->toArray());
+        $this->assertTrue(is_array($response->getOriginatorOrganizationSettings()->toArray()));
+        $this->assertTrue($expectation->getOriginatorOrganizationSettings() === $response->getOriginatorOrganizationSettings()->toArray());
+        $this->assertTrue(is_object($response->getDocumentGroupInfo()));
+        $this->assertTrue($expectation->getDocumentGroupInfo() === $response->getDocumentGroupInfo()->toArray());
+        $this->assertTrue(is_object($response->getSettings()));
+        $this->assertTrue($expectation->getSettings() === $response->getSettings()->toArray());
+        $this->assertTrue(is_object($response->getShareInfo()));
+        $this->assertTrue($expectation->getShareInfo() === $response->getShareInfo()->toArray());
     }
 
     /**
@@ -202,9 +154,9 @@ class DocumentTest extends BaseTest
         $request->withDocumentId($faker->documentId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getId()));
-        assert($expectation->getId() === $response->getId());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_string($response->getId()));
+        $this->assertTrue($expectation->getId() === $response->getId());
     }
 
     /**
@@ -220,8 +172,8 @@ class DocumentTest extends BaseTest
         $request->withDocumentId($faker->documentId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getStatus()));
-        assert($expectation->getStatus() === $response->getStatus());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_string($response->getStatus()));
+        $this->assertTrue($expectation->getStatus() === $response->getStatus());
     }
 }

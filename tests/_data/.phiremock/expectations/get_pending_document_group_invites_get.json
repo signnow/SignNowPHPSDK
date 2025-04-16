@@ -7,7 +7,7 @@
   "then": {
     "response": {
       "statusCode": 200,
-      "body": "{\"document_group_name\":\"qui\"}",
+      "body": "{\"invites\":[{\"link\":\"http:\\/\\/www.bins.com\\/\",\"document_name\":\"minima libero\",\"inviter_email\":\"kadin86@rolfson.biz\",\"action\":\"unde\",\"status\":\"repellat\"}],\"document_group_name\":\"quis\",\"sign_as_merged\":false}",
       "headers": {
         "Content-Type": "application/json"
       }

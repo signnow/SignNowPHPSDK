@@ -2,14 +2,15 @@
   "version": "2",
   "on": {
     "method": { "isSameString": "POST" },
-    "url": {"isSameString":"/oauth2/token"}
+    "url": {"isSameString":"/oauth2/token"},
+    "body": {"matches": "~(.*)password=(.*)~"}
   },
   "then": {
     "response": {
       "statusCode": 200,
-      "body": "{\"expires_in\":317467546,\"token_type\":\"bearer\",\"access_token\":\"cdcccb6ab7af9b20fcc8ce459b6f0ccfa38d13d09c864f8d1011bf2512c3f26b\",\"refresh_token\":\"29db003b4e2884be27deb2c973763e363a35eec0bbd7b7e46cf8ae2274884642\",\"scope\":\"*\",\"last_login\":790918188}",
+      "body": "{\"expires_in\":1493439480,\"token_type\":\"bearer\",\"access_token\":\"5b385c7812986c220575c4d55909d3c4d4f06495f64ad707f829a1655c6f4afe\",\"refresh_token\":\"87e44b91ba193e07a807edf2ddfae8f0d5a13bb8cffceefb48fed6e696ac43bd\",\"scope\":\"*\",\"last_login\":1532786358}",
       "headers": {
-        "Content-Type": "application/json"
+        "Content-Type": "application/x-www-form-urlencoded"
       }
     }
   }

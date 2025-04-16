@@ -34,8 +34,8 @@ readonly class RequestContent
     public function toArray(): array
     {
         return [
-           'meta' => $this->getMeta(),
-           'content' => $this->getContent(),
+           'meta' => $this->getMeta()->toArray(),
+           'content' => $this->getContent()->toArray(),
         ];
     }
 

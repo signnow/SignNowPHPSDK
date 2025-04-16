@@ -107,15 +107,15 @@ readonly class InviteAction
     {
         return [
            'email' => $this->getEmail(),
-           'email_group' => $this->getEmailGroup(),
+           'email_group' => !is_null($this->getEmailGroup()) ? $this->getEmailGroup()->toArray() : null,
            'role_name' => $this->getRoleName(),
            'action' => $this->getAction(),
            'document_id' => $this->getDocumentId(),
            'required_preset_signature_name' => $this->getRequiredPresetSignatureName(),
            'allow_reassign' => $this->getAllowReassign(),
            'decline_by_signature' => $this->getDeclineBySignature(),
-           'authentication' => $this->getAuthentication(),
-           'payment_request' => $this->getPaymentRequest(),
+           'authentication' => !is_null($this->getAuthentication()) ? $this->getAuthentication()->toArray() : null,
+           'payment_request' => !is_null($this->getPaymentRequest()) ? $this->getPaymentRequest()->toArray() : null,
            'redirect_uri' => $this->getRedirectUri(),
            'decline_redirect_uri' => $this->getDeclineRedirectUri(),
            'redirect_target' => $this->getRedirectTarget(),

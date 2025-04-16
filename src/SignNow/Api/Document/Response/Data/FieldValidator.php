@@ -76,7 +76,9 @@ readonly class FieldValidator
            'description' => $this->getDescription(),
            'scope' => $this->getScope(),
            'error_message' => $this->getErrorMessage(),
-           'display_json_attributes' => $this->getDisplayJsonAttributes(),
+           'display_json_attributes' => !is_null($this->getDisplayJsonAttributes())
+               ? $this->getDisplayJsonAttributes()->toArray()
+               : null,
            'formula_calculation' => $this->getFormulaCalculation(),
         ];
     }

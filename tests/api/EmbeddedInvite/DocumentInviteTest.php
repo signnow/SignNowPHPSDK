@@ -45,9 +45,9 @@ class DocumentInviteTest extends BaseTest
         $request->withDocumentId($faker->documentId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_array($response->getData()));
-        assert($expectation->getData() === $response->getData()->toArray());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_array($response->getData()->toArray()));
+        $this->assertTrue($expectation->getData() === $response->getData()->toArray());
     }
 
     /**
@@ -62,6 +62,6 @@ class DocumentInviteTest extends BaseTest
         $request->withDocumentId($faker->documentId());
         $response = $client->send($request);
 
-        assert(is_object($response));
+        $this->assertTrue(is_object($response));
     }
 }

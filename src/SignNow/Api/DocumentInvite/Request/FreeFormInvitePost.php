@@ -135,7 +135,7 @@ final class FreeFormInvitePost implements RequestInterface
         return [
            'to' => $this->getTo(),
            'from' => $this->getFrom(),
-           'cc' => $this->getCc()->toArray(),
+           'cc' => !is_null($this->getCc()) ? $this->getCc()->toArray() : null,
            'subject' => $this->getSubject(),
            'message' => $this->getMessage(),
            'cc_subject' => $this->getCcSubject(),

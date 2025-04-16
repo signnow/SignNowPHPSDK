@@ -43,9 +43,11 @@ class ExpectationReader
         }
 
         try {
+            $expectation = json_decode(file_get_contents($path), true, 512, JSON_THROW_ON_ERROR);
+
             return new Expectation(
                 $fileName,
-                json_decode(file_get_contents($path), true, 512, JSON_THROW_ON_ERROR)
+                json_decode($expectation['then']['response']['body'] ?? '{}', true, 512, JSON_THROW_ON_ERROR),
             );
         } catch (JsonException $exception) {
             throw new RuntimeTestException(

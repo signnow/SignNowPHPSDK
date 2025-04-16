@@ -28,7 +28,7 @@ readonly class Meta
     public function toArray(): array
     {
         return [
-           'pagination' => $this->getPagination(),
+           'pagination' => $this->getPagination()->toArray(),
         ];
     }
 

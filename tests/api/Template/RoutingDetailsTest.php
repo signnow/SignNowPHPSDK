@@ -44,19 +44,9 @@ class RoutingDetailsTest extends BaseTest
         $request->withDocumentId($faker->documentId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_array($response->getRoutingDetails()));
-        assert($expectation->getRoutingDetails() === $response->getRoutingDetails()->toArray());
-        assert(is_array($response->getCc()));
-        assert($expectation->getCc() === $response->getCc()->toArray());
-        assert(is_array($response->getCcStep()));
-        assert($expectation->getCcStep() === $response->getCcStep()->toArray());
-        assert(is_array($response->getViewers()));
-        assert($expectation->getViewers() === $response->getViewers()->toArray());
-        assert(is_array($response->getApprovers()));
-        assert($expectation->getApprovers() === $response->getApprovers()->toArray());
-        assert(is_array($response->getInviteLinkInstructions()));
-        assert($expectation->getInviteLinkInstructions() === $response->getInviteLinkInstructions()->toArray());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_array($response->getRoutingDetails()->toArray()));
+        $this->assertTrue($expectation->getRoutingDetails() === $response->getRoutingDetails()->toArray());
     }
 
     /**
@@ -80,23 +70,23 @@ class RoutingDetailsTest extends BaseTest
         $request->withDocumentId($faker->documentId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getId()));
-        assert($expectation->getId() === $response->getId());
-        assert(is_string($response->getDocumentId()));
-        assert($expectation->getDocumentId() === $response->getDocumentId());
-        assert(is_object($response->getData()));
-        assert($expectation->getData() === $response->getData()->toArray());
-        assert(is_array($response->getCc()));
-        assert($expectation->getCc() === $response->getCc()->toArray());
-        assert(is_array($response->getCcStep()));
-        assert($expectation->getCcStep() === $response->getCcStep()->toArray());
-        assert(is_array($response->getViewers()));
-        assert($expectation->getViewers() === $response->getViewers()->toArray());
-        assert(is_array($response->getApprovers()));
-        assert($expectation->getApprovers() === $response->getApprovers()->toArray());
-        assert(is_array($response->getInviteLinkInstructions()));
-        assert($expectation->getInviteLinkInstructions() === $response->getInviteLinkInstructions()->toArray());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_string($response->getId()));
+        $this->assertTrue($expectation->getId() === $response->getId());
+        $this->assertTrue(is_string($response->getDocumentId()));
+        $this->assertTrue($expectation->getDocumentId() === $response->getDocumentId());
+        $this->assertTrue(is_object($response->getData()));
+        $this->assertTrue($expectation->getData() === $response->getData()->toArray());
+        $this->assertTrue(is_array($response->getCc()->toArray()));
+        $this->assertTrue($expectation->getCc() === $response->getCc()->toArray());
+        $this->assertTrue(is_array($response->getCcStep()->toArray()));
+        $this->assertTrue($expectation->getCcStep() === $response->getCcStep()->toArray());
+        $this->assertTrue(is_array($response->getViewers()->toArray()));
+        $this->assertTrue($expectation->getViewers() === $response->getViewers()->toArray());
+        $this->assertTrue(is_array($response->getApprovers()->toArray()));
+        $this->assertTrue($expectation->getApprovers() === $response->getApprovers()->toArray());
+        $this->assertTrue(is_array($response->getInviteLinkInstructions()->toArray()));
+        $this->assertTrue($expectation->getInviteLinkInstructions() === $response->getInviteLinkInstructions()->toArray());
     }
 
     /**
@@ -112,18 +102,18 @@ class RoutingDetailsTest extends BaseTest
         $request->withDocumentId($faker->documentId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_array($response->getRoutingDetails()));
-        assert($expectation->getRoutingDetails() === $response->getRoutingDetails()->toArray());
-        assert(is_array($response->getCc()));
-        assert($expectation->getCc() === $response->getCc()->toArray());
-        assert(is_array($response->getCcStep()));
-        assert($expectation->getCcStep() === $response->getCcStep()->toArray());
-        assert(is_array($response->getViewers()));
-        assert($expectation->getViewers() === $response->getViewers()->toArray());
-        assert(is_array($response->getApprovers()));
-        assert($expectation->getApprovers() === $response->getApprovers()->toArray());
-        assert(is_array($response->getInviteLinkInstructions()));
-        assert($expectation->getInviteLinkInstructions() === $response->getInviteLinkInstructions()->toArray());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_array($response->getRoutingDetails()->toArray()));
+        $this->assertTrue($expectation->getRoutingDetails() === $response->getRoutingDetails()->toArray());
+        $this->assertTrue(is_array($response->getCc()->toArray()));
+        $this->assertTrue($expectation->getCc() === $response->getCc()->toArray());
+        $this->assertTrue(is_array($response->getCcStep()->toArray()));
+        $this->assertTrue($expectation->getCcStep() === $response->getCcStep()->toArray());
+        $this->assertTrue(is_array($response->getViewers()->toArray()));
+        $this->assertTrue($expectation->getViewers() === $response->getViewers()->toArray());
+        $this->assertTrue(is_array($response->getApprovers()->toArray()));
+        $this->assertTrue($expectation->getApprovers() === $response->getApprovers()->toArray());
+        $this->assertTrue(is_object($response->getAttributes()));
+        $this->assertTrue($expectation->getAttributes() === $response->getAttributes()->toArray());
     }
 }

@@ -119,7 +119,7 @@ readonly class Request
            'close_redirect_uri' => $this->getCloseRedirectUri(),
            'redirect_target' => $this->getRedirectTarget(),
            'language' => $this->getLanguage(),
-           'email_statuses' => $this->getEmailStatuses()->toArray(),
+           'email_statuses' => !is_null($this->getEmailStatuses()) ? $this->getEmailStatuses()->toArray() : null,
         ];
     }
 

@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "POST" },
+    "url": {"matches":"/^\\/v2\\/documents\\/[0-9a-z]{40}\\/embedded-sending$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"data\":{\"url\":\"http:\\/\\/ward.com\\/expedita-et-ipsum-optio-illo-molestiae\"}}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

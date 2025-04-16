@@ -52,4 +52,20 @@ class TestCaseResultCollection
             }
         }
     }
+
+    public function displayErrorsCount(): void
+    {
+        $count = 0;
+
+        foreach ($this->data as $testCaseResult) {
+            /** @var TestCaseResult $testCaseResult */
+            if ($testCaseResult->isFailed()) {
+                $count++;
+            }
+        }
+
+        if ($count > 0) {
+            echo "\033[31m$count failed\033[0m", PHP_EOL;
+        }
+    }
 }

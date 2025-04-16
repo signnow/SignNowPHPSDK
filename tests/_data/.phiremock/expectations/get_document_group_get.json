@@ -7,7 +7,7 @@
   "then": {
     "response": {
       "statusCode": 200,
-      "body": "{\"id\":\"ae5b366c8a8acfb7ca6881e18dd8870d6da1db61\",\"group_name\":\"recusandae\",\"documents\":[{\"id\":\"6b3d6dc5602df8f3d9c1de7d68b88692b7c486b1\",\"roles\":[\"aut\"],\"document_name\":\"ab eum\",\"thumbnail\":{\"small\":\"https:\\/\\/api.signnow.com\\/document\\/3dfdf5d797e112f6eb25d252e3a68bade81ab06e\\/thumbnail?size=small\",\"medium\":\"https:\\/\\/api.signnow.com\\/document\\/3dfdf5d797e112f6eb25d252e3a68bade81ab06e\\/thumbnail?size=medium\",\"large\":\"https:\\/\\/api.signnow.com\\/document\\/3dfdf5d797e112f6eb25d252e3a68bade81ab06e\\/thumbnail?size=large\"},\"origin_document_id\":\"9162ea0aaf31dde748cdac723c12d8b822677de7\",\"has_unassigned_field\":false,\"has_credit_card_number\":false,\"allowed_to_remove\":false}],\"originator_organization_settings\":[{\"setting\":\"atque\",\"value\":\"rem\"}]}",
+      "body": "{\"id\":\"502cc908ac3f19392fb386a2356132f37c30481b\",\"group_name\":\"rerum\",\"documents\":[{\"id\":\"603a4b98e5ca41e0d9fa5070f6e879aeb815fed3\",\"roles\":[\"neque\"],\"document_name\":\"vitae cumque\",\"thumbnail\":{\"small\":\"https:\\/\\/api.signnow.com\\/document\\/8f27f882bc80aa1f1ded027f47da2262d9807294\\/thumbnail?size=small\",\"medium\":\"https:\\/\\/api.signnow.com\\/document\\/8f27f882bc80aa1f1ded027f47da2262d9807294\\/thumbnail?size=medium\",\"large\":\"https:\\/\\/api.signnow.com\\/document\\/8f27f882bc80aa1f1ded027f47da2262d9807294\\/thumbnail?size=large\"},\"origin_document_id\":\"c76da941713f85005e8c1db879771b4aa2112ec8\",\"has_unassigned_field\":false,\"has_credit_card_number\":false}],\"originator_organization_settings\":[{\"setting\":\"illum\",\"value\":\"quia\"}]}",
       "headers": {
         "Content-Type": "application/json"
       }

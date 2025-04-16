@@ -21,7 +21,7 @@ readonly class EnumerationOption
         private string $data,
         private string $created,
         private string $updated,
-        private JsonAttribute $jsonAttributes,
+        private string|JsonAttribute $jsonAttributes,
     ) {
     }
 
@@ -50,7 +50,7 @@ readonly class EnumerationOption
         return $this->updated;
     }
 
-    public function getJsonAttributes(): JsonAttribute
+    public function getJsonAttributes(): string|JsonAttribute
     {
         return $this->jsonAttributes;
     }
@@ -63,7 +63,7 @@ readonly class EnumerationOption
            'data' => $this->getData(),
            'created' => $this->getCreated(),
            'updated' => $this->getUpdated(),
-           'json_attributes' => $this->getJsonAttributes(),
+           'json_attributes' => $this->getJsonAttributes()->toArray(),
         ];
     }
 
@@ -75,7 +75,9 @@ readonly class EnumerationOption
             $data['data'],
             $data['created'],
             $data['updated'],
-            JsonAttribute::fromArray($data['json_attributes']),
+            is_array($data['json_attributes'])
+                ? JsonAttribute::fromArray($data['json_attributes'])
+                : (string)$data['json_attributes'],
         );
     }
 }

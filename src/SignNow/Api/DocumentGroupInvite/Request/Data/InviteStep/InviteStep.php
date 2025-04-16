@@ -41,7 +41,7 @@ readonly class InviteStep
     {
         return [
            'order' => $this->getOrder(),
-           'invite_emails' => $this->getInviteEmails()->toArray(),
+           'invite_emails' => !is_null($this->getInviteEmails()) ? $this->getInviteEmails()->toArray() : null,
            'invite_actions' => $this->getInviteActions()->toArray(),
         ];
     }

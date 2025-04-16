@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace SignNow\Sdk\Tests\Core;
 
+use AssertionError;
 use Exception;
 use SignNow\ApiClient as SignNowApiClient;
 use SignNow\Exception\SignNowApiException;
@@ -50,6 +51,13 @@ abstract class BaseTest
     public function expectation(string $name, string $method): Expectation
     {
         return (new ExpectationReader())->get($name, $method);
+    }
+
+    public function assertTrue(bool $condition, ?string $message = null): void
+    {
+        if ($condition === false) {
+            throw new AssertionError($message ?? 'assertion is not true');
+        }
     }
 
     private function configPath(): string

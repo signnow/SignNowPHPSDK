@@ -22,6 +22,7 @@ readonly class ResponseToEntityMapper
 {
     public function __construct(
         private Serializer $serializer,
+        private FileDownloader $downloader,
     ) {
     }
 
@@ -49,9 +50,27 @@ readonly class ResponseToEntityMapper
 
     public function map(ResponseInterface $response, Endpoint $endpoint): mixed
     {
-        $targetClass = $this->toClassName($endpoint->getNamespace(), $endpoint->getEntity(), $endpoint->getMethod());
+        $targetClass = $this->toClassName(
+            $endpoint->getNamespace(),
+            $endpoint->getEntity(),
+            $endpoint->getMethod()
+        );
+
+        if ($this->detectedDownloadEndpoint($response, $endpoint)) {
+            return new $targetClass($this->downloader->getFile($response));
+        }
 
         return $this->deserialize($response, $targetClass);
+    }
+
+    private function detectedDownloadEndpoint(ResponseInterface $response, Endpoint $endpoint): bool
+    {
+        return str_contains($endpoint->getUrl(), 'download')
+            && in_array(
+                strtolower($response->getHeaderLine('Content-Type')),
+                ['application/pdf', 'application/zip'],
+                true
+            );
     }
 
     private function toClassName(string $namespace, string $entity, string $method): string

@@ -18,8 +18,10 @@ use SignNow\Api\DocumentGroupInvite\Response\Data\InviteCollection;
 readonly class PendingInviteGet
 {
     public function __construct(
+        private InviteCollection $invites,
         private string $documentGroupName,
-        private InviteCollection $invites = new InviteCollection(),
+        private bool $signAsMerged,
+        private ?string $ownerOrganizationId = null,
     ) {
     }
 
@@ -31,5 +33,15 @@ readonly class PendingInviteGet
     public function getDocumentGroupName(): string
     {
         return $this->documentGroupName;
+    }
+
+    public function isSignAsMerged(): bool
+    {
+        return $this->signAsMerged;
+    }
+
+    public function getOwnerOrganizationId(): ?string
+    {
+        return $this->ownerOrganizationId;
     }
 }

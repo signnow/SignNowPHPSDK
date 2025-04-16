@@ -69,7 +69,7 @@ final class DownloadDocumentGroupPost implements RequestInterface
         return [
            'type' => $this->getType(),
            'with_history' => $this->getWithHistory(),
-           'document_order' => $this->getDocumentOrder()->toArray(),
+           'document_order' => !is_null($this->getDocumentOrder()) ? $this->getDocumentOrder()->toArray() : null,
         ];
     }
 }

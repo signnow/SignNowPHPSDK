@@ -49,8 +49,8 @@ class ReassignSignerTest extends BaseTest
         $request->withStepId($faker->stepId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getStatus()));
-        assert($expectation->getStatus() === $response->getStatus());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_string($response->getStatus()));
+        $this->assertTrue($expectation->getStatus() === $response->getStatus());
     }
 }

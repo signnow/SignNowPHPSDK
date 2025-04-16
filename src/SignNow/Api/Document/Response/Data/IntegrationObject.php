@@ -128,7 +128,7 @@ readonly class IntegrationObject
            'api_integration_id' => $this->getApiIntegrationId(),
            'x' => $this->getX(),
            'y' => $this->getY(),
-           'json_attributes' => $this->getJsonAttributes(),
+           'json_attributes' => $this->getJsonAttributes()->toArray(),
            'created' => $this->getCreated(),
            'line_height' => $this->getLineHeight(),
            'allow_editing' => $this->isAllowEditing(),

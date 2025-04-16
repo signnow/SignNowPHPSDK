@@ -1,4 +1,4 @@
-.PHONY: install mock-up test-env tests test static-run
+.PHONY: install mock-up test-env tests test static
 
 # Install the dependencies
 install:
@@ -23,5 +23,5 @@ tests: test-env
 	./tests/_bin/run
 
 # Run static code analysis
-static-run:
+static:
 	./vendor/bin/phpcs

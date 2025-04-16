@@ -17,15 +17,21 @@ use SignNow\Sdk\Tests\Core\Exception\RuntimeTestException;
 
 readonly class Expectation
 {
+    private const CAMEL_CASE_EXCEPTION = [
+        'googleapps',
+        'facebookapps',
+        'microsoftapps',
+    ];
+
     public function __construct(
-        private string $name,
+        private string $expectationName,
         private array $data,
     ) {
     }
 
-    public function getName(): string
+    public function getExpectationName(): string
     {
-        return $this->name;
+        return $this->expectationName;
     }
 
     public function toArray(): array
@@ -37,6 +43,16 @@ readonly class Expectation
     {
         if (str_starts_with($name, 'get')) {
             $parts = explode('get', $name);
+            $name = (string) $parts[1];
+        }
+
+        if (str_starts_with($name, 'is')) {
+            $parts = explode('is', $name);
+            $name = (string) $parts[1];
+        }
+
+        if (str_starts_with($name, 'has')) {
+            $parts = explode('has', $name);
             $name = (string) $parts[1];
         }
 
@@ -55,6 +71,10 @@ readonly class Expectation
 
     private function convertCamelCaseToSnakeCase(string $value): string
     {
+        if (in_array(strtolower($value), self::CAMEL_CASE_EXCEPTION, true)) {
+            return strtolower($value);
+        }
+
         return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $value));
     }
 }

@@ -23,8 +23,10 @@ class ErrorOutput
         $this->displayErrorMessage($exception->getMessage());
 
         if ($exception->getPrevious() !== null) {
-            $this->write('details: ');
-            $this->displayRedText($exception->getPrevious()->getMessage());
+            $previous = $exception->getPrevious();
+            $this->write('message: ');
+            $this->displayRedText($previous->getMessage());
+            $this->displayRedText($previous->getFile() . ':' . $previous->getLine());
         }
 
         if ($exception instanceof SignNowApiException && ($request = $exception->getRequest()) !== null) {

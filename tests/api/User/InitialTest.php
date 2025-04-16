@@ -39,17 +39,17 @@ class InitialTest extends BaseTest
         $request = new InitialGet();
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getUniqueId()));
-        assert($expectation->getUniqueId() === $response->getUniqueId());
-        assert(is_string($response->getWidth()));
-        assert($expectation->getWidth() === $response->getWidth());
-        assert(is_string($response->getHeight()));
-        assert($expectation->getHeight() === $response->getHeight());
-        assert(is_string($response->getData()));
-        assert($expectation->getData() === $response->getData());
-        assert(is_string($response->getCreated()));
-        assert($expectation->getCreated() === $response->getCreated());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_string($response->getUniqueId()));
+        $this->assertTrue($expectation->getUniqueId() === $response->getUniqueId());
+        $this->assertTrue(is_string($response->getWidth()));
+        $this->assertTrue($expectation->getWidth() === $response->getWidth());
+        $this->assertTrue(is_string($response->getHeight()));
+        $this->assertTrue($expectation->getHeight() === $response->getHeight());
+        $this->assertTrue(is_string($response->getData()));
+        $this->assertTrue($expectation->getData() === $response->getData());
+        $this->assertTrue(is_string($response->getCreated()));
+        $this->assertTrue($expectation->getCreated() === $response->getCreated());
     }
 
     /**
@@ -66,14 +66,14 @@ class InitialTest extends BaseTest
         );
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getId()));
-        assert($expectation->getId() === $response->getId());
-        assert(is_string($response->getWidth()));
-        assert($expectation->getWidth() === $response->getWidth());
-        assert(is_string($response->getHeight()));
-        assert($expectation->getHeight() === $response->getHeight());
-        assert(is_string($response->getCreated()));
-        assert($expectation->getCreated() === $response->getCreated());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_string($response->getId()));
+        $this->assertTrue($expectation->getId() === $response->getId());
+        $this->assertTrue(is_string($response->getWidth()));
+        $this->assertTrue($expectation->getWidth() === $response->getWidth());
+        $this->assertTrue(is_string($response->getHeight()));
+        $this->assertTrue($expectation->getHeight() === $response->getHeight());
+        $this->assertTrue(is_string($response->getCreated()));
+        $this->assertTrue($expectation->getCreated() === $response->getCreated());
     }
 }

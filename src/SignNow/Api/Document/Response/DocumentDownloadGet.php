@@ -13,6 +13,17 @@ declare(strict_types=1);
 
 namespace SignNow\Api\Document\Response;
 
+use SplFileInfo;
+
 readonly class DocumentDownloadGet
 {
+    public function __construct(
+        private SplFileInfo $fileInfo,
+    ) {
+    }
+
+    public function getFile(): SplFileInfo
+    {
+        return $this->fileInfo;
+    }
 }

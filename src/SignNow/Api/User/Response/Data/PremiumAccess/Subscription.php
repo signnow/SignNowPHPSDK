@@ -122,11 +122,15 @@ readonly class Subscription
            'updated_at' => $this->getUpdatedAt(),
            'key' => $this->getKey(),
            'version' => $this->getVersion(),
-           'plan' => $this->getPlan(),
+           'plan' => $this->getPlan()->toArray(),
            'admin_email' => $this->getAdminEmail(),
            'status' => $this->getStatus(),
-           'marketplace' => $this->getMarketplace(),
-           'gateway_subscription' => $this->getGatewaySubscription(),
+           'marketplace' => !is_null($this->getMarketplace())
+               ? $this->getMarketplace()->toArray()
+               : null,
+           'gateway_subscription' => !is_null($this->getGatewaySubscription())
+               ? $this->getGatewaySubscription()->toArray()
+               : null,
         ];
     }
 

@@ -39,6 +39,6 @@ class DocumentDownloadTest extends BaseTest
         $request->withDocumentId($faker->documentId());
         $response = $client->send($request);
 
-        assert(is_object($response));
+        $this->assertTrue(is_object($response));
     }
 }

@@ -53,7 +53,7 @@ readonly class RoutingDetail
     {
         return [
            'id' => $this->getId(),
-           'data' => $this->getData(),
+           'data' => !is_null($this->getData()) ? $this->getData()->toArray() : null,
            'created' => $this->getCreated(),
            'updated' => $this->getUpdated(),
            'invite_link_instructions' => $this->getInviteLinkInstructions(),

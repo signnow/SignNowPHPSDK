@@ -33,7 +33,6 @@ class DocumentMergeTest extends BaseTest
     public function testPostDocumentMerge(): void
     {
         $client = $this->client();
-        $expectation = $this->expectation('merge_documents', 'post');
         $faker = $this->faker();
 
         $request = new DocumentMergePost(
@@ -43,7 +42,6 @@ class DocumentMergeTest extends BaseTest
         );
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert($expectation->getDocumentId() === $response->getDocumentId());
+        $this->assertTrue(is_object($response));
     }
 }

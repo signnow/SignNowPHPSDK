@@ -42,7 +42,7 @@ readonly class EmailGroup
         return [
            'id' => $this->getId(),
            'name' => $this->getName(),
-           'emails' => $this->getEmails()->toArray(),
+           'emails' => !is_null($this->getEmails()) ? $this->getEmails()->toArray() : null,
         ];
     }
 

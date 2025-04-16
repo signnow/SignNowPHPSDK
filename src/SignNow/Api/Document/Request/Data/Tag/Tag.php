@@ -174,8 +174,10 @@ readonly class Tag
            'link' => $this->getLink(),
            'custom_defined_option' => $this->isCustomDefinedOption(),
            'lock_to_sign_date' => $this->isLockToSignDate(),
-           'radio' => $this->getRadio()->toArray(),
-           'enumeration_options' => $this->getEnumerationOptions()->toArray(),
+           'radio' => !is_null($this->getRadio()) ? $this->getRadio()->toArray() : null,
+           'enumeration_options' => !is_null($this->getEnumerationOptions())
+               ? $this->getEnumerationOptions()->toArray()
+               : null,
         ];
     }
 

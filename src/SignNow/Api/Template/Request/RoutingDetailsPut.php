@@ -97,13 +97,19 @@ final class RoutingDetailsPut implements RequestInterface
     public function toArray(): array
     {
         return [
-           'template_data' => $this->getTemplateData(),
-           'template_data_object' => $this->getTemplateDataObject()->toArray(),
-           'cc' => $this->getCc()->toArray(),
-           'cc_step' => $this->getCcStep()->toArray(),
-           'viewers' => $this->getViewers()->toArray(),
-           'approvers' => $this->getApprovers()->toArray(),
-           'invite_link_instructions' => $this->getInviteLinkInstructions()->toArray(),
+           'template_data' => !is_null($this->getTemplateData()) ? $this->getTemplateData()->toArray() : null,
+           'template_data_object' => !is_null($this->getTemplateDataObject())
+               ? $this->getTemplateDataObject()->toArray()
+               : null,
+           'cc' => !is_null($this->getCc()) ? $this->getCc()->toArray() : null,
+           'cc_step' => !is_null($this->getCcStep()) ? $this->getCcStep()->toArray() : null,
+           'viewers' => !is_null($this->getViewers()) ? $this->getViewers()->toArray() : null,
+           'approvers' => !is_null($this->getApprovers())
+               ? $this->getApprovers()->toArray()
+               : null,
+           'invite_link_instructions' => !is_null($this->getInviteLinkInstructions())
+               ? $this->getInviteLinkInstructions()->toArray()
+               : null,
         ];
     }
 }

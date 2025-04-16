@@ -7,7 +7,7 @@
   "then": {
     "response": {
       "statusCode": 200,
-      "body": "{\"id\":\"56da23ee13bf0ec297a1f6723e5ed355177bce57\",\"width\":\"39788\",\"height\":\"44629\",\"created\":\"1216935836\"}",
+      "body": "{\"id\":\"55624c1a41bd9bbfa81c6111a0eca90498b01246\",\"width\":\"31769\",\"height\":\"22228\",\"created\":\"256402175\"}",
       "headers": {
         "Content-Type": "application/json"
       }

@@ -76,7 +76,7 @@ readonly class DocumentGroupInfo
            'invite_status' => $this->getInviteStatus(),
            'sign_as_merged' => $this->isSignAsMerged(),
            'doc_count_in_group' => $this->getDocCountInGroup(),
-           'freeform_invite' => $this->getFreeformInvite(),
+           'freeform_invite' => !is_null($this->getFreeformInvite()) ? $this->getFreeformInvite()->toArray() : null,
            'state' => $this->getState(),
         ];
     }

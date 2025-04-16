@@ -91,8 +91,10 @@ final class ReassignSignerPost implements RequestInterface
         return [
            'user_to_update' => $this->getUserToUpdate(),
            'replace_with_this_user' => $this->getReplaceWithThisUser(),
-           'invite_email' => $this->getInviteEmail(),
-           'update_invite_action_attributes' => $this->getUpdateInviteActionAttributes()->toArray(),
+           'invite_email' => !is_null($this->getInviteEmail()) ? $this->getInviteEmail()->toArray() : null,
+           'update_invite_action_attributes' => !is_null($this->getUpdateInviteActionAttributes())
+               ? $this->getUpdateInviteActionAttributes()->toArray()
+               : null,
         ];
     }
 }

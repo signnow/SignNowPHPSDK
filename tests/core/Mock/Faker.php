@@ -261,9 +261,9 @@ class Faker
         return '*';
     }
 
-    public function grantType(): string
+    public function grantType(?string $default = null): string
     {
-        return 'password';
+        return $default ?? 'password';
     }
 
     public function token(): string

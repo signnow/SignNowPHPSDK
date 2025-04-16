@@ -60,7 +60,7 @@ final class DocumentMergePost implements RequestInterface
     {
         return [
            'name' => $this->getName(),
-           'document_ids' => $this->getDocumentIds()->toArray(),
+           'document_ids' => !is_null($this->getDocumentIds()) ? $this->getDocumentIds()->toArray() : null,
            'upload_document' => $this->isUploadDocument(),
         ];
     }

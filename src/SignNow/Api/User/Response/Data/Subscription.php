@@ -133,7 +133,9 @@ readonly class Subscription
            'plan_version' => $this->getPlanVersion(),
            'is_usage_based' => $this->IsUsageBased(),
            'is_usage_based_seat_free' => $this->IsUsageBasedSeatFree(),
-           'gateway_subscription' => $this->getGatewaySubscription(),
+           'gateway_subscription' => !is_null($this->getGatewaySubscription())
+               ? $this->getGatewaySubscription()->toArray()
+               : null,
         ];
     }
 

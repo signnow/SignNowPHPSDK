@@ -65,7 +65,7 @@ readonly class JsonAttribute
            'docid_queryparam' => $this->isDocidQueryparam(),
            'integration_id' => $this->getIntegrationId(),
            'callback_url' => $this->getCallbackUrl(),
-           'headers' => $this->getHeaders(),
+           'headers' => !is_null($this->getHeaders()) ? $this->getHeaders()->toArray() : null,
            'secret_key' => $this->getSecretKey(),
         ];
     }

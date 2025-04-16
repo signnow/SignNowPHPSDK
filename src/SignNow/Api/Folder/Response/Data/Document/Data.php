@@ -91,7 +91,7 @@ readonly class Data
            'decline_by_signature' => $this->isDeclineBySignature(),
            'reassign' => $this->isReassign(),
            'expiration_days' => $this->getExpirationDays(),
-           'reminder' => $this->getReminder(),
+           'reminder' => !is_null($this->getReminder()) ? $this->getReminder()->toArray() : null,
         ];
     }
 

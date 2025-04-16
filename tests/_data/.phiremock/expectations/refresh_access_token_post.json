@@ -2,14 +2,15 @@
   "version": "2",
   "on": {
     "method": { "isSameString": "POST" },
-    "url": {"isSameString":"/oauth2/token"}
+    "url": {"isSameString":"/oauth2/token"},
+    "body": {"matches": "~(.*)refresh_token=(.*)~"}
   },
   "then": {
     "response": {
       "statusCode": 200,
-      "body": "{\"expires_in\":1123665004,\"token_type\":\"bearer\",\"access_token\":\"b8689f519f95bf387d773917c14ea7dcbe7e21c57fa9515bdbb800b53aaa8ab0\",\"refresh_token\":\"4e83688b65a2d702e90bd18d5d81cd1011df1effaede4e6ca0d5a618589b8275\",\"scope\":\"*\",\"last_login\":283259016}",
+      "body": "{\"expires_in\":1221294999,\"token_type\":\"bearer\",\"access_token\":\"987906fe175d6efc4ceeacebe111fe3821341e2ef55f43629ed6c07ed04fda0e\",\"refresh_token\":\"a6288efd130067416fe778d8cba03d192db2a67e35c8c0afb6a83ea05e78b9ea\",\"scope\":\"*\",\"last_login\":1485705211}",
       "headers": {
-        "Content-Type": "application/json"
+        "Content-Type": "application/x-www-form-urlencoded"
       }
     }
   }

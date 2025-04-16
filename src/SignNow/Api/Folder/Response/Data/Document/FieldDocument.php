@@ -91,7 +91,7 @@ readonly class FieldDocument
            'id' => $this->getId(),
            'type' => $this->getType(),
            'role_id' => $this->getRoleId(),
-           'json_attributes' => $this->getJsonAttributes(),
+           'json_attributes' => $this->getJsonAttributes()->toArray(),
            'role' => $this->getRole(),
            'originator' => $this->getOriginator(),
            'fulfiller' => $this->getFulfiller(),

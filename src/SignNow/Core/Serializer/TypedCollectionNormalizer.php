@@ -24,6 +24,9 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class TypedCollectionNormalizer implements NormalizerInterface, DenormalizerInterface
 {
+    private const UNION_TYPE_DELIMITER = '|';
+    private const NULLABLE_PREFIX = '?';
+
     public function getSupportedTypes(?string $format): array
     {
         return [
@@ -52,6 +55,9 @@ class TypedCollectionNormalizer implements NormalizerInterface, DenormalizerInte
         return $collection;
     }
 
+    /**
+     * @throws ReflectionException
+     */
     public function supportsDenormalization(
         mixed $data,
         string $type,
@@ -61,6 +67,9 @@ class TypedCollectionNormalizer implements NormalizerInterface, DenormalizerInte
         return $this->isSignNowApiCollection($type);
     }
 
+    /**
+     * @throws ReflectionException
+     */
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         return $this->asCollection($data, $type);
@@ -96,7 +105,7 @@ class TypedCollectionNormalizer implements NormalizerInterface, DenormalizerInte
 
             foreach ($constructorArguments as $argument) {
                 $argName = $this->toSnakeCase($argument->getName());
-                $argType = $argument->getType()?->getName();
+                $argType = $argument->getType();
                 $argValue = $itemData[$argName] ?? null;
 
                 if ($argType === null) {
@@ -104,7 +113,7 @@ class TypedCollectionNormalizer implements NormalizerInterface, DenormalizerInte
                     $args[] = $argValue;
                 } elseif (is_array($itemData) && array_key_exists($argName, $itemData)) {
                     // convert argument to the specified type
-                    $args[] = $this->toType($argType, $argValue);
+                    $args[] = $this->toType((string)$argType, $argValue);
                 } else {
                     // argument is missing in the input data so use default value
                     $args[] = $argument->isDefaultValueAvailable() ? $argument->getDefaultValue() : null;
@@ -132,6 +141,12 @@ class TypedCollectionNormalizer implements NormalizerInterface, DenormalizerInte
      */
     private function toType(string $type, mixed $value): mixed
     {
+        if ($this->isUnionType($type)) {
+            $type = $this->parseUnionType($type, $value);
+        }
+        if ($this->isNullable($type)) {
+            $type = $this->removeNullable($type);
+        }
         if ($this->isSignNowApiCollection($type)) {
             return $this->asCollection($value, $type);
         }
@@ -152,5 +167,36 @@ class TypedCollectionNormalizer implements NormalizerInterface, DenormalizerInte
     private function isScalarType(string $type): bool
     {
         return in_array($type, ['string', 'int', 'float', 'double', 'bool'], true);
+    }
+
+    private function isUnionType(string $type): bool
+    {
+        return str_contains($type, self::UNION_TYPE_DELIMITER);
+    }
+
+    private function parseUnionType(string $type, mixed $value): string
+    {
+        $types = explode(self::UNION_TYPE_DELIMITER, $type);
+
+        foreach ($types as $itemType) {
+            if ($this->isScalarType($itemType) && is_scalar($value)) {
+                return $itemType;
+            }
+            if ($value instanceof $itemType) {
+                return $itemType;
+            }
+        }
+
+        return $type;
+    }
+
+    private function isNullable(string $type): bool
+    {
+        return str_starts_with($type, self::NULLABLE_PREFIX);
+    }
+
+    private function removeNullable(string $type): string
+    {
+        return str_replace(self::NULLABLE_PREFIX, '', $type);
     }
 }

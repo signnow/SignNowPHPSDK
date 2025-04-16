@@ -16,7 +16,9 @@ namespace SignNow\Api\Document\Response\Data;
 readonly class ShareInfo
 {
     public function __construct(
-        private bool $isTeamShared,
+        private bool $isTeamShared = false,
+        private ?string $role = null,
+        private bool $isPersonallySharedToOthers = false,
     ) {
     }
 
@@ -25,17 +27,31 @@ readonly class ShareInfo
         return $this->isTeamShared;
     }
 
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function isPersonallySharedToOthers(): bool
+    {
+        return $this->isPersonallySharedToOthers;
+    }
+
     public function toArray(): array
     {
         return [
            'is_team_shared' => $this->IsTeamShared(),
+           'role' => $this->getRole(),
+           'is_personally_shared_to_others' => $this->isPersonallySharedToOthers(),
         ];
     }
 
     public static function fromArray(array $data): self
     {
         return new self(
-            $data['is_team_shared'],
+            $data['is_team_shared'] ?? false,
+            $data['role'] ?? null,
+            $data['is_personally_shared_to_others'] ?? false,
         );
     }
 }
