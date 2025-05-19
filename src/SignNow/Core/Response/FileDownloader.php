@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace SignNow\Core\Response;
 
 use Psr\Http\Message\ResponseInterface;
+use RuntimeException;
 use Random\RandomException;
 use SplFileInfo;
 
@@ -27,6 +28,13 @@ readonly class FileDownloader
     public function getFile(ResponseInterface $response): SplFileInfo
     {
         $fileName = $this->extractOrGenerateFileName($response);
+
+        $directory = rtrim($this->downloadDirectory, '/');
+        if (!is_dir($directory)) {
+            if (!mkdir($directory, 0755, true) && !is_dir($directory)) {
+                throw new RuntimeException(sprintf('Failed to create directory: %s', $directory));
+            }
+        }
 
         $content = $response->getBody()->getContents();
         $filePath = rtrim($this->downloadDirectory, '/') . '/' . $fileName;
