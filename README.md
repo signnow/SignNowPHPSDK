@@ -1,5 +1,5 @@
 # signNow API PHP SDK
-## v3.1.0
+## v3.2.1
 
 [![PHP Version](https://img.shields.io/badge/supported->=8.2-blue?logo=php)](https://php.net/)
 

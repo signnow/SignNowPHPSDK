@@ -28,7 +28,7 @@ readonly class Text
         private string $align,
         private bool $isWidthFixed,
         private bool $allowEditing,
-        private bool $ownerAsRecipient,
+        private ?bool $ownerAsRecipient,
         private ?string $userId = null,
         private string $email = '',
         private string $width = '',
@@ -159,7 +159,7 @@ readonly class Text
         return $this->allowEditing;
     }
 
-    public function isOwnerAsRecipient(): bool
+    public function isOwnerAsRecipient(): ?bool
     {
         return $this->ownerAsRecipient;
     }

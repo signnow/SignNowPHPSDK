@@ -18,7 +18,7 @@ readonly class Signature
     public function __construct(
         private string $id,
         private string $userId,
-        private string $signatureRequestId,
+        private ?string $signatureRequestId,
         private string $email,
         private string $pageNumber,
         private string $width,
@@ -28,7 +28,7 @@ readonly class Signature
         private string $subtype,
         private bool $allowEditing,
         private int $created,
-        private bool $ownerAsRecipient = false,
+        private ?bool $ownerAsRecipient = false,
         private string $data = '',
     ) {
     }
@@ -43,7 +43,7 @@ readonly class Signature
         return $this->userId;
     }
 
-    public function getSignatureRequestId(): string
+    public function getSignatureRequestId(): ?string
     {
         return $this->signatureRequestId;
     }
@@ -88,7 +88,7 @@ readonly class Signature
         return $this->allowEditing;
     }
 
-    public function isOwnerAsRecipient(): bool
+    public function isOwnerAsRecipient(): ?bool
     {
         return $this->ownerAsRecipient;
     }
