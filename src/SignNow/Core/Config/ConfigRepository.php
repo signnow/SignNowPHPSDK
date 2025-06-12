@@ -18,7 +18,7 @@ use SignNow\Core\Token\BasicToken;
 
 class ConfigRepository
 {
-    private const CLIENT_NAME = 'SignNowApiClient/v3.2.1 (PHP)';
+    private const CLIENT_NAME = 'SignNowApiClient/v3.2.2 (PHP)';
     private const TIMEOUT = 10;
     private const HOST = 'signnow_api_host';
     private const USERNAME = 'signnow_api_username';
@@ -69,7 +69,9 @@ class ConfigRepository
 
     public function downloadsDirectory(): string
     {
-        $path = $this->config[self::DOWNLOADS_DIR] ?? self::DEFAULT_DOWNLOADS_DIR;
+        $path = !empty($this->config[self::DOWNLOADS_DIR])
+            ? $this->config[self::DOWNLOADS_DIR]
+            : self::DEFAULT_DOWNLOADS_DIR;
 
         return str_starts_with($path, '.') ? str_replace('.', $this->projectDirectory(), $path) : $path;
     }
