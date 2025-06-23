@@ -28,7 +28,7 @@ readonly class FieldInvite
         private string $role,
         private string $roleId,
         private string $reminder,
-        private string $expirationTime,
+        private ?string $expirationTime,
         private string $redirectTarget,
         private bool $isFullDeclined,
         private bool $isEmbedded,
@@ -66,7 +66,7 @@ readonly class FieldInvite
         private string $stripeAchBankAccountVerified = '0',
         private string $stripeAchBankAccountPresent = '0',
         private ?string $prefillSignatureName = null,
-        private int $forceNewSignature = 0,
+        private ?int $forceNewSignature = 0,
         private ?string $signingInstructions = null,
         private ?string $signatureType = null,
     ) {
@@ -157,7 +157,7 @@ readonly class FieldInvite
         return $this->reminder;
     }
 
-    public function getExpirationTime(): string
+    public function getExpirationTime(): ?string
     {
         return $this->expirationTime;
     }
@@ -317,7 +317,7 @@ readonly class FieldInvite
         return $this->prefillSignatureName;
     }
 
-    public function getForceNewSignature(): int
+    public function getForceNewSignature(): ?int
     {
         return $this->forceNewSignature;
     }
