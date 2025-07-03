@@ -25,7 +25,7 @@ readonly class To
         private ?EmailGroup $emailGroup = null,
         private string $prefillSignatureName = '',
         private string $requiredPresetSignatureName = '',
-        private int $forceNewSignature = 0,
+        private ?int $forceNewSignature = null,
         private string $reassign = '',
         private string $declineBySignature = '',
         private ?int $reminder = null,
@@ -80,7 +80,7 @@ readonly class To
         return $this->requiredPresetSignatureName;
     }
 
-    public function getForceNewSignature(): int
+    public function getForceNewSignature(): ?int
     {
         return $this->forceNewSignature;
     }
@@ -219,7 +219,7 @@ readonly class To
             isset($data['email_group']) ? EmailGroup::fromArray($data['email_group']) : null,
             $data['prefill_signature_name'] ?? '',
             $data['required_preset_signature_name'] ?? '',
-            $data['force_new_signature'] ?? 0,
+            $data['force_new_signature'] ?? null,
             $data['reassign'] ?? '',
             $data['decline_by_signature'] ?? '',
             $data['reminder'] ?? null,

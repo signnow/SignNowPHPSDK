@@ -18,7 +18,6 @@ readonly class Signature
     public function __construct(
         private string $id,
         private string $userId,
-        private ?string $signatureRequestId,
         private string $email,
         private string $pageNumber,
         private string $width,
@@ -28,7 +27,8 @@ readonly class Signature
         private string $subtype,
         private bool $allowEditing,
         private int $created,
-        private ?bool $ownerAsRecipient = false,
+        private ?string $signatureRequestId = null,
+        private ?bool $ownerAsRecipient = null,
         private string $data = '',
     ) {
     }
@@ -128,7 +128,6 @@ readonly class Signature
         return new self(
             $data['id'],
             $data['user_id'],
-            $data['signature_request_id'],
             $data['email'],
             $data['page_number'],
             $data['width'],
@@ -138,7 +137,8 @@ readonly class Signature
             $data['subtype'],
             $data['allow_editing'],
             $data['created'],
-            $data['owner_as_recipient'] ?? false,
+            $data['signature_request_id'] ?? null,
+            $data['owner_as_recipient'] ?? null,
             $data['data'] ?? '',
         );
     }
