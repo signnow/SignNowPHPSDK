@@ -17,7 +17,7 @@ readonly class Data
 {
     public function __construct(
         private RecipientCollection $recipients,
-        private UnmappedDocumentCollection $unmappedDocuments,
+        private ?UnmappedDocumentCollection $unmappedDocuments,
         private AllowedUnmappedSignDocumentCollection $allowedUnmappedSignDocuments,
         private CcCollection $cc,
     ) {
@@ -28,7 +28,7 @@ readonly class Data
         return $this->recipients;
     }
 
-    public function getUnmappedDocuments(): UnmappedDocumentCollection
+    public function getUnmappedDocuments(): ?UnmappedDocumentCollection
     {
         return $this->unmappedDocuments;
     }
@@ -47,7 +47,9 @@ readonly class Data
     {
         return [
            'recipients' => $this->getRecipients()->toArray(),
-           'unmapped_documents' => $this->getUnmappedDocuments()->toArray(),
+            'unmapped_documents' => !is_null($this->getUnmappedDocuments())
+                ? $this->getUnmappedDocuments()->toArray()
+                : null,
            'allowed_unmapped_sign_documents' => $this->getAllowedUnmappedSignDocuments()->toArray(),
            'cc' => $this->getCc()->toArray(),
         ];

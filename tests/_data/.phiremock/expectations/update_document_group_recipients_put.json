@@ -1,0 +1,16 @@
+{
+  "version": "2",
+  "on": {
+    "method": { "isSameString": "PUT" },
+    "url": {"matches":"/^\\/v2\\/document-groups\\/[0-9a-z]{40}\\/recipients$/"}
+  },
+  "then": {
+    "response": {
+      "statusCode": 200,
+      "body": "{\"data\":{\"recipients\":[{\"name\":\"eligendi\",\"email\":\"banderson@gmail.com\",\"email_group\":{\"id\":\"610827c688e3ea64d8604d74c47a3f2160e37b24\"},\"order\":17324,\"attributes\":{\"message\":\"suscipit\",\"subject\":\"et\",\"expiration_days\":87478,\"reminder\":{\"remind_after\":33843,\"remind_before\":98024,\"remind_repeat\":5063},\"allow_forwarding\":false,\"show_decline_button\":true,\"i_am_recipient\":true,\"authentication\":{\"type\":\"facere\",\"value\":\"omnis\",\"phone\":\"velit\",\"method\":\"error\"}},\"documents\":[{\"id\":\"27bd862a4281481c7ff83233ac2dcca2157c76ca\",\"role\":\"doloremque\",\"action\":\"dolorem\"}]}],\"unmapped_documents\":[{\"id\":\"0c4c4de4ff3b6194e7617ff4ec83cef5b6a96f0e\",\"role\":\"quia\",\"action\":\"nihil\"}],\"allowed_unmapped_sign_documents\":[{\"id\":\"24e7711404dfbf6fb155ba748cc79ad4207e7cfc\",\"role\":\"omnis\",\"recipient\":\"dolorem\"}],\"cc\":[\"animi\"]}}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}

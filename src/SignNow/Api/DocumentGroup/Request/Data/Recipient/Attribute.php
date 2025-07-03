@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace SignNow\Api\DocumentGroup\Response\Data\Data;
+namespace SignNow\Api\DocumentGroup\Request\Data\Recipient;
 
 readonly class Attribute
 {

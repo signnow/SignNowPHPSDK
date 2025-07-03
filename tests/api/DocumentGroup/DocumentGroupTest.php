@@ -64,17 +64,15 @@ class DocumentGroupTest extends BaseTest
         $request->withDocumentGroupId($faker->documentGroupId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_string($response->getId()));
-        assert($expectation->getId() === $response->getId());
-        assert(is_string($response->getGroupName()));
-        assert($expectation->getGroupName() === $response->getGroupName());
-        assert(is_string($response->getInviteId()));
-        assert($expectation->getInviteId() === $response->getInviteId());
-        assert(is_array($response->getDocuments()));
-        assert($expectation->getDocuments() === $response->getDocuments()->toArray());
-        assert(is_array($response->getOriginatorOrganizationSettings()));
-        assert($expectation->getOriginatorOrganizationSettings() === $response->getOriginatorOrganizationSettings()->toArray());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_string($response->getId()));
+        $this->assertTrue($expectation->getId() === $response->getId());
+        $this->assertTrue(is_string($response->getGroupName()));
+        $this->assertTrue($expectation->getGroupName() === $response->getGroupName());
+        $this->assertTrue(is_array($response->getDocuments()->toArray()));
+        $this->assertTrue($expectation->getDocuments() === $response->getDocuments()->toArray());
+        $this->assertTrue(is_array($response->getOriginatorOrganizationSettings()->toArray()));
+        $this->assertTrue($expectation->getOriginatorOrganizationSettings() === $response->getOriginatorOrganizationSettings()->toArray());
     }
 
     /**

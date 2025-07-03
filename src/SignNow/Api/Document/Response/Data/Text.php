@@ -28,7 +28,6 @@ readonly class Text
         private string $align,
         private bool $isWidthFixed,
         private bool $allowEditing,
-        private ?bool $ownerAsRecipient,
         private ?string $userId = null,
         private string $email = '',
         private string $width = '',
@@ -40,6 +39,7 @@ readonly class Text
         private bool $bold = false,
         private ?string $originalFontSize = null,
         private ?string $prefillContentType = null,
+        private ?bool $ownerAsRecipient = null,
         private ?string $integrationObjectId = null,
     ) {
     }
@@ -215,7 +215,6 @@ readonly class Text
             $data['align'],
             $data['is_width_fixed'],
             $data['allow_editing'],
-            $data['owner_as_recipient'],
             $data['user_id'] ?? null,
             $data['email'] ?? '',
             $data['width'] ?? '',
@@ -227,6 +226,7 @@ readonly class Text
             $data['bold'] ?? false,
             $data['original_font_size'] ?? null,
             $data['prefill_content_type'] ?? null,
+            $data['owner_as_recipient'] ?? null,
             $data['integration_object_id'] ?? null,
         );
     }

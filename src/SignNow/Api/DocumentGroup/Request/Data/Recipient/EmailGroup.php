@@ -11,39 +11,31 @@
 
 declare(strict_types=1);
 
-namespace SignNow\Api\Document\Response\Data\FieldInvite;
+namespace SignNow\Api\DocumentGroup\Request\Data\Recipient;
 
-readonly class EmbeddedSigner
+readonly class EmailGroup
 {
     public function __construct(
-        private ?string $firstName,
-        private ?string $lastName,
+        private string $id = '',
     ) {
     }
 
-    public function getFirstName(): ?string
+    public function getId(): string
     {
-        return $this->firstName;
-    }
-
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
+        return $this->id;
     }
 
     public function toArray(): array
     {
         return [
-           'first_name' => $this->getFirstName(),
-           'last_name' => $this->getLastName(),
+           'id' => $this->getId(),
         ];
     }
 
     public static function fromArray(array $data): self
     {
         return new self(
-            $data['first_name'],
-            $data['last_name'],
+            $data['id'] ?? '',
         );
     }
 }

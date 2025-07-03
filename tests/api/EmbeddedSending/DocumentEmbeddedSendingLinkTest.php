@@ -45,8 +45,8 @@ class DocumentEmbeddedSendingLinkTest extends BaseTest
         $request->withDocumentId($faker->documentId());
         $response = $client->send($request);
 
-        assert(is_object($response));
-        assert(is_object($response->getData()));
-        assert($expectation->getData() === $response->getData()->toArray());
+        $this->assertTrue(is_object($response));
+        $this->assertTrue(is_object($response->getData()));
+        $this->assertTrue($expectation->getData() === $response->getData()->toArray());
     }
 }
