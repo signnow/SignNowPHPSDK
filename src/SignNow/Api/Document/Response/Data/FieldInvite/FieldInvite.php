@@ -38,6 +38,9 @@ readonly class FieldInvite
         private string $idVerified,
         private EmbeddedSignerCollection $embeddedSigner,
         private ?string $language,
+        private ?bool $isFinishRedirectCanceled,
+        private ?bool $isCloseRedirectCanceled,
+        private ?bool $isDeclineRedirectCanceled,
         private ?string $signerPhoneInvite = null,
         private string $passwordType = '',
         private string $passwordMethod = '',
@@ -69,6 +72,7 @@ readonly class FieldInvite
         private ?int $forceNewSignature = null,
         private ?string $signingInstructions = null,
         private ?string $signatureType = null,
+        private ?Compliance $compliance = null,
     ) {
     }
 
@@ -332,9 +336,29 @@ readonly class FieldInvite
         return $this->signatureType;
     }
 
+    public function getCompliance(): ?Compliance
+    {
+        return $this->compliance;
+    }
+
     public function getLanguage(): ?string
     {
         return $this->language;
+    }
+
+    public function isFinishRedirectCanceled(): ?bool
+    {
+        return $this->isFinishRedirectCanceled;
+    }
+
+    public function isCloseRedirectCanceled(): ?bool
+    {
+        return $this->isCloseRedirectCanceled;
+    }
+
+    public function isDeclineRedirectCanceled(): ?bool
+    {
+        return $this->isDeclineRedirectCanceled;
     }
 
     public function toArray(): array
@@ -392,7 +416,11 @@ readonly class FieldInvite
            'force_new_signature' => $this->getForceNewSignature(),
            'signing_instructions' => $this->getSigningInstructions(),
            'signature_type' => $this->getSignatureType(),
+           'compliance' => !is_null($this->getCompliance()) ? $this->getCompliance()->toArray() : null,
            'language' => $this->getLanguage(),
+           'is_finish_redirect_canceled' => $this->IsFinishRedirectCanceled(),
+           'is_close_redirect_canceled' => $this->IsCloseRedirectCanceled(),
+           'is_decline_redirect_canceled' => $this->IsDeclineRedirectCanceled(),
         ];
     }
 
@@ -421,6 +449,9 @@ readonly class FieldInvite
             $data['id_verified'],
             new EmbeddedSignerCollection($data['embedded_signer']),
             $data['language'],
+            $data['is_finish_redirect_canceled'],
+            $data['is_close_redirect_canceled'],
+            $data['is_decline_redirect_canceled'],
             $data['signer_phone_invite'] ?? null,
             $data['password_type'] ?? '',
             $data['password_method'] ?? '',
@@ -452,6 +483,7 @@ readonly class FieldInvite
             $data['force_new_signature'] ?? null,
             $data['signing_instructions'] ?? null,
             $data['signature_type'] ?? null,
+            isset($data['compliance']) ? Compliance::fromArray($data['compliance']) : null,
         );
     }
 }

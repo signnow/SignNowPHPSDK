@@ -21,6 +21,7 @@ readonly class ViewerFieldInvite
         private string $created,
         private string $updated,
         private string $email,
+        private ?bool $isCloseRedirectCanceled,
         private string $redirectTarget,
         private EmailGroup $emailGroup,
         private EmailstatusCollection $emailStatuses,
@@ -76,6 +77,11 @@ readonly class ViewerFieldInvite
         return $this->closeRedirectUri;
     }
 
+    public function isCloseRedirectCanceled(): ?bool
+    {
+        return $this->isCloseRedirectCanceled;
+    }
+
     public function getRedirectTarget(): string
     {
         return $this->redirectTarget;
@@ -103,6 +109,7 @@ readonly class ViewerFieldInvite
            'email' => $this->getEmail(),
            'role_id' => $this->getRoleId(),
            'close_redirect_uri' => $this->getCloseRedirectUri(),
+           'is_close_redirect_canceled' => $this->IsCloseRedirectCanceled(),
            'redirect_target' => $this->getRedirectTarget(),
            'email_group' => $this->getEmailGroup()->toArray(),
            'email_statuses' => $this->getEmailStatuses()->toArray(),
@@ -117,6 +124,7 @@ readonly class ViewerFieldInvite
             $data['created'],
             $data['updated'],
             $data['email'],
+            $data['is_close_redirect_canceled'],
             $data['redirect_target'],
             EmailGroup::fromArray($data['email_group']),
             new EmailstatusCollection($data['email_statuses']),

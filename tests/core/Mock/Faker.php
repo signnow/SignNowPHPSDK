@@ -161,6 +161,11 @@ class Faker
         return $this->uid();
     }
 
+    public function templateGroupId(): string
+    {
+        return $this->uid();
+    }
+
     public function eventSubscriptionId(): string
     {
         return $this->uid();
