@@ -117,15 +117,23 @@ class DocumentTest extends BaseTest
         $this->assertTrue(is_array($response->getViewerRoles()->toArray()));
         $this->assertTrue($expectation->getViewerRoles() === $response->getViewerRoles()->toArray());
         $this->assertTrue(is_object($response->getSigningSessionSettings()));
-        $this->assertTrue($expectation->getSigningSessionSettings() === $response->getSigningSessionSettings()->toArray());
+        $this->assertTrue(
+            $expectation->getSigningSessionSettings() === $response->getSigningSessionSettings()->toArray()
+        );
         $this->assertTrue(is_array($response->getOriginatorOrganizationSettings()->toArray()));
-        $this->assertTrue($expectation->getOriginatorOrganizationSettings() === $response->getOriginatorOrganizationSettings()->toArray());
+        $this->assertTrue(
+            $expectation->getOriginatorOrganizationSettings() === $response->getOriginatorOrganizationSettings()->toArray()
+        );
         $this->assertTrue(is_object($response->getDocumentGroupInfo()));
-        $this->assertTrue($expectation->getDocumentGroupInfo() === $response->getDocumentGroupInfo()->toArray());
+        $this->assertTrue(
+            $expectation->getDocumentGroupInfo() === $response->getDocumentGroupInfo()->toArray()
+        );
         $this->assertTrue(is_object($response->getSettings()));
         $this->assertTrue($expectation->getSettings() === $response->getSettings()->toArray());
         $this->assertTrue(is_object($response->getShareInfo()));
         $this->assertTrue($expectation->getShareInfo() === $response->getShareInfo()->toArray());
+        $this->assertTrue(is_object($response->getFieldInvites()));
+        $this->assertTrue($expectation->getFieldInvites() === $response->getFieldInvites()->toArray());
     }
 
     /**
