@@ -30,9 +30,9 @@ readonly class Text
         private bool $allowEditing,
         private ?string $userId = null,
         private string $email = '',
-        private string $width = '',
-        private string $height = '',
-        private float $lineHeight = 0,
+        private ?int $width = null,
+        private ?int $height = null,
+        private string $lineHeight = '',
         private ?string $color = null,
         private bool $italic = false,
         private bool $underline = false,
@@ -89,17 +89,17 @@ readonly class Text
         return $this->y;
     }
 
-    public function getWidth(): string
+    public function getWidth(): ?int
     {
         return $this->width;
     }
 
-    public function getHeight(): string
+    public function getHeight(): ?int
     {
         return $this->height;
     }
 
-    public function getLineHeight(): float
+    public function getLineHeight(): string
     {
         return $this->lineHeight;
     }
@@ -217,9 +217,9 @@ readonly class Text
             $data['allow_editing'],
             $data['user_id'] ?? null,
             $data['email'] ?? '',
-            $data['width'] ?? '',
-            $data['height'] ?? '',
-            $data['line_height'] ?? 0,
+            $data['width'] ?? null,
+            $data['height'] ?? null,
+            $data['line_height'] ?? '',
             $data['color'] ?? null,
             $data['italic'] ?? false,
             $data['underline'] ?? false,
