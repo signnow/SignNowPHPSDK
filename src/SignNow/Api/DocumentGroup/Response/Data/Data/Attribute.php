@@ -16,9 +16,9 @@ namespace SignNow\Api\DocumentGroup\Response\Data\Data;
 readonly class Attribute
 {
     public function __construct(
-        private bool $allowForwarding,
-        private bool $showDeclineButton,
-        private bool $iAmRecipient,
+        private bool $allowForwarding = false,
+        private bool $showDeclineButton = true,
+        private bool $iAmRecipient = false,
         private string $message = '',
         private string $subject = '',
         private ?int $expirationDays = null,
@@ -84,9 +84,9 @@ readonly class Attribute
     public static function fromArray(array $data): self
     {
         return new self(
-            $data['allow_forwarding'],
-            $data['show_decline_button'],
-            $data['i_am_recipient'],
+            $data['allow_forwarding'] ?? false,
+            $data['show_decline_button'] ?? true,
+            $data['i_am_recipient'] ?? false,
             $data['message'] ?? '',
             $data['subject'] ?? '',
             $data['expiration_days'] ?? null,

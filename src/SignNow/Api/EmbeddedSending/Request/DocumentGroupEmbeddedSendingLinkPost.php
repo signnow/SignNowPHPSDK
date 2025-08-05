@@ -33,6 +33,7 @@ final class DocumentGroupEmbeddedSendingLinkPost implements RequestInterface
         private string $redirectUri = '',
         private int $linkExpiration = 0,
         private string $redirectTarget = '',
+        private string $type = 'manage',
     ) {
     }
 
@@ -49,6 +50,11 @@ final class DocumentGroupEmbeddedSendingLinkPost implements RequestInterface
     public function getRedirectTarget(): string
     {
         return $this->redirectTarget;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
     }
 
     public function withDocumentGroupId(string $documentGroupId): self
@@ -69,6 +75,7 @@ final class DocumentGroupEmbeddedSendingLinkPost implements RequestInterface
            'redirect_uri' => $this->getRedirectUri(),
            'link_expiration' => $this->getLinkExpiration(),
            'redirect_target' => $this->getRedirectTarget(),
+           'type' => $this->getType(),
         ];
     }
 }

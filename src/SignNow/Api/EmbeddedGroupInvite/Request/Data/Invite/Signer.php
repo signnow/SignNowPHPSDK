@@ -26,6 +26,7 @@ readonly class Signer
         private string $redirectUri = '',
         private string $declineRedirectUri = '',
         private string $redirectTarget = '',
+        private string $deliveryType = '',
     ) {
     }
 
@@ -79,6 +80,11 @@ readonly class Signer
         return $this->redirectTarget;
     }
 
+    public function getDeliveryType(): string
+    {
+        return $this->deliveryType;
+    }
+
     public function toArray(): array
     {
         return [
@@ -92,6 +98,7 @@ readonly class Signer
            'redirect_uri' => $this->getRedirectUri(),
            'decline_redirect_uri' => $this->getDeclineRedirectUri(),
            'redirect_target' => $this->getRedirectTarget(),
+           'delivery_type' => $this->getDeliveryType(),
         ];
     }
 
@@ -108,6 +115,7 @@ readonly class Signer
             $data['redirect_uri'] ?? '',
             $data['decline_redirect_uri'] ?? '',
             $data['redirect_target'] ?? '',
+            $data['delivery_type'] ?? '',
         );
     }
 }
