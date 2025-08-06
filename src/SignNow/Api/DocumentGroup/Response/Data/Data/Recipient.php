@@ -17,7 +17,7 @@ readonly class Recipient
 {
     public function __construct(
         private string $name,
-        private string $email,
+        private ?string $email,
         private int $order,
         private DocumentCollection $documents,
         private ?EmailGroup $emailGroup = null,
@@ -30,7 +30,7 @@ readonly class Recipient
         return $this->name;
     }
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }

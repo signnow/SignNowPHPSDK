@@ -61,7 +61,8 @@ try {
     $embeddedSendingRequest = (new DocumentGroupEmbeddedSendingLinkPost(
         redirectUri: 'https://example.com',
         linkExpiration: 15,
-        redirectTarget: 'self'
+        redirectTarget: 'self',
+        type: 'manage',
     ))->withDocumentGroupId($groupId);
 
     /** @var DocumentGroupEmbeddedSendingLinkPostResponse $embeddedSendingResponse */

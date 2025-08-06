@@ -13,13 +13,15 @@ declare(strict_types=1);
 
 namespace SignNow\Api\DocumentGroup\Response\Data\Data;
 
+use SignNow\Api\DocumentGroup\Response\Data\Data\AllowedUnmappedSignDocumentCollection as AllowedSignCollection;
+
 readonly class Data
 {
     public function __construct(
         private RecipientCollection $recipients,
-        private ?UnmappedDocumentCollection $unmappedDocuments,
-        private AllowedUnmappedSignDocumentCollection $allowedUnmappedSignDocuments,
-        private CcCollection $cc,
+        private UnmappedDocumentCollection $unmappedDocuments = new UnmappedDocumentCollection(),
+        private AllowedSignCollection $allowedUnmappedSignDocuments = new AllowedSignCollection(),
+        private CcCollection $cc = new CcCollection(),
     ) {
     }
 
@@ -28,12 +30,12 @@ readonly class Data
         return $this->recipients;
     }
 
-    public function getUnmappedDocuments(): ?UnmappedDocumentCollection
+    public function getUnmappedDocuments(): UnmappedDocumentCollection
     {
         return $this->unmappedDocuments;
     }
 
-    public function getAllowedUnmappedSignDocuments(): AllowedUnmappedSignDocumentCollection
+    public function getAllowedUnmappedSignDocuments(): AllowedSignCollection
     {
         return $this->allowedUnmappedSignDocuments;
     }
@@ -47,9 +49,7 @@ readonly class Data
     {
         return [
            'recipients' => $this->getRecipients()->toArray(),
-            'unmapped_documents' => !is_null($this->getUnmappedDocuments())
-                ? $this->getUnmappedDocuments()->toArray()
-                : null,
+           'unmapped_documents' => $this->getUnmappedDocuments()->toArray(),
            'allowed_unmapped_sign_documents' => $this->getAllowedUnmappedSignDocuments()->toArray(),
            'cc' => $this->getCc()->toArray(),
         ];
@@ -60,7 +60,7 @@ readonly class Data
         return new self(
             new RecipientCollection($data['recipients']),
             new UnmappedDocumentCollection($data['unmapped_documents']),
-            new AllowedUnmappedSignDocumentCollection($data['allowed_unmapped_sign_documents']),
+            new AllowedSignCollection($data['allowed_unmapped_sign_documents']),
             new CcCollection($data['cc']),
         );
     }
