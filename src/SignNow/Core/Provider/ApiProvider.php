@@ -122,7 +122,6 @@ readonly class ApiProvider
     {
         $loader = new ConfigLoader();
         $config = new ConfigRepository($loader->load($this->configPath));
-        $config->validate();
 
         $this->container
             ->set('config', $config);

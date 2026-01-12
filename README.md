@@ -1,5 +1,5 @@
 # signNow API PHP SDK
-## v3.5.0
+## v3.5.1
 
 [![PHP Version](https://img.shields.io/badge/supported->=8.2-blue?logo=php)](https://php.net/)
 
@@ -11,7 +11,7 @@
 ### Installation
 Get SDK code via composer
 ```bash
-composer require signnow/api-php-sdk:v3
+composer require signnow/api-php-sdk:v3.5.1
 ```
 or via git
 ```bash
