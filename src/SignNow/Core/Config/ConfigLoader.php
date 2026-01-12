@@ -15,13 +15,11 @@ namespace SignNow\Core\Config;
 
 class ConfigLoader
 {
-    private const SIGNNOW_API_HOST = 'https://api.signnow.com';
-
     public function load(?string $path = null): array
     {
         return $path !== null && is_file($path)
             ? $this->loadFileConfig($path)
-            : $this->loadEnvironmentVariables();
+            : $this->loadEnvironmentVariablesOrDefaults();
     }
 
     private function loadFileConfig(string $path): array
@@ -41,14 +39,21 @@ class ConfigLoader
         return $config;
     }
 
-    private function loadEnvironmentVariables(): array
+    private function loadEnvironmentVariablesOrDefaults(): array
     {
         return [
-            'signnow_api_username' => getenv('SIGNNOW_API_USERNAME') ?? '',
-            'signnow_api_password' => getenv('SIGNNOW_API_PASSWORD') ?? '',
-            'signnow_api_basic_token' => getenv('SIGNNOW_API_BASIC_TOKEN') ?? '',
-            'signnow_api_host' => getenv('SIGNNOW_API_HOST') ?? self::SIGNNOW_API_HOST,
-            'signnow_downloads_dir' => getenv('SIGNNOW_DOWNLOADS_DIR') ?? null,
+            'signnow_api_username' => $this->getEnvOrDefault('SIGNNOW_API_USERNAME', ConfigDefaults::USERNAME),
+            'signnow_api_password' => $this->getEnvOrDefault('SIGNNOW_API_PASSWORD', ConfigDefaults::PASSWORD),
+            'signnow_api_basic_token' => $this->getEnvOrDefault('SIGNNOW_API_BASIC_TOKEN', ConfigDefaults::BASIC_TOKEN),
+            'signnow_api_host' => $this->getEnvOrDefault('SIGNNOW_API_HOST', ConfigDefaults::SIGNNOW_API_HOST),
+            'signnow_downloads_dir' => $this->getEnvOrDefault('SIGNNOW_DOWNLOADS_DIR', ConfigDefaults::DOWNLOADS_DIR),
         ];
+    }
+
+    private function getEnvOrDefault(string $envVar, string $default = ''): string
+    {
+        $value = getenv($envVar);
+
+        return $value === false ? $default : $value;
     }
 }
