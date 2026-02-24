@@ -47,6 +47,7 @@ class ConfigLoader
             'signnow_api_basic_token' => $this->getEnvOrDefault('SIGNNOW_API_BASIC_TOKEN', ConfigDefaults::BASIC_TOKEN),
             'signnow_api_host' => $this->getEnvOrDefault('SIGNNOW_API_HOST', ConfigDefaults::SIGNNOW_API_HOST),
             'signnow_downloads_dir' => $this->getEnvOrDefault('SIGNNOW_DOWNLOADS_DIR', ConfigDefaults::DOWNLOADS_DIR),
+            'signnow_api_timeout' => getenv('SIGNNOW_API_TIMEOUT') ?? ConfigDefaults::SIGNNOW_API_TIMEOUT,
         ];
     }
 
