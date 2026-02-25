@@ -16,6 +16,7 @@ namespace SignNow\Core\Config;
 final readonly class ConfigDefaults
 {
     public const SIGNNOW_API_HOST = 'https://api.signnow.com';
+    public const SIGNNOW_API_TIMEOUT = 30;
     public const USERNAME = '';
     public const PASSWORD = '';
     public const BASIC_TOKEN = '';
