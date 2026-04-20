@@ -1,5 +1,5 @@
 # signNow API PHP SDK
-## v3.5.2
+## v3.5.3
 
 [![PHP Version](https://img.shields.io/badge/supported->=8.2-blue?logo=php)](https://php.net/)
 
@@ -125,4 +125,18 @@ try {
 ```
 
 ### Examples
-You can find more examples of API usage in the [`examples`](./examples) directory.
+
+Runnable examples are located in the [examples](./examples) directory. See [examples/README.md](./examples/README.md) for setup and configuration details.
+
+Quick start:
+
+```bash
+# Create config from the empty template and fill in your values
+cp examples/signnow-example-config.php.empty examples/signnow-example-config.php
+
+# Run a single example
+make example E=document/get_document.php
+
+# Run all examples
+make examples
+```

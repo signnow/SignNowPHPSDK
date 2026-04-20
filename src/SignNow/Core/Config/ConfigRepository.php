@@ -17,8 +17,7 @@ use SignNow\Core\Token\BasicToken;
 
 class ConfigRepository
 {
-    private const CLIENT_NAME = 'SignNowApiClient/v3.5.2 (PHP)';
-    private const DEFAULT_TIMEOUT = 30;
+    private const CLIENT_NAME = 'SignNowApiClient/v3.5.3 (PHP)';
     private const HOST = 'signnow_api_host';
     private const TIMEOUT = 'signnow_api_timeout';
     private const USERNAME = 'signnow_api_username';
@@ -60,7 +59,7 @@ class ConfigRepository
     {
         return !empty($this->config[self::TIMEOUT])
             ? (int) $this->config[self::TIMEOUT]
-            : self::DEFAULT_TIMEOUT;
+            : ConfigDefaults::SIGNNOW_API_TIMEOUT;
     }
 
     public function projectDirectory(): string

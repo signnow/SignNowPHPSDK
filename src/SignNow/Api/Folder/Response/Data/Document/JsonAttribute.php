@@ -36,6 +36,7 @@ readonly class JsonAttribute
         private ?string $arrangement = null,
         private ?int $maxLines = null,
         private ?int $maxChars = null,
+        private ?bool $stretchToGrid = null,
     ) {
     }
 
@@ -139,6 +140,11 @@ readonly class JsonAttribute
         return $this->maxChars;
     }
 
+    public function isStretchToGrid(): ?bool
+    {
+        return $this->stretchToGrid;
+    }
+
     public function toArray(): array
     {
         return [
@@ -162,6 +168,7 @@ readonly class JsonAttribute
            'arrangement' => $this->getArrangement(),
            'max_lines' => $this->getMaxLines(),
            'max_chars' => $this->getMaxChars(),
+           'stretch_to_grid' => $this->isStretchToGrid(),
         ];
     }
 
@@ -188,6 +195,7 @@ readonly class JsonAttribute
             $data['arrangement'] ?? null,
             $data['max_lines'] ?? null,
             $data['max_chars'] ?? null,
+            $data['stretch_to_grid'] ?? null,
         );
     }
 }

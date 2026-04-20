@@ -25,3 +25,15 @@ tests: test-env
 # Run static code analysis
 static:
 	./vendor/bin/phpcs
+
+# Run an example from examples/ directory
+# Examples:
+#   make example E=document/get_document.php
+#   make examples
+example:
+	@if [ -z "$(E)" ]; then echo "Usage: make example E=example_path.php"; exit 1; fi
+	./examples/_bin/run $(E)
+
+# Run all examples
+examples:
+	./examples/_bin/run all

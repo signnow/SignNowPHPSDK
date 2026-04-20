@@ -27,6 +27,7 @@ readonly class FieldDocument
         private ?string $elementId = null,
         private ?string $templateFieldId = null,
         private ?string $fieldId = null,
+        private ?bool $fieldRequestCanceled = null,
     ) {
     }
 
@@ -85,6 +86,11 @@ readonly class FieldDocument
         return $this->fieldId;
     }
 
+    public function isFieldRequestCanceled(): ?bool
+    {
+        return $this->fieldRequestCanceled;
+    }
+
     public function toArray(): array
     {
         return [
@@ -99,6 +105,7 @@ readonly class FieldDocument
            'element_id' => $this->getElementId(),
            'template_field_id' => $this->getTemplateFieldId(),
            'field_id' => $this->getFieldId(),
+           'field_request_canceled' => $this->isFieldRequestCanceled(),
         ];
     }
 
@@ -116,6 +123,7 @@ readonly class FieldDocument
             $data['element_id'] ?? null,
             $data['template_field_id'] ?? null,
             $data['field_id'] ?? null,
+            $data['field_request_canceled'] ?? null,
         );
     }
 }

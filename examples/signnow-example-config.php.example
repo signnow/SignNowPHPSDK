@@ -1,0 +1,104 @@
+<?php
+
+/*
+ * signNow SDK Example Configuration
+ * This file shows how `signnow-example-config.php` should look.
+ * It is filled with dummy data and should not be used in real requests.
+ * Naming convention: {domainName}_{variableName}, exception: global domain
+ * Example: e.g. bulk_invite_template_id,
+ *   where is {domainName} = bulk_invite, {variableName} = template_id
+ */
+
+return [
+    // -- Global
+    // your actual bearer token: leave empty to create via .env or set a created to reuse
+    'bearer_token' => 'a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2',
+    // document to upload in signNow
+    'path_to_document' => 'examples/_data/blank.pdf',
+    // document with complex text tags to upload with field extraction
+    'path_to_document_with_tags' => 'examples/_data/demo_tags.pdf',
+    // default recipient role names used across examples (i.e. Signer 1, CTO, HR)
+    'first_recipient_role' => 'Recipient 1',
+    'second_recipient_role' => 'Recipient 2',
+    // recipient actions: sign, view
+    'sign_action' => 'sign',
+    'view_action' => 'view',
+    // default sender email (the document owner who sends invites)
+    'sender_email' => 'sender@example.com',
+    // your signNow user ID used across examples (i.e. to subscribe for webhook events)
+    'user_id' => 'e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0',
+
+    // -- Auth
+    // username and password for manual token creation (bearer_token.php)
+    'auth_username' => 'user@signnow.com',
+    'auth_password' => 'coolest_pazzw0rd',
+
+    // -- Document get / download
+    // any your document to get its metadata
+    'document_id' => 'c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2',
+
+    // -- Document prefill text field
+    // signer role name assigned to the prefill field (i.e. Product Manager, CEO)
+    'document_prefill_text_field_signer_role' => 'Product Manager',
+
+    // -- Bulk invite
+    // the template from which a new document will be cloned for each invite in the bulk
+    'bulk_invite_template_id' => 'a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0',
+    // the folder to store documents cloned from the template in the bulk
+    'bulk_invite_folder_id' => 'b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1',
+    // signers list for the bulk
+    'bulk_invite_csv_file_path' => 'examples/_data/bulk_invite.csv',
+
+    // -- Document group invite
+    // how named your signer role (i.e. CTO, Accounter, HR)
+    'document_group_invite_signer_role' => 'Signer',
+    // email to send an invitation to sign a document group
+    'document_group_invite_signer_email' => 'signer@example.com',
+
+    // -- Document group template
+    // existing document group template to create a document group from
+    'document_group_template_template_group_id' => 'd4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3',
+    // folder to store the created document group
+    'document_group_template_folder_id' => 'e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4',
+
+    // -- Download document group
+    // document group to download as a merged file
+    'download_document_group_document_group_id' => 'f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5',
+
+    // -- Document group recipients
+    // document group to manage recipients for
+    'document_group_recipients_document_group_id' => 'a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6',
+
+    // -- Document group template recipients
+    // document group template to manage recipients for
+    'document_group_template_recipients_template_id' => 'c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4',
+
+    // -- Embedded group invite
+    // emails for two signers in the embedded group invite
+    'embedded_group_invite_signer_1_email' => 'signer1@example.com',
+    'embedded_group_invite_signer_2_email' => 'signer2@example.com',
+
+    // -- Embedded invite
+    // signer's email to receive the embedded invite
+    'embedded_invite_signer_email' => 'signer@example.com',
+
+    // -- Field invite
+    // signer email to receive the field invite
+    'field_invite_signer_email' => 'signer@example.com',
+    // signer role name assigned to the field (i.e. General Manager, CTO)
+    'field_invite_signer_role' => 'General Manager',
+
+    // -- Free form invite
+    // signer email to receive the free form invite
+    'free_form_invite_signer_email' => 'signer@example.com',
+
+    // -- Clone template
+    // existing template ID to create a new document from
+    'clone_template_template_id' => 'f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1',
+
+    // -- Webhook
+    // your signNow user ID to subscribe for events
+    'webhook_user_id' => 'e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0',
+    // your endpoint URL to receive webhook callbacks
+    'webhook_callback_url' => 'https://your-domain.requestcatcher.com/',
+];

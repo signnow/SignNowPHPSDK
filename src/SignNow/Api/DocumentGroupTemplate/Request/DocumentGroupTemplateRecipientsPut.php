@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace SignNow\Api\DocumentGroup\Request;
+namespace SignNow\Api\DocumentGroupTemplate\Request;
 
 use SignNow\Api\DocumentGroup\Request\Data\Recipient\RecipientCollection;
 use SignNow\Api\DocumentGroup\Request\Data\Recipient\Reminder;
@@ -20,15 +20,15 @@ use SignNow\Core\Request\Endpoint;
 use SignNow\Core\Request\RequestInterface;
 
 #[Endpoint(
-    name: 'updateDocumentGroupRecipients',
-    url: '/v2/document-groups/{document_group_id}/recipients',
+    name: 'updateDocumentGroupTemplateRecipients',
+    url: '/v2/document-group-templates/{template_group_id}/recipients',
     method: 'put',
     auth: 'bearer',
-    namespace: 'documentGroup',
-    entity: 'documentGroupRecipients',
+    namespace: 'documentGroupTemplate',
+    entity: 'documentGroupTemplateRecipients',
     type: 'application/json',
 )]
-final class DocumentGroupRecipientsPut implements RequestInterface
+final class DocumentGroupTemplateRecipientsPut implements RequestInterface
 {
     private array $uriParams = [];
 
@@ -66,9 +66,9 @@ final class DocumentGroupRecipientsPut implements RequestInterface
         return $this->orderType;
     }
 
-    public function withDocumentGroupId(string $documentGroupId): self
+    public function withTemplateGroupId(string $templateGroupId): self
     {
-        $this->uriParams['document_group_id'] = $documentGroupId;
+        $this->uriParams['template_group_id'] = $templateGroupId;
 
         return $this;
     }

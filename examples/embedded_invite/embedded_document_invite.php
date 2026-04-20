@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../SignNowExampleData.php';
 
 use SignNow\Api\Document\Request\Data\Field;
 use SignNow\Api\Document\Request\Data\FieldCollection;
@@ -15,20 +16,25 @@ use SignNow\Api\Document\Response\DocumentPut as DocumentPutResponse;
 use SignNow\Api\EmbeddedInvite\Request\Data\Invite;
 use SignNow\Api\EmbeddedInvite\Request\Data\InviteCollection;
 use SignNow\Api\EmbeddedInvite\Request\DocumentInvitePost as EmbeddedInvitePost;
+use SignNow\Core\Token\BearerToken;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
 try {
+    // Fill in your actual data in examples/signnow-example-config.php before running
+    $data = new SignNowExampleData();
+    $bearerToken = $data->getBearerToken();
+
     $sdk = new Sdk();
     $apiClient = $sdk->build()
-        ->authenticate()
+        ->withBearerToken(new BearerToken($bearerToken))
         ->getApiClient();
 
     // source data
-    $signerEmail = 'signer@signnow.com';
+    $signerEmail = $data->getEmbeddedInviteSignerEmail();
 
     // 1. Upload a document
-    $documentFile = dirname(__DIR__) . '/_data/blank.pdf';
+    $documentFile = $data->getPathToDocument();
     $request = new DocumentPost(
         new SplFileInfo($documentFile),
     );
@@ -65,16 +71,16 @@ try {
     $request->withDocumentId($documentId);
     /** @var DocumentGetResponse $response */
     $response = $apiClient->send($request);
-    $signerRoleId = $response->getRoles()->first();
+    $signerRole = $response->getRoles()->first();
 
     // 4. Create an embedded invite to the document
     $invites = new InviteCollection();
     $invites->add(
         new Invite(
             email: $signerEmail,
-            roleId: $signerRoleId,
+            roleId: $signerRole->getUniqueId(),
             order: 1,
-            authMethod: 'none'
+            authMethod: 'none',
         )
     );
     $request = new EmbeddedInvitePost($invites);

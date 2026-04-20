@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../SignNowExampleData.php';
 
 use SignNow\Api\Document\Request\Data\Tag\EnumerationOptionCollection;
 use SignNow\Api\Document\Request\Data\Tag\Radio;
@@ -11,6 +12,7 @@ use SignNow\Api\Document\Request\Data\Tag\Tag;
 use SignNow\Api\Document\Request\Data\Tag\TagCollection;
 use SignNow\Api\Document\Request\FieldExtractPost;
 use SignNow\Api\Document\Response\FieldExtractPost as FieldExtractPostResponse;
+use SignNow\Core\Token\BearerToken;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
@@ -25,13 +27,17 @@ use SignNow\Sdk;
  * @link https://docs.signnow.com/docs/signnow/features#text-tags
  */
 try {
+    // Fill in your actual data in examples/signnow-example-config.php before running
+    $data = new SignNowExampleData();
+    $bearerToken = $data->getBearerToken();
+
     $sdk = new Sdk();
     $apiClient = $sdk->build()
-        ->authenticate()
+        ->withBearerToken(new BearerToken($bearerToken))
         ->getApiClient();
 
     // path to the document you want to upload with tags parsed
-    $documentFile = dirname(__DIR__) . '/_data/demo_tags.pdf';
+    $documentFile = $data->getPathToDocumentWithTags();
 
     // As we have complex text tags in '{{APP_DIR}}/examples/_data/demo_tags.pdf'
     // we can customize further added fields

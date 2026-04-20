@@ -2,7 +2,7 @@
   "version": "2",
   "on": {
     "method": { "isSameString": "GET" },
-    "url": {"matches":"/^\\/v2\\/document-groups\\/[0-9a-z]{40}\\/recipients$/"}
+    "url": {"matches":"/^\\/v2\\/document-group-templates\\/[0-9a-z]{40}\\/recipients$/"}
   },
   "then": {
     "response": {

@@ -10,3 +10,5 @@ composer.lock
 .env.production
 .env.development
 .phpactor.json
+examples/signnow-example-config.php
+examples/_data/bulk_real.csv
