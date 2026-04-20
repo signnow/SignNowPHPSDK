@@ -11,39 +11,39 @@
 
 declare(strict_types=1);
 
-namespace SignNow\Sdk\Tests\DocumentGroup;
+namespace SignNow\Sdk\Tests\DocumentGroupTemplate;
 
 use SignNow\Api\DocumentGroup\Request\Data\CcCollection;
 use SignNow\Api\DocumentGroup\Request\Data\Recipient\Recipient;
 use SignNow\Api\DocumentGroup\Request\Data\Recipient\RecipientCollection;
 use SignNow\Api\DocumentGroup\Request\Data\Recipient\Reminder;
-use SignNow\Api\DocumentGroup\Request\DocumentGroupRecipientsGet;
-use SignNow\Api\DocumentGroup\Request\DocumentGroupRecipientsPut;
+use SignNow\Api\DocumentGroupTemplate\Request\DocumentGroupTemplateRecipientsGet;
+use SignNow\Api\DocumentGroupTemplate\Request\DocumentGroupTemplateRecipientsPut;
 use SignNow\Exception\SignNowApiException;
 use SignNow\Sdk\Tests\Core\BaseTest;
 
-class DocumentGroupRecipientsTest extends BaseTest
+class DocumentGroupTemplateRecipientsTest extends BaseTest
 {
     /**
      * @throws SignNowApiException
      */
     public function run(): void
     {
-        $this->testGetDocumentGroupRecipients();
-        $this->testPutDocumentGroupRecipients();
+        $this->testGetDocumentGroupTemplateRecipients();
+        $this->testPutDocumentGroupTemplateRecipients();
     }
 
     /**
      * @throws SignNowApiException
      */
-    public function testGetDocumentGroupRecipients(): void
+    public function testGetDocumentGroupTemplateRecipients(): void
     {
         $client = $this->client();
-        $expectation = $this->expectation('get_document_group_recipients', 'get');
+        $expectation = $this->expectation('get_document_group_template_recipients', 'get');
         $faker = $this->faker();
 
-        $request = new DocumentGroupRecipientsGet();
-        $request->withDocumentGroupId($faker->documentGroupId());
+        $request = new DocumentGroupTemplateRecipientsGet();
+        $request->withTemplateGroupId($faker->templateGroupId());
         $response = $client->send($request);
 
         $this->assertTrue(is_object($response));
@@ -59,12 +59,11 @@ class DocumentGroupRecipientsTest extends BaseTest
     /**
      * @throws SignNowApiException
      */
-    public function testPutDocumentGroupRecipients(): void
+    public function testPutDocumentGroupTemplateRecipients(): void
     {
         $client = $this->client();
-        $expectation = $this->expectation('update_document_group_recipients', 'put');
+        $expectation = $this->expectation('update_document_group_template_recipients', 'put');
         $faker = $this->faker();
-
 
         $resp = $expectation->toArray()['data'];
         $recipients = new RecipientCollection(
@@ -74,18 +73,19 @@ class DocumentGroupRecipientsTest extends BaseTest
         foreach ($resp['cc'] as $c) {
             $cc->add($c);
         }
+
         $generalReminder = isset($resp['general_reminder'])
             ? Reminder::fromArray($resp['general_reminder'])
             : null;
 
-        $request = new DocumentGroupRecipientsPut(
+        $request = new DocumentGroupTemplateRecipientsPut(
             $recipients,
             $cc,
             $resp['general_expiration_days'] ?? null,
             $generalReminder,
             $resp['order_type'] ?? null,
         );
-        $request->withDocumentGroupId($faker->documentGroupId());
+        $request->withTemplateGroupId($faker->templateGroupId());
         $response = $client->send($request);
 
         $this->assertTrue(is_object($response));

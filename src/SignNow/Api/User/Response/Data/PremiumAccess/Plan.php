@@ -21,14 +21,15 @@ readonly class Plan
         private string $name,
         private string $price,
         private int $billingCycle,
-        private bool $active,
         private GroupCollection $groups,
         private string $level,
         private string $type,
-        private int $apiRequests,
-        private int $unitPrice,
         private bool $isTrial,
         private bool $isMarketplace,
+        private bool $active = false,
+        private int $apiRequests = 0,
+        private int $unitPrice = 0,
+        private ?string $mobilePlanType = null,
     ) {
     }
 
@@ -97,6 +98,11 @@ readonly class Plan
         return $this->isMarketplace;
     }
 
+    public function getMobilePlanType(): ?string
+    {
+        return $this->mobilePlanType;
+    }
+
     public function toArray(): array
     {
         return [
@@ -111,8 +117,9 @@ readonly class Plan
            'type' => $this->getType(),
            'api_requests' => $this->getApiRequests(),
            'unit_price' => $this->getUnitPrice(),
-           'is_trial' => $this->IsTrial(),
-           'is_marketplace' => $this->IsMarketplace(),
+           'is_trial' => $this->isTrial(),
+           'is_marketplace' => $this->isMarketplace(),
+           'mobile_plan_type' => $this->getMobilePlanType(),
         ];
     }
 
@@ -124,14 +131,15 @@ readonly class Plan
             $data['name'],
             $data['price'],
             $data['billing_cycle'],
-            $data['active'],
             new GroupCollection($data['groups']),
             $data['level'],
             $data['type'],
-            $data['api_requests'],
-            $data['unit_price'],
             $data['is_trial'],
             $data['is_marketplace'],
+            $data['active'] ?? false,
+            $data['api_requests'] ?? 0,
+            $data['unit_price'] ?? 0,
+            $data['mobile_plan_type'] ?? null,
         );
     }
 }

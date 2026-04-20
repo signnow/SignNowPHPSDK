@@ -1,0 +1,73 @@
+<?php
+
+/*
+ * signNow SDK Example Configuration
+ * Make a copy of this file named `signnow-example-config.php` and update it with your actual values.
+ * Naming convention: {domainName}_{variableName}, e.g. bulk_invite_template_id
+ */
+
+return [
+    // -- Global
+    'bearer_token' => '',
+    'path_to_document' => 'examples/_data/blank.pdf',
+    'path_to_document_with_tags' => 'examples/_data/demo_tags.pdf',
+    'first_recipient_role' => '',
+    'second_recipient_role' => '',
+    'sign_action' => 'sign',
+    'view_action' => 'view',
+    'sender_email' => '',
+    'user_id' => '',
+
+    // -- Auth
+    'auth_username' => '',
+    'auth_password' => '',
+
+    // -- Document get / download
+    'document_id' => '',
+
+    // -- Document prefill text field
+    'document_prefill_text_field_signer_role' => '',
+
+    // -- Bulk invite
+    'bulk_invite_template_id' => '',
+    'bulk_invite_folder_id' => '',
+    'bulk_invite_csv_file_path' => 'examples/_data/bulk_invite.csv',
+
+    // -- Document group invite
+    'document_group_invite_signer_role' => '',
+    'document_group_invite_signer_email' => '',
+
+    // -- Document group template
+    'document_group_template_template_group_id' => '',
+    'document_group_template_folder_id' => '',
+
+    // -- Download document group
+    'download_document_group_document_group_id' => '',
+
+    // -- Document group recipients
+    'document_group_recipients_document_group_id' => '',
+
+    // -- Document group template recipients
+    'document_group_template_recipients_template_id' => '',
+
+    // -- Embedded group invite
+    'embedded_group_invite_signer_1_email' => '',
+    'embedded_group_invite_signer_2_email' => '',
+
+    // -- Embedded invite
+    'embedded_invite_signer_email' => '',
+
+    // -- Field invite
+    'field_invite_signer_email' => '',
+    'field_invite_signer_role' => '',
+
+    // -- Free form invite
+    'free_form_invite_signer_email' => '',
+
+    // -- Clone template
+    'clone_template_template_id' => '',
+
+    // -- Webhook
+    'webhook_user_id' => '',
+    'webhook_callback_url' => '',
+];

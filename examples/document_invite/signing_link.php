@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../SignNowExampleData.php';
 
 use SignNow\Api\Document\Request\Data\Field;
 use SignNow\Api\Document\Request\Data\FieldCollection;
@@ -12,17 +13,22 @@ use SignNow\Api\Document\Response\DocumentPost as DocumentPostResponse;
 use SignNow\Api\Document\Response\DocumentPut as DocumentPutResponse;
 use SignNow\Api\DocumentInvite\Request\SigningLinkPost;
 use SignNow\Api\DocumentInvite\Response\SigningLinkPost as SigningLinkResponse;
+use SignNow\Core\Token\BearerToken;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
 try {
+    // Fill in your actual data in examples/signnow-example-config.php before running
+    $data = new SignNowExampleData();
+    $bearerToken = $data->getBearerToken();
+
     $sdk = new Sdk();
     $apiClient = $sdk->build()
-        ->authenticate()
+        ->withBearerToken(new BearerToken($bearerToken))
         ->getApiClient();
 
     // 1. Upload a document
-    $documentFile = dirname(__DIR__) . '/_data/blank.pdf';
+    $documentFile = $data->getPathToDocument();
     $request = new DocumentPost(
         new SplFileInfo($documentFile),
     );

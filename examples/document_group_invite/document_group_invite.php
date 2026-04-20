@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../SignNowExampleData.php';
 
 use SignNow\Api\Document\Request\Data\Field;
 use SignNow\Api\Document\Request\Data\FieldCollection;
@@ -22,6 +23,7 @@ use SignNow\Api\DocumentGroupInvite\Request\Data\InviteStep\InviteStep;
 use SignNow\Api\DocumentGroupInvite\Request\Data\InviteStep\InviteStepCollection;
 use SignNow\Api\DocumentGroupInvite\Request\GroupInvitePost;
 use SignNow\Api\DocumentGroupInvite\Response\GroupInvitePost as GroupInvitePostResponse;
+use SignNow\Core\Token\BearerToken;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
@@ -29,19 +31,23 @@ use SignNow\Sdk;
  * This example describes how to send invite to sign for a document group
  */
 try {
+    // Fill in your actual data in examples/signnow-example-config.php before running
+    $data = new SignNowExampleData();
+    $bearerToken = $data->getBearerToken();
+
     $sdk = new Sdk();
     $apiClient = $sdk->build()
-        ->authenticate()
+        ->withBearerToken(new BearerToken($bearerToken))
         ->getApiClient();
 
     // source data
-    $signerEmail = 'test@signnow.com';
-    $signerRole = 'HR Manager';
+    $signerEmail = $data->getDocumentGroupInviteSignerEmail();
+    $signerRole = $data->getDocumentGroupInviteSignerRole();
     $subject = 'Please sign these documents';
     $message = 'Hello, please sign these documents';
 
     // Step 1: Upload 1st document
-    $documentFile = dirname(__DIR__) . '/_data/blank.pdf';
+    $documentFile = $data->getPathToDocument();
     $request = new DocumentPost(
         new SplFileInfo($documentFile),
     );

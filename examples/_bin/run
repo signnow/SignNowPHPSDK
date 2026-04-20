@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+EXAMPLES_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+PROJECT_DIR="$(cd "$EXAMPLES_DIR/.." && pwd)"
+
+run_example() {
+  local name="$1"
+  if [ ! -f "$EXAMPLES_DIR/$name" ]; then
+    echo "ERROR: $EXAMPLES_DIR/$name not found"
+    return 1
+  fi
+  echo "--- Running $name ---"
+  local start=$SECONDS
+  local output
+  output=$(php "$EXAMPLES_DIR/$name" 2>&1) || true
+  echo "$output"
+  echo "--- $name completed in $((SECONDS - start))s ---"
+  if echo "$output" | grep -qiE "error"; then
+    return 1
+  fi
+}
+
+if [ $# -eq 0 ]; then
+  echo "Usage: examples/_bin/run <example_path|all>"
+  echo "  examples/_bin/run document/get_document.php"
+  echo "  examples/_bin/run all"
+  exit 1
+fi
+
+cd "$PROJECT_DIR"
+
+if [ "$1" = "all" ]; then
+  total_start=$SECONDS
+  failed=0
+  succeeded=0
+  failed_list=()
+  while IFS= read -r file; do
+    name="${file#$EXAMPLES_DIR/}"
+    if run_example "$name"; then
+      echo ""
+      succeeded=$((succeeded + 1))
+    else
+      echo "FAILED: $name"
+      echo ""
+      failed=$((failed + 1))
+      failed_list+=("$name")
+    fi
+  done < <(find "$EXAMPLES_DIR" -name "*.php" -not -path "*/_bin/*" -not -path "*/_data/*" -not -name "SignNowExampleData.php" -not -name "signnow-example-config*" | sort)
+  total_time=$((SECONDS - total_start))
+  echo ""
+  echo "=== Completed in ${total_time}s ==="
+  echo "Succeeded examples: $succeeded"
+  echo "Failed examples: $failed"
+  if [ $failed -gt 0 ]; then
+    for name in "${failed_list[@]}"; do
+      echo "  - $name"
+    done
+    exit 1
+  fi
+else
+  run_example "$1"
+fi

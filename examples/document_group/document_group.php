@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../SignNowExampleData.php';
 
 use SignNow\Api\DocumentGroup\Request\Data\DocumentIdCollection;
 use SignNow\Api\DocumentGroup\Request\DocumentGroupGet;
@@ -11,6 +12,7 @@ use SignNow\Api\DocumentGroup\Response\DocumentGroupGet as DocumentGroupGetRespo
 use SignNow\Api\DocumentGroup\Response\DocumentGroupPost as DocumentGroupPostResponse;
 use SignNow\Api\Document\Request\DocumentPost;
 use SignNow\Api\Document\Response\DocumentPost as DocumentPostResponse;
+use SignNow\Core\Token\BearerToken;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
@@ -19,13 +21,17 @@ use SignNow\Sdk;
  * and then get the created document group
  */
 try {
+    // Fill in your actual data in examples/signnow-example-config.php before running
+    $data = new SignNowExampleData();
+    $bearerToken = $data->getBearerToken();
+
     $sdk = new Sdk();
     $apiClient = $sdk->build()
-        ->authenticate()
+        ->withBearerToken(new BearerToken($bearerToken))
         ->getApiClient();
 
     // Upload 1st document
-    $documentFile = dirname(__DIR__) . '/_data/blank.pdf';
+    $documentFile = $data->getPathToDocument();
     $request = new DocumentPost(
         new SplFileInfo($documentFile),
     );
@@ -58,6 +64,14 @@ try {
 
     /** @var DocumentGroupGetResponse $response */
     $response = $apiClient->send($request);
+
+    $documentGroupId = $response->getId();
+    $documentGroupName = $response->getGroupName();
+    $documents = $response->getDocuments();
+    // Optional fields (available when using ?include=reminder query parameter)
+    $generalExpirationDays = $response->getGeneralExpirationDays();
+    $generalReminder = $response->getGeneralReminder();
+    $orderType = $response->getOrderType();
 } catch (Throwable $e) {
     (new ErrorOutput())->displayException($e);
 }

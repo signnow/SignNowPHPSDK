@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../SignNowExampleData.php';
 
 use SignNow\Api\Document\Request\Data\Field;
 use SignNow\Api\Document\Request\Data\FieldCollection;
@@ -16,26 +17,31 @@ use SignNow\Api\DocumentInvite\Request\Data\To;
 use SignNow\Api\DocumentInvite\Request\Data\ToCollection;
 use SignNow\Api\DocumentInvite\Request\SendInvitePost;
 use SignNow\Api\DocumentInvite\Response\SendInvitePost as SendInvitePostResponse;
+use SignNow\Core\Token\BearerToken;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
 try {
+    // Fill in your actual data in examples/signnow-example-config.php before running
+    $data = new SignNowExampleData();
+    $bearerToken = $data->getBearerToken();
+
     $sdk = new Sdk();
     $apiClient = $sdk->build()
-        ->authenticate()
+        ->withBearerToken(new BearerToken($bearerToken))
         ->getApiClient();
 
     // source data
-    $senderEmail = 'sender@signnow.com';
-    $signerEmail = 'signer@signnow.com';
-    $signerRole = 'HR Manager';
+    $senderEmail = $data->getSenderEmail();
+    $signerEmail = $data->getFieldInviteSignerEmail();
+    $signerRole = $data->getFieldInviteSignerRole();
+    $yourDocumentFilePath = $data->getPathToDocument();
     $subject = 'You have got an invitation to sign the contact';
     $message = 'Hello, please read and sign the contract';
 
     // 1. Upload a document
-    $documentFile = dirname(__DIR__) . '/_data/blank.pdf';
     $request = new DocumentPost(
-        new SplFileInfo($documentFile),
+        new SplFileInfo($yourDocumentFilePath),
     );
     /** @var DocumentPostResponse $response */
     $response = $apiClient->send($request);
@@ -71,7 +77,7 @@ try {
     /** @var DocumentGetResponse $response */
     $response = $apiClient->send($request);
 
-    // 4. Send an invite to sign the document
+    // 4. Send an invitation to sign the document
     $roles = $response->getRoles();
     $to = new ToCollection();
     foreach ($roles as $role) {

@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace SignNow\Api\DocumentGroup\Response;
 
+use SignNow\Api\DocumentGroup\Response\Data\Data\Reminder;
 use SignNow\Api\DocumentGroup\Response\Data\Document\DocumentItemCollection;
 use SignNow\Api\DocumentGroup\Response\Data\OriginatorOrganizationSettingsCollection;
 
@@ -24,6 +25,9 @@ readonly class DocumentGroupGet
         private DocumentItemCollection $documents,
         private OriginatorOrganizationSettingsCollection $originatorOrganizationSettings,
         private ?string $inviteId = null,
+        private ?int $generalExpirationDays = null,
+        private ?Reminder $generalReminder = null,
+        private ?string $orderType = null,
     ) {
     }
 
@@ -50,5 +54,20 @@ readonly class DocumentGroupGet
     public function getOriginatorOrganizationSettings(): OriginatorOrganizationSettingsCollection
     {
         return $this->originatorOrganizationSettings;
+    }
+
+    public function getGeneralExpirationDays(): ?int
+    {
+        return $this->generalExpirationDays;
+    }
+
+    public function getGeneralReminder(): ?Reminder
+    {
+        return $this->generalReminder;
+    }
+
+    public function getOrderType(): ?string
+    {
+        return $this->orderType;
     }
 }

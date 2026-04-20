@@ -3,7 +3,17 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../SignNowExampleData.php';
 
+use SignNow\Api\Document\Request\Data\Field;
+use SignNow\Api\Document\Request\Data\FieldCollection;
+use SignNow\Api\Document\Request\DocumentPost;
+use SignNow\Api\Document\Request\DocumentPut;
+use SignNow\Api\Document\Response\DocumentPost as DocumentPostResponse;
+use SignNow\Api\Document\Response\DocumentPut as DocumentPutResponse;
+use SignNow\Api\DocumentGroup\Request\Data\DocumentIdCollection;
+use SignNow\Api\DocumentGroup\Request\DocumentGroupPost;
+use SignNow\Api\DocumentGroup\Response\DocumentGroupPost as DocumentGroupPostResponse;
 use SignNow\Api\EmbeddedGroupInvite\Request\Data\Invite\Document;
 use SignNow\Api\EmbeddedGroupInvite\Request\Data\Invite\DocumentCollection;
 use SignNow\Api\EmbeddedGroupInvite\Request\Data\Invite\Invite;
@@ -14,35 +24,95 @@ use SignNow\Api\EmbeddedGroupInvite\Request\GroupInviteLinkPost as EmbeddedGroup
 use SignNow\Api\EmbeddedGroupInvite\Request\GroupInvitePost as EmbeddedGroupInvitePost;
 use SignNow\Api\EmbeddedGroupInvite\Response\GroupInviteLinkPost as EmbeddedGroupInviteLinkResponse;
 use SignNow\Api\EmbeddedGroupInvite\Response\GroupInvitePost as EmbeddedGroupInvitePostResponse;
+use SignNow\Core\Token\BearerToken;
 use SignNow\Exception\Output\ErrorOutput;
 use SignNow\Sdk;
 
 /**
  * This example describes how to create an embedded group invite
  * with two signers and two documents
- *
- * Presets:
- * - two documents with fields and roles 'Manager' and 'Department Manager" are uploaded
- * - a document group is created of these two documents
- *
- * You can get the document IDs and document group ID
- * from the previous example:
- * - {{APP_DIR}}/examples/document_group/document_group.php
  */
 try {
+    // Fill in your actual data in examples/signnow-example-config.php before running
+    $data = new SignNowExampleData();
+    $bearerToken = $data->getBearerToken();
+
     $sdk = new Sdk();
     $apiClient = $sdk->build()
-        ->authenticate()
+        ->withBearerToken(new BearerToken($bearerToken))
         ->getApiClient();
 
     // source data
-    $documentId1 = 'YOUR_DOCUMENT_1_ID_HERE';
-    $documentId2 = 'YOUR_DOCUMENT_2_ID_HERE';
-    $documentGroupId = 'YOUR_DOCUMENT_GROUP_ID_HERE';
     $signer1Role = 'Manager';
     $signer2Role = 'Department Manager';
-    $signer1Email = 'signer@signnow.com';
-    $signer2Email = 'signer+1@signnow.com';
+    $signer1Email = $data->getEmbeddedGroupInviteSigner1Email();
+    $signer2Email = $data->getEmbeddedGroupInviteSigner2Email();
+
+    // Preset: upload 1st document and add a field with $signer1Role
+    $documentFile = $data->getPathToDocument();
+    $request = new DocumentPost(
+        new SplFileInfo($documentFile),
+    );
+    /** @var DocumentPostResponse $response */
+    $response = $apiClient->send($request);
+    $documentId1 = $response->getId();
+
+    $fields = new FieldCollection();
+    $fields->add(
+        new Field(
+            x: 205,
+            y: 18,
+            width: 122,
+            height: 12,
+            type: 'text',
+            pageNumber: 0,
+            required: true,
+            role: $signer1Role,
+            name: 'text_field',
+            label: 'Decision reason',
+        )
+    );
+    $request = new DocumentPut(fields: $fields);
+    $request->withDocumentId($documentId1);
+    /** @var DocumentPutResponse $response */
+    $apiClient->send($request);
+
+    // Preset: upload 2nd document and add a field with $signer2Role
+    $request = new DocumentPost(
+        new SplFileInfo($documentFile),
+    );
+    /** @var DocumentPostResponse $response */
+    $response = $apiClient->send($request);
+    $documentId2 = $response->getId();
+
+    $fields = new FieldCollection();
+    $fields->add(
+        new Field(
+            x: 220,
+            y: 24,
+            width: 142,
+            height: 14,
+            type: 'text',
+            pageNumber: 0,
+            required: true,
+            role: $signer2Role,
+            name: 'text_field',
+            label: 'Decision reason',
+        )
+    );
+    $request = new DocumentPut(fields: $fields);
+    $request->withDocumentId($documentId2);
+    /** @var DocumentPutResponse $response */
+    $apiClient->send($request);
+
+    // Preset: create a document group from both documents
+    $request = new DocumentGroupPost(
+        new DocumentIdCollection([$documentId1, $documentId2]),
+        'Test Document Group',
+    );
+    /** @var DocumentGroupPostResponse $response */
+    $response = $apiClient->send($request);
+    $documentGroupId = $response->getId();
 
     $documents = new DocumentCollection();
     $documents->add(

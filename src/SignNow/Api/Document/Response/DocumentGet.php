@@ -46,6 +46,7 @@ use SignNow\Api\Document\Response\Data\DocumentGroupInfo;
 use SignNow\Api\Document\Response\Data\DocumentGroupTemplateInfoCollection;
 use SignNow\Api\Document\Response\Data\Settings;
 use SignNow\Api\Document\Response\Data\ShareInfo;
+use SignNow\Api\DocumentGroup\Response\Data\Data\Reminder;
 
 readonly class DocumentGet
 {
@@ -101,6 +102,9 @@ readonly class DocumentGet
         private FieldValidatorCollection $fieldValidators = new FieldValidatorCollection(),
         private DocumentGroupTemplateInfoCollection $documentGroupTemplateInfo = new
         DocumentGroupTemplateInfoCollection(),
+        private ?int $generalExpirationDays = null,
+        private ?Reminder $generalReminder = null,
+        private ?string $orderType = null,
     ) {
     }
 
@@ -352,5 +356,20 @@ readonly class DocumentGet
     public function getShareInfo(): ShareInfo
     {
         return $this->shareInfo;
+    }
+
+    public function getGeneralExpirationDays(): ?int
+    {
+        return $this->generalExpirationDays;
+    }
+
+    public function getGeneralReminder(): ?Reminder
+    {
+        return $this->generalReminder;
+    }
+
+    public function getOrderType(): ?string
+    {
+        return $this->orderType;
     }
 }

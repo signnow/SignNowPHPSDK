@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../SignNowExampleData.php';
 
 use SignNow\Api\Auth\Request\TokenPost;
 use SignNow\Api\Auth\Response\TokenPost as TokenPostResponse;
@@ -18,12 +19,15 @@ use SignNow\Sdk;
  * @link https://docs.signnow.com/docs/signnow/oauth2/operations/create-a-oauth-2-token
  */
 try {
+    // Fill in your actual data in examples/signnow-example-config.php before running
+    $data = new SignNowExampleData();
+
     $sdk = new Sdk();
     $apiClient = $sdk->build()->getApiClient();
 
     // source data
-    $username = 'YOUR_USERNAME';
-    $password = 'YOUR_PASSWORD';
+    $username = $data->getAuthUsername();
+    $password = $data->getAuthPassword();
 
     $request = new TokenPost(
         username: $username,
