@@ -1,14 +1,41 @@
+# Dependencies
 /vendor
+composer.lock
+
+# Build / output
+/build
+/dist
+
+# Test / cache
+.phpunit.cache/
+.phpunit.result.cache
+phpcs-report.xml
+.php-cs-fixer.cache
+
+# IDE
 /.idea
 /.fleet
 /.vscode
 /.netbeans
-composer.lock
+.phpactor.json
+
+# Editor swap files
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment / credentials
 .env
+.env.local
 .env.backup
 .env.test
 .env.production
 .env.development
-.phpactor.json
+
+# Project-local examples / fixtures
 examples/signnow-example-config.php
 examples/_data/bulk_real.csv
