@@ -16,17 +16,17 @@ namespace SignNow\Api\Document\Response\Data;
 readonly class Size
 {
     public function __construct(
-        private int $width,
-        private int $height,
+        private float|int $width,
+        private float|int $height,
     ) {
     }
 
-    public function getWidth(): int
+    public function getWidth(): float|int
     {
         return $this->width;
     }
 
-    public function getHeight(): int
+    public function getHeight(): float|int
     {
         return $this->height;
     }
