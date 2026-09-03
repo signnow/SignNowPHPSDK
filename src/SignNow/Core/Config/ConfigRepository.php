@@ -17,7 +17,7 @@ use SignNow\Core\Token\BasicToken;
 
 class ConfigRepository
 {
-    private const CLIENT_NAME = 'SignNowApiClient/v3.5.3 (PHP)';
+    private const CLIENT_NAME = 'SignNowApiClient/v3.5.4 (PHP)';
     private const HOST = 'signnow_api_host';
     private const TIMEOUT = 'signnow_api_timeout';
     private const USERNAME = 'signnow_api_username';
